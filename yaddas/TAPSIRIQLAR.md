@@ -4,11 +4,11 @@
 > Hər tapşırıqdan sonra bu faylı yenilə, commit et və push et.
 
 ## Növbəti addım
-- İstifadəçidən soruş: ChatGPT-də dediyi **"modellər"** hansılardır (3D modellər? AI modelləri?) — hələ cavab yoxdur.
+- Ekran şəklində 7-ci skill-in adı kəsik idi; 8-ci və sonrakı skill-lər varsa, istifadəçidən soruş.
 - Sonra: Caspian Industry üçün dizayn/animasiya/video işinə başla (Blender, Inkscape, FFmpeg, Reveal.js).
 
 ## Aktiv tapşırıqlar
-- [ ] "Modellər"i öyrən və yüklə
+- [x] "Modellər" = ChatGPT-nin təklif etdiyi 7 skill → `.claude/skills/`-ə yükləndi
 - [ ] Dizayn / animasiya / video (pulsuz alətlərlə)
 
 ## Bitmiş işlər
@@ -18,6 +18,9 @@
   Yeni sessiyada yoxdursa: `bash scripts/setup-tools.sh`.
 - 2026-11-12 — `CLAUDE.md`, qovluqlar, bu yaddaş sistemi quruldu. PR #1 açıldı.
 - 2026-11-12 — PR #1 istifadəçi tərəfindən `main`-ə birləşdirildi. Yaddaş artıq yeni sessiyalarda yüklənir.
+
+- 2026-11-12 — 7 skill yaradıldı: vision-ai-director, video-production-studio, motion-graphics-master,
+  audio-voice-director, interactive-animation-developer, ai-video-tools-orchestrator, video-editor-export.
 
 ## İstifadəçi haqqında qeydlər
 - Azərbaycan dilində yazır, telefondan istifadə edir. Qısa, sadə izah sevir.
