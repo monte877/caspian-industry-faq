@@ -4,6 +4,11 @@
 > Hər tapşırıqdan sonra bu faylı yenilə, commit et və push et.
 
 ## Növbəti addım
+- **FOTOLAR GOOGLE DRIVE-DADIR (2026-11-12 23:20):** qovluq `Caspian fotolar`, ID `1K4xn1pxikaPxtFEKLAO03C8ajrpUnfB9`, 100+ JPG (WhatsApp adları `IMG-…-WA….jpg`).
+  Siyahı: `mcp__Google_Drive__search_files` (`parentId = '<ID>'`); fayl: `mcp__Google_Drive__download_file_content` (şəkli göstərir və diskə yazır).
+  İstifadəçidən fotoları bir daha İSTƏMƏ. Repo publik qalır, fotolar repoya yazılmır.
+  **Higgsfield sınağı açılmadı → film Higgsfield-siz qurulur:** real fotolar (kinematik hərəkət) + hərəkətli qrafika + qaralama səs.
+  Növbəti iş: ən yaxşı 15–20 fotonu seç (`mehsullar/fotolar/FOTOLAR.md` təsvirləri ilə tutuşdur) → `preview.html`-a qoş → render → istifadəçiyə göstər.
 - **Higgsfield vəziyyəti (2026-11-12 22:55):** connector qoşulub və alətlər işləyir (`mcp__Higgsfield__*`), AMMA hesab
   **free plandadır, 0 kredit, limitsiz sınaq aktiv deyil** → hələ heç bir kadr yaradılmayıb. Alət yalnız ödənişli planlar təklif etdi.
   İstifadəçi sınağı higgsfield.ai/mcp-də eyni hesabla başlatmalıdır. Sessiya əvvəlində `balance` və
