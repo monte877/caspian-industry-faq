@@ -4,6 +4,8 @@
 > Hər tapşırıqdan sonra bu faylı yenilə, commit et və push et.
 
 ## Növbəti addım
+- **Mövcud təqdimatın dizayn sistemi** → `design/referans/DIZAYN-SISTEMI.md`. Yeni işlər BU üslubda olmalıdır
+  (açıq fon, elektrik göy, narıncı vurğu, 3D loqo/ikonlar, mono etiketlər). İstifadəçidən 41 slaydlıq faylın tamamını və 3D loqo PNG-ni istə.
 - **111 real şirkət fotosu alındı** (2 internet şəkli işarələnib) → `mehsullar/fotolar/FOTOLAR.md`. JPG-lər repoda YOXDUR (repo publikdir) —
   istifadəçidən soruş: repo private edilsin, yoxsa fotolar başqa yerdə saxlanılsın? Sessiya bitsə fotolar itir!
 - **Kataloq alındı və köçürüldü** → `mehsullar/katalog/KATALOQ.md`. İstifadəçidən soruşulacaq:
@@ -45,6 +47,8 @@
 - Seçimi bəzən Claude-a həvalə edir ("ən idealı hansıdı, onu seç").
 
 ## Qərarlar
+- 2026-11-12 — İstifadəçinin öz təqdimatında 'BP ilə əməkdaşlıq' açıq yazılıb → BP adı videolarda işlədilə bilər (layihə faktı kimi).
+- Yeni fəaliyyət istiqaməti: **Katalizatorlar** (təqdimatdan).
 - 2026-11-12 — Brendlər (Chicago Pneumatic, ADALIT və s.) və kataloq şəkilləri videolarda işlədilə bilər — şirkət təchizatçıdır.
   Yalnız 'rəsmi diler/partnyor' iddiası yazılmır.
 - Yaddaş = bu fayl + `CLAUDE.md`. Əsas branch-da (`main`) olmalıdır ki, yeni sessiyalar görsün.

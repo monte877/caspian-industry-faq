@@ -19,7 +19,8 @@ Yazılmayan şey növbəti sessiyada unudulur.
 - Kataloq və bütün məhsullar: `mehsullar/katalog/KATALOQ.md` (5 bölmə A–E). Məhsul videosundan əvvəl onu oxu.
 - Dil: istifadəçi ilə **Azərbaycan dilində** danış. Sayt mətnləri azərbaycanca.
 - Loqo rəngləri (kataloqdan, təxmini): tünd göy `#0e2054`, orta göy ~`#2f62b0`, açıq göy `#6996d0`. Sayt: `#0b2444`, `#12538a`, `#1266aa`.
-- Loqo: dairəvi "C" + dişli çarx + dalğa. Orijinal fayl hələ yoxdur (kataloqdan aşağı keyfiyyətli kəsik var).
+- Loqo: dairəvi "C" + dişli çarx + dalğa (3D versiyası var). Orijinal fayl hələ yoxdur.
+- **Vizual üslub:** `design/referans/DIZAYN-SISTEMI.md` (şirkətin mövcud təqdimatı) — bütün yeni işlər buna uyğun.
 
 ## Qovluqlar
 | Qovluq | Nə üçün |
