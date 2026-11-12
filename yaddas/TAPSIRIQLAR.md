@@ -14,13 +14,14 @@
 - İstifadəçi əlavə məhsul göndərsə: `mehsullar/<ad>/info.md` şablonu + orijinal fotolar.
 - **Korporativ film** (`video/caspian-promo/`): istifadəçidən gözlənilir →
   1) orijinal loqo (`assets/logo.*`), 2) 6 məhsul fotosu, 3) səsləndirmə faylı (`VOICEOVER.md`-yə görə), 4) istəyə görə musiqi.
-  Gələn kimi: fayllari yerləşdir → `node scripts/render-promo.js` → yoxla → istifadəçiyə göndər.
+  Gələn kimi: fayllari yerləşdir → `node scripts/render-promo.js` → yoxla (səsi `earshot critique` ilə) → istifadəçiyə göndər.
 - İstifadəçi rəyinə görə səhnələri düzəlt (zaman şkalası `preview.html`-da, sonra `build-storyboard.py`).
 - Artifact preview: https://claude.ai/artifact/BoALx2DRQVNebXck7viaXa (eyni fayl yolu ilə yenilə).
 
 ## Aktiv tapşırıqlar
 - [x] "Modellər" = ChatGPT-nin təklif etdiyi 7 skill → `.claude/skills/`-ə yükləndi
 - [~] Korporativ film 1:54 — storyboard ✓, preview ✓, qaralama MP4 ✓ (yer tutucularla); real assetlər gözlənilir
+- [ ] AZ interaktiv kataloq PDF-i (62 s.) — düzəlişlər: `mehsullar/katalog/AZ-KATALOQ-DUZELISLER.md` (istifadəçi dizaynerə ötürə bilər)
 
 ## Bitmiş işlər
 - 2026-11-12 — GitHub bağlantısı yoxlandı; yazma icazəsi istifadəçi tərəfindən verildi, push işləyir.
@@ -40,12 +41,20 @@
 
 - 2026-11-12 — 19 real foto (komanda, Washpipe, inspeksiya, CP CPS 900-175, logistika, Baku Energy Week 2026, 7 il yubiley).
 
+- 2026-11-12 — AZ interaktiv kataloq PDF-i (62 s., istifadəçinin göndərdiyi) yoxlanıldı: keçidlər düzgündür (62-ci s. "Geri" istisna),
+  ~25 hərf/məntiq səhvi tapıldı → `mehsullar/katalog/AZ-KATALOQ-DUZELISLER.md`.
+
+- 2026-11-12 — **earshot v0.4.1** (səs təhlili, MIT) iş sahəsinə əlavə edildi: skill `.claude/skills/earshot`,
+  quraşdırma `scripts/setup-tools.sh`-da, `CLAUDE.md` alətlər siyahısında. Modellər ilk istifadədə ~1,1 GB yüklənir.
+
 ## İstifadəçi haqqında qeydlər
 - Azərbaycan dilində yazır, telefondan istifadə edir. Qısa, sadə izah sevir.
 - Əsas istəyi: Claude tapşırıqları **yadda saxlasın və qaldığı yerdən davam etsin**.
 - Pulsuz alətlərə üstünlük verir (pullu video saytları yox).
 - Əsas işi: **məhsullar haqqında video təqdimatlar** hazırlamaq.
 - Seçimi bəzən Claude-a həvalə edir ("ən idealı hansıdı, onu seç").
+- **"Claude işçi stolu" = bu GitHub repo.** "Bunu da əlavə et" deyəndə alət/skill buraya əlavə olunur
+  (`.claude/skills/`, `scripts/setup-tools.sh`, `CLAUDE.md`), istifadəçinin öz kompüterinə yox.
 
 ## Qərarlar
 - 2026-11-12 — İstifadəçinin öz təqdimatında 'BP ilə əməkdaşlıq' açıq yazılıb → BP adı videolarda işlədilə bilər (layihə faktı kimi).

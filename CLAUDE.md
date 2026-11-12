@@ -40,6 +40,9 @@ Yazılmayan şey növbəti sessiyada unudulur.
 - **Inkscape** — `inkscape fayl.svg -o fayl.png`
 - **FFmpeg** — səhnə + səs → MP4
 - **Reveal.js** — npm paketi `reveal.js@5.1.0`
+- **earshot** (v0.4.1) — Claude üçün "qulaq": hazır videonun səsini yoxlayır (səs–kadr sinxronu, LUFS, diktor/musiqi balansı),
+  kodla yaradılmış səs effektləri verir (`earshot sfx`, `earshot kit`). Əsas əmr: `earshot critique video/output/caspian-promo.mp4`.
+  Skill: `.claude/skills/earshot`.
 - Sessiya konteyneri müvəqqətidir: alətlər yoxdursa `bash scripts/setup-tools.sh` işlət.
 
 ## Qaydalar
