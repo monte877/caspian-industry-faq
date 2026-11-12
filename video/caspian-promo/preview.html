@@ -1,0 +1,325 @@
+<title>Caspian Industry Promo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: a 1920×1080 cinema stage scaled into a 16:9 viewport; transport, scene index and asset slots sit underneath.
+   Single dark look on purpose: it is a screening room, and the render uses the same stage. */
+:root{
+  --ink:#050f1d; --navy:#0b2444; --steel:#12538a; --signal:#1266aa; --glow:#6cb8ff; --spark:#f0a92b;
+  --fg:#e8eef6; --muted:#8ea3ba; --line:#1c3352; --panel:#0a192d;
+  --display:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--ink);color:var(--fg);font-family:var(--body)}
+.wrap{max-width:1280px;margin:0 auto;padding-block:16px 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:16px}
+.head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px}
+.head h1{font:600 22px/1.2 var(--display);letter-spacing:.04em;text-transform:uppercase;margin:0}
+.head p{margin:0;color:var(--muted);font:12px var(--mono);letter-spacing:.06em}
+.viewport{position:relative;width:100%;max-width:100%;aspect-ratio:16/9;overflow:hidden;background:#000;border-radius:4px;box-shadow:0 0 0 1px var(--line)}
+#stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;overflow:hidden;background:var(--ink);font-family:var(--body)}
+.transport{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px}
+.btn{font:600 13px var(--body);color:var(--fg);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:9px 14px;cursor:pointer;min-height:40px}
+.btn:hover{border-color:var(--steel)}.btn:focus-visible,input:focus-visible{outline:2px solid var(--glow);outline-offset:2px}
+.btn.primary{background:var(--signal);border-color:var(--signal);min-width:96px}
+#scrub{width:100%;accent-color:var(--glow);min-width:0}
+#clock{font:13px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:500 12px var(--body);color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:4px;padding:6px 9px;cursor:pointer}
+.chip b{font:500 11px var(--mono);color:var(--glow);margin-right:6px}
+.chip.on{color:var(--fg);border-color:var(--glow);background:#0f2a48}
+.sub{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px 14px;display:grid;gap:4px}
+.sub small{font:11px var(--mono);color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+#vo-now{font-size:15px;line-height:1.5;min-height:1.5em}
+.assets{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.slot{background:var(--panel);border:1px dashed var(--line);border-radius:6px;padding:12px;display:grid;gap:6px;min-width:0}
+.slot b{font:600 13px var(--body)}.slot span{font-size:12px;color:var(--muted);line-height:1.45}
+.slot label{justify-self:start}
+.slot input{position:absolute;width:1px;height:1px;opacity:0}
+.status{font:12px var(--mono);color:var(--spark)}.status.ok{color:#7fd4a0}
+.opts{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--muted)}
+.opts label{display:flex;gap:6px;align-items:center;cursor:pointer}
+
+/* ---------- stage ---------- */
+#stage .scene{position:absolute;inset:0;opacity:0;will-change:transform,opacity,filter}
+#stage .cam{position:absolute;inset:0;transform-origin:50% 50%}
+#fx{position:absolute;inset:0;pointer-events:none;z-index:5}
+.vignette{position:absolute;inset:0;z-index:6;pointer-events:none;background:radial-gradient(120% 90% at 50% 45%,transparent 55%,rgba(0,0,0,.65))}
+.sweep{position:absolute;top:-20%;bottom:-20%;width:520px;z-index:7;pointer-events:none;opacity:0;background:linear-gradient(100deg,transparent,rgba(108,184,255,.0) 20%,rgba(190,225,255,.55) 50%,rgba(108,184,255,0) 80%,transparent);transform:skewX(-14deg);mix-blend-mode:screen}
+.subtitle{position:absolute;left:50%;bottom:46px;transform:translateX(-50%);z-index:8;width:max-content;max-width:1640px;text-align:center;font:500 34px/1.35 var(--body);color:#fff;background:rgba(5,15,29,.74);padding:12px 28px;border-radius:4px;text-shadow:0 1px 6px rgba(0,0,0,.8);opacity:0;text-wrap:balance}
+.eyebrow{font:500 22px var(--mono);letter-spacing:.32em;text-transform:uppercase;color:var(--glow)}
+.h-xl{font:700 132px/0.92 var(--display);letter-spacing:.01em;text-transform:uppercase;margin:0}
+.h-l{font:700 84px/1 var(--display);text-transform:uppercase;margin:0;letter-spacing:.01em}
+.lead{font:400 30px/1.45 var(--body);color:#c9d6e5;margin:0}
+.mono{font-family:var(--mono)}
+.icon svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* intro / outro logo */
+.logo-slot{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;place-items:center;text-align:center}
+.logo-slot img{display:block;max-width:980px;max-height:300px;width:auto;height:auto;object-fit:contain}
+.wordmark{display:grid;gap:18px;justify-items:center;position:relative}
+.wm1{font:700 168px/0.9 var(--display);letter-spacing:.06em;white-space:nowrap}
+.wm2{font:500 46px/1 var(--display);letter-spacing:.62em;margin-right:-.62em;color:#bcd4ee;white-space:nowrap}
+.wordmark span{display:inline-block}
+.sheen{position:absolute;inset:-20px -60px;pointer-events:none;background:linear-gradient(100deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);mix-blend-mode:overlay;background-size:300% 100%}
+.hline{position:absolute;left:50%;top:50%;height:2px;background:linear-gradient(90deg,transparent,var(--glow),transparent);transform:translate(-50%,-50%);box-shadow:0 0 24px var(--glow)}
+
+/* directions */
+.cards4{position:absolute;left:120px;right:120px;top:350px;display:grid;grid-template-columns:repeat(4,1fr);gap:36px;perspective:1600px}
+.card{background:linear-gradient(160deg,rgba(18,83,138,.35),rgba(11,36,68,.75));border:1px solid rgba(108,184,255,.35);border-radius:6px;padding:40px 34px;height:440px;display:grid;align-content:start;gap:22px;transform-style:preserve-3d}
+.card .icon{width:92px;height:92px;color:var(--glow)}
+.card h3{font:700 44px/1.05 var(--display);text-transform:uppercase;margin:0}
+.card p{font:400 24px/1.45 var(--body);color:#c2d1e2;margin:0}
+
+/* products */
+.ring{position:absolute;left:1080px;top:460px;width:0;height:0;transform-style:preserve-3d}
+.persp{position:absolute;inset:0;perspective:2200px;perspective-origin:1080px 360px}
+.pcard{position:absolute;left:-190px;top:-230px;width:380px;height:460px;border-radius:6px;background:linear-gradient(180deg,#123257,#0a1c33);border:1px solid rgba(108,184,255,.4);display:grid;grid-template-rows:1fr auto;padding:22px;gap:12px;backface-visibility:hidden}
+.pimg{display:grid;place-items:center;min-height:0;color:#9fcbf5}
+.pimg svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}
+.pimg img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.pcard b{font:700 34px var(--display);text-transform:uppercase;letter-spacing:.02em}
+.pcard small{font:15px var(--mono);color:var(--muted);letter-spacing:.04em}
+
+/* inspection */
+.methods{position:absolute;left:150px;top:700px;display:grid;grid-template-columns:repeat(4,auto);gap:22px}
+.method{border:1px solid rgba(108,184,255,.45);background:rgba(10,25,45,.8);border-radius:4px;padding:16px 22px;display:grid;gap:4px}
+.method b{font:600 34px var(--mono);color:var(--glow)}.method span{font:500 22px var(--body);color:#c9d6e5}
+.ascan{position:absolute;right:120px;top:610px;width:620px;height:230px;border:1px solid rgba(108,184,255,.45);background:rgba(5,15,29,.85);border-radius:4px}
+
+/* rental */
+.tl{position:absolute;left:150px;right:150px;top:500px;height:140px}
+.tl .bar{position:absolute;left:0;top:60px;height:8px;background:linear-gradient(90deg,var(--steel),var(--glow));border-radius:4px;box-shadow:0 0 22px rgba(108,184,255,.6)}
+.tl .track{position:absolute;left:0;right:0;top:60px;height:8px;background:#13294a;border-radius:4px}
+.tick{position:absolute;top:86px;font:16px var(--mono);color:var(--muted);transform:translateX(-50%)}
+.tlabel{position:absolute;top:0;font:600 30px var(--mono);letter-spacing:.14em}
+.toggle{position:absolute;left:150px;top:700px;display:flex;align-items:center;gap:18px;font:500 30px var(--body)}
+.sw{width:96px;height:50px;border-radius:25px;background:#13294a;border:1px solid var(--line);position:relative}
+.sw i{position:absolute;top:5px;left:5px;width:38px;height:38px;border-radius:50%;background:#7f93ab}
+
+/* sectors */
+.grid6{position:absolute;left:150px;right:150px;top:330px;display:grid;grid-template-columns:repeat(3,1fr);gap:30px;perspective:1400px}
+.tile{height:240px;border:1px solid rgba(108,184,255,.35);border-radius:6px;background:linear-gradient(170deg,rgba(18,83,138,.3),rgba(8,24,44,.85));display:grid;align-content:center;justify-items:center;gap:20px;transform-origin:50% 0}
+.tile .icon{width:96px;height:96px;color:var(--glow)}
+.tile b{font:700 46px var(--display);text-transform:uppercase;letter-spacing:.02em}
+
+/* process */
+.steps{position:absolute;left:170px;right:170px;top:520px;display:grid;grid-template-columns:repeat(4,1fr)}
+.step{display:grid;justify-items:center;text-align:center;gap:14px;padding:0 10px}
+.node{width:120px;height:120px;border-radius:50%;border:2px solid var(--glow);display:grid;place-items:center;font:600 40px var(--mono);color:var(--glow);background:var(--ink)}
+.step b{font:700 40px/1.05 var(--display);text-transform:uppercase}
+.step span{font:400 23px/1.4 var(--body);color:#b9c9db}
+
+.note{position:absolute;font:16px var(--mono);color:#7d93ac;letter-spacing:.04em}
+body.render .wrap>*:not(.viewport){display:none}
+body.render .wrap{padding:0;max-width:none}
+body.render .viewport{width:1920px;height:1080px;aspect-ratio:auto;border-radius:0;box-shadow:none}
+@media (max-width:640px){.transport{grid-template-columns:auto 1fr}#clock{grid-column:1/-1;justify-self:end}.head h1{font-size:18px}}
+@media (prefers-reduced-motion:reduce){.sweep{display:none}}
+</style>
+
+<div class="wrap">
+  <div class="head"><h1>Caspian Industry · Korporativ film</h1><p>1920×1080 · 16:9 · 30 FPS · <span id="dur"></span></p></div>
+  <div class="viewport" id="vp"><div id="stage"></div></div>
+  <div class="transport">
+    <button class="btn primary" id="play" type="button">▶ Oynat</button>
+    <input id="scrub" type="range" min="0" max="1000" step="1" value="0" aria-label="Zaman şkalası">
+    <span id="clock">0:00.0 / 0:00</span>
+  </div>
+  <div class="chips" id="chips" role="group" aria-label="Səhnələr"></div>
+  <div class="sub"><small id="vo-label">Səsləndirmə mətni</small><div id="vo-now"></div></div>
+  <div class="opts">
+    <label><input type="checkbox" id="opt-subs" checked> Ekranda altyazı</label>
+    <label><input type="checkbox" id="opt-loop"> Təkrarla</label>
+  </div>
+  <div class="assets">
+    <div class="slot"><b>Loqo</b><span>PNG/SVG. Ölçü dəyişmədən, nisbəti saxlanaraq yerləşdirilir.</span><label class="btn" for="up-logo">Loqo seç</label><input id="up-logo" type="file" accept="image/*"><div class="status" id="st-logo">Yer tutucu: mətn yazısı göstərilir</div></div>
+    <div class="slot"><b>Məhsul şəkilləri (6)</b><span>Sıra ilə: kompressor, generator, nasos, borular, klapan, elektrik.</span><label class="btn" for="up-prod">Şəkilləri seç</label><input id="up-prod" type="file" accept="image/*" multiple><div class="status" id="st-prod">Yer tutucu: xətti illüstrasiyalar</div></div>
+    <div class="slot"><b>Səsləndirmə</b><span>Yazılmış səs faylı zaman şkalası ilə sinxron oynadılır.</span><label class="btn" for="up-vo">Səs faylı seç</label><input id="up-vo" type="file" accept="audio/*"><div class="status" id="st-vo">Səs yoxdur: yalnız mətn</div></div>
+  </div>
+</div>
+
+<script type="application/json" id="timeline">
+{"fps":30,"width":1920,"height":1080,"duration":114,
+"scenes":[
+{"id":"intro","start":0,"end":8,"title":"Loqo girişi","vo":[0.9,6.6,"Caspian Industry. Sənaye üçün etibarlı təchizat və texniki xidmət."],"visual":"Qaranlıqda qığılcımlar yüksəlir, mərkəzdə işıq xətti açılır, loqo hərf-hərf görünür, üzərindən parıltı keçir.","camera":"Yavaş push-in (108% → 100%)","transition":"Qaranlıqdan açılış","audio":"Alçaq sənaye dronu, işıq xətti ilə 'whoosh'"},
+{"id":"baku","start":8,"end":18,"title":"Bakı, 2019","vo":[8.7,17.3,"2019-cu ildə Bakıda təsis edilən şirkətimiz sənaye müəssisələrinə məhsul, avadanlıq və xidmət həlləri təqdim edir."],"visual":"Xəzər üfüqü: dalğalar, uzaqda dəniz platformasının siluyeti, böyük '2019' yazısı.","camera":"Soldan sağa yavaş pan","transition":"İşıq süpürgəsi + crossfade","audio":"Musiqi ritmi başlayır"},
+{"id":"directions","start":18,"end":30,"title":"Dörd istiqamət","vo":[18.7,29.3,"Dörd əsas istiqamətdə işləyirik: məhsul təchizatı, boru inspeksiyası, avadanlıq icarəsi və Washpipe xidmətləri."],"visual":"Dörd panel dərinlikdən 3D fırlanaraq uçub gəlir, səslə eyni anda yerinə oturur.","camera":"Statik, yüngül üzmə","transition":"İşıq süpürgəsi + crossfade","audio":"Hər panel üçün yumşaq 'hit'"},
+{"id":"products","start":30,"end":46,"title":"Məhsul təchizatı","vo":[30.7,45.3,"Mexaniki, enerji, elektrik və laboratoriya avadanlıqlarından borulara və metal məhsullarına qədər, texniki tələblərinizə uyğun təchizat həyata keçiririk."],"visual":"Məhsul şəkilləri 3D halqada uçaraq fırlanır; ön kart işıqlanır.","camera":"Uzaqdan yaxınlaşma + halqanın fırlanması","transition":"İşıq süpürgəsi + crossfade","audio":"Davamlı ritm"},
+{"id":"inspection","start":46,"end":60,"title":"Boru inspeksiyası","vo":[46.7,59.3,"Boru inspeksiyasında borunun vəziyyəti, ölçüləri və mümkün qüsurlar tələb olunan NDT metodları ilə yoxlanılır."],"visual":"Böyük boru boyunca skan halqası keçir, A-skan dalğa forması reaksiya verir, UT · PT · MT · VT metodları ardıcıl görünür.","camera":"Yavaş yan dolly","transition":"İşıq süpürgəsi + crossfade","audio":"Elektron 'ping' skan ilə sinxron"},
+{"id":"rental","start":60,"end":72,"title":"Avadanlıq icarəsi","vo":[60.7,71.3,"Sənaye avadanlıqlarının icarəsi: günlük və ya aylıq, operatorla icarə imkanı ilə. Şərtlər avadanlığa görə dəqiqləşdirilir."],"visual":"Zaman şkalası GÜNLÜK-dən AYLIQ-a dolur, 'Operatorla' açarı yanır, avadanlıq siluyetləri sağdan girir.","camera":"Statik, elementlər hərəkətli","transition":"İşıq süpürgəsi + crossfade","audio":"Saat 'tick'-ləri"},
+{"id":"washpipe","start":72,"end":84,"title":"Washpipe","vo":[72.7,83.3,"Washpipe istiqamətində boruların kirayəsi və texniki xidməti həyata keçirilir. Spesifikasiya tətbiqə uyğun seçilir."],"visual":"Diaqonal 3D boru öz oxu ətrafında fırlanır, yivli ucları görünür, arxada nəhəng WASHPIPE yazısı.","camera":"Dolly-in + yüngül fırlanma","transition":"İşıq süpürgəsi + crossfade","audio":"Metal rezonans, qığılcım səsi"},
+{"id":"sectors","start":84,"end":96,"title":"Sahələr","vo":[84.7,95.3,"Neft-qaz, energetika, istehsalat, tikinti, sement və metal sənayesi: müxtəlif sahələrə xidmət göstəririk."],"visual":"Altı sahə kafeli yuxarıdan aşağı çevrilərək açılır.","camera":"Statik","transition":"İşıq süpürgəsi + crossfade","audio":"Hər kafel üçün qısa 'tick'"},
+{"id":"process","start":96,"end":106,"title":"İş prosesi","vo":[96.7,105.3,"Texniki tapşırığınızı göndərin: qiymətləndirmə, təklif və çatdırılma, hamısı bir ünvanda."],"visual":"Dörd addım xətlə birləşir, işıq nöqtəsi addımlar boyunca hərəkət edir.","camera":"Statik","transition":"İşıq süpürgəsi + crossfade","audio":"Musiqi kulminasiyaya qalxır"},
+{"id":"outro","start":106,"end":114,"title":"Final və əlaqə","vo":[106.7,111.5,"Caspian Industry. Sənayeniz üçün etibarlı tərəfdaş."],"visual":"Loqo yenidən formalaşır, altında e-poçt və sayt; son saniyədə qaranlığa keçid.","camera":"Yavaş push-in","transition":"Qaranlığa fade","audio":"Final akkordu, səs sönür"}
+]}
+</script>
+
+<script>
+const TL=JSON.parse(document.getElementById('timeline').textContent);
+const DUR=TL.duration, FPS=TL.fps;
+const $=s=>document.querySelector(s), stage=$('#stage');
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const eo=x=>1-Math.pow(1-x,3), eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const k=(t,a,b,e=eo)=>e(clamp((t-a)/(b-a)));
+const lerp=(a,b,x)=>a+(b-a)*x;
+const rnd=i=>{const x=Math.sin(i*127.1+311.7)*43758.5453;return x-Math.floor(x)};
+
+const I={
+box:'<path d="M8 20 32 8l24 12v26L32 58 8 46z M8 20l24 12 24-12 M32 32v26"/>',
+scan:'<rect x="4" y="24" width="56" height="16" rx="3"/><ellipse cx="34" cy="32" rx="6" ry="15"/><path d="M14 18v-6M24 18v-6"/>',
+cal:'<rect x="8" y="12" width="48" height="44" rx="4"/><path d="M8 24h48M20 6v12M44 6v12M18 36h8M30 36h8M42 36h4M18 46h8M30 46h8"/>',
+wash:'<path d="M4 26h38v12H4zM42 23h18v18H42zM46 23v18M50 23v18M54 23v18"/>',
+derrick:'<path d="M32 4 18 60M32 4l14 56M22 44h20M25 30h14M28 18h8M10 60h44"/>',
+bolt:'<path d="M36 4 14 36h16l-4 24 24-34H34z"/>',
+factory:'<path d="M6 58V30l14 8v-8l14 8v-8l14 8V10h8v48z M6 58h52"/>',
+crane:'<path d="M16 60V8h6v52M10 60h20M22 10h34M22 10l-10 10h10M50 10v18M46 28h8v8h-8z"/>',
+silo:'<path d="M14 58V22l10-12 10 12v36M34 30h18v28M40 30V18h6v12M8 58h50"/>',
+beam:'<path d="M10 14h44v8H36v20h18v8H10v-8h18V22H10z"/>'};
+const ico=(n)=>`<div class="icon"><svg viewBox="0 0 64 64">${I[n]}</svg></div>`;
+const P=[
+['Kompressor','Hava sərfi · təzyiq','<svg viewBox="0 0 200 150"><rect x="20" y="70" width="150" height="50" rx="25"/><rect x="60" y="34" width="70" height="36" rx="4"/><circle cx="145" cy="52" r="16"/><path d="M130 52h-0M40 120v16M150 120v16M30 136h20M140 136h20M75 46h40M75 58h40"/></svg>'],
+['Generator','kVA · faza · yanacaq','<svg viewBox="0 0 200 150"><rect x="18" y="40" width="164" height="86" rx="6"/><rect x="34" y="56" width="56" height="40" rx="3"/><path d="M42 68h40M42 80h26M110 56v54M126 56v54M142 56v54M158 56v54M150 40V22h14v18M24 126v10M176 126v10"/></svg>'],
+['Nasos','Debit · basqı','<svg viewBox="0 0 200 150"><circle cx="70" cy="80" r="40"/><circle cx="70" cy="80" r="12"/><path d="M70 40V18h34M30 80H8M110 66h70v28h-70zM124 66v28M138 66v28M152 66v28M40 120h120v10H40z"/></svg>'],
+['Borular','DN · sinif · material','<svg viewBox="0 0 200 150"><circle cx="60" cy="100" r="26"/><circle cx="60" cy="100" r="18"/><circle cx="114" cy="100" r="26"/><circle cx="114" cy="100" r="18"/><circle cx="87" cy="56" r="26"/><circle cx="87" cy="56" r="18"/><circle cx="141" cy="56" r="26"/><circle cx="141" cy="56" r="18"/></svg>'],
+['Klapan','DN · PN · birləşmə','<svg viewBox="0 0 200 150"><path d="M20 84h44v-20h72v20h44v24h-44v20H64v-20H20z"/><path d="M100 64V30M70 30h60M78 22l-8 8 8 8M122 22l8 8-8 8M20 78v36M180 78v36"/></svg>'],
+['Elektrik','Gərginlik · cərəyan','<svg viewBox="0 0 200 150"><rect x="50" y="14" width="100" height="126" rx="4"/><path d="M100 14v126M64 34h22M64 48h22M64 62h22M114 34h22M114 48h22M114 62h22M66 92l10-12-4 10h10l-10 12 4-10z"/><circle cx="125" cy="98" r="10"/></svg>']];
+
+const sc=TL.scenes, S={}; sc.forEach(s=>S[s.id]=s);
+const wordmark=()=>`<div class="wordmark"><div class="wm1">${[...'CASPIAN'].map(c=>`<span>${c}</span>`).join('')}</div><div class="wm2">INDUSTRY</div><div class="sheen"></div></div>`;
+const scenesHTML={
+intro:`<div class="cam"><div class="hline"></div><div class="logo-slot" data-logo>${wordmark()}</div><div class="eyebrow" style="position:absolute;left:0;right:0;top:760px;text-align:center" data-tag>MMC · Bakı · 2019</div></div>`,
+baku:`<div class="cam"><svg id="sea" viewBox="0 0 1920 1080" style="position:absolute;inset:0;width:100%;height:100%"><defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#050f1d"/><stop offset=".55" stop-color="#0d2c50"/><stop offset=".62" stop-color="#1c5d93"/></linearGradient><radialGradient id="sun" cx=".72" cy=".6" r=".35"><stop offset="0" stop-color="#9fd2ff" stop-opacity=".55"/><stop offset="1" stop-color="#9fd2ff" stop-opacity="0"/></radialGradient></defs><rect width="1920" height="1080" fill="url(#sky)"/><rect width="1920" height="1080" fill="url(#sun)"/><g id="rig" stroke="#071628" stroke-width="5" fill="#071628"><path d="M1330 640V520h220v120M1350 520l40 120M1530 520l-40 120M1330 580h220M1390 520V430h24v90M1460 520v-60h70v60M1500 460l60-80M1402 430l-6-30h36l-6 30" fill="none"/><rect x="1320" y="510" width="240" height="14"/></g><g id="waves"></g></svg>
+<div style="position:absolute;left:150px;top:250px;display:grid;gap:22px"><div class="eyebrow" data-a>Bakı, Azərbaycan</div><div data-y style="font:700 300px/0.85 var(--display);color:transparent;-webkit-text-stroke:3px #9fd2ff;letter-spacing:.02em">2019</div><p class="lead" data-l style="max-width:780px">Sənaye məhsulları, avadanlıq və texniki xidmət</p></div></div>`,
+directions:`<div class="cam"><div style="position:absolute;left:120px;top:160px;display:grid;gap:14px"><div class="eyebrow">Fəaliyyət</div><h2 class="h-l">Dörd istiqamət</h2></div><div class="cards4">
+${[['box','Məhsul təchizatı','Sənaye məhsulları və avadanlıqları'],['scan','Boru inspeksiyası','Vəziyyət, ölçü və qüsurların yoxlanması'],['cal','Avadanlıq icarəsi','Günlük və aylıq icarə imkanı'],['wash','Washpipe','Kirayə və texniki xidmət']].map(c=>`<div class="card">${ico(c[0])}<h3>${c[1]}</h3><p>${c[2]}</p></div>`).join('')}</div></div>`,
+products:`<div class="cam"><div style="position:absolute;left:120px;top:250px;width:620px;display:grid;gap:22px;z-index:2"><div class="eyebrow">Məhsul təchizatı</div><h2 class="h-l">Layihənizə lazım olan</h2><p class="lead">Mexaniki, enerji, elektrik və laboratoriya avadanlıqları, borular və metal məhsulları.</p></div><div class="persp"><div class="ring">${P.map((p,i)=>`<div class="pcard" data-i="${i}"><div class="pimg" data-pimg="${i}">${p[2]}</div><div><b>${p[0]}</b><br><small>${p[1]}</small></div></div>`).join('')}</div></div><div class="note" data-pnote style="left:120px;top:680px">İllüstrasiya · real məhsul fotosu ilə əvəz olunur</div></div>`,
+inspection:`<div class="cam"><div style="position:absolute;left:150px;top:130px;display:grid;gap:14px"><div class="eyebrow">NDT · Texniki yoxlama</div><h2 class="h-l">Boru inspeksiyası</h2></div>
+<svg viewBox="0 0 1920 1080" style="position:absolute;inset:0;width:100%;height:100%"><defs><linearGradient id="steel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a4a6e"/><stop offset=".28" stop-color="#9db6cf"/><stop offset=".45" stop-color="#4d6c8e"/><stop offset="1" stop-color="#0d1e33"/></linearGradient></defs>
+<g transform="translate(0 -90)"><rect x="260" y="400" width="1400" height="240" fill="url(#steel)"/><rect id="scanned" x="260" y="400" width="0" height="240" fill="#6cb8ff" opacity=".16"/>
+<ellipse cx="260" cy="520" rx="44" ry="120" fill="#1a3352" stroke="#8fb3d6" stroke-width="3"/><ellipse cx="260" cy="520" rx="32" ry="96" fill="#050f1d"/>
+<path d="M1660 400a44 120 0 0 1 0 240" fill="none" stroke="#8fb3d6" stroke-width="3"/>
+<g id="defect" opacity=".25"><circle cx="1090" cy="470" r="9" fill="#f0a92b"/><path d="M1090 470 1160 360h120" stroke="#f0a92b" stroke-width="2" fill="none"/><text x="1170" y="350" fill="#f0a92b" font-family="IBM Plex Mono,monospace" font-size="22">Göstərici · dəyərləndirmə</text></g>
+<g id="ringg"><ellipse cx="0" cy="520" rx="50" ry="138" fill="none" stroke="#6cb8ff" stroke-width="6" opacity=".95"/><ellipse cx="0" cy="520" rx="62" ry="152" fill="none" stroke="#6cb8ff" stroke-width="2" opacity=".4"/></g></g></svg>
+<div class="methods">${[['UT','Ultrasəs'],['PT','Penetrant'],['MT','Maqnit toz'],['VT','Vizual']].map(m=>`<div class="method"><b>${m[0]}</b><span>${m[1]}</span></div>`).join('')}</div>
+<svg class="ascan" viewBox="0 0 620 250"><text x="16" y="30" fill="#8ea3ba" font-family="IBM Plex Mono,monospace" font-size="18">A-SKAN</text><path d="M0 200H620" stroke="#1c3352"/><polyline id="wave" fill="none" stroke="#6cb8ff" stroke-width="2.5"/></svg>
+<div class="note" style="right:120px;top:852px">Metod və standart sorğuya görə təsdiqlənir</div></div>`,
+rental:`<div class="cam"><div data-big style="position:absolute;left:130px;top:90px;font:700 330px/0.85 var(--display);color:transparent;-webkit-text-stroke:3px rgba(108,184,255,.6);letter-spacing:.02em">İCARƏ</div>
+<div style="position:absolute;left:150px;top:420px" class="eyebrow">Sənaye avadanlıqlarının icarəsi</div>
+<div class="tl"><div class="track"></div><div class="bar" data-bar></div><div class="tlabel" style="left:0">GÜNLÜK</div><div class="tlabel" data-month style="right:0">AYLIQ</div>${[1,5,10,15,20,25,30].map(d=>`<div class="tick" style="left:${(d-1)/29*100}%">${d}</div>`).join('')}</div>
+<div class="toggle"><div class="sw" data-sw><i></i></div><span>Operatorla</span></div>
+<div data-eq style="position:absolute;right:140px;top:110px;width:500px;height:320px;color:#9fcbf5" class="pimg">${P[1][2]}</div>
+<div class="note" style="left:150px;top:790px">Mövcudluq və şərtlər sorğu əsasında dəqiqləşdirilir</div></div>`,
+washpipe:`<div class="cam"><div data-ww style="position:absolute;left:0;right:0;top:400px;text-align:center;font:700 300px/1 var(--display);color:transparent;-webkit-text-stroke:2px rgba(108,184,255,.28);letter-spacing:.06em">WASHPIPE</div>
+<svg viewBox="0 0 1920 1080" style="position:absolute;inset:0;width:100%;height:100%"><defs><linearGradient id="wp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b3657"/><stop offset=".22" stop-color="#c6d9ec"/><stop offset=".4" stop-color="#5f7fa1"/><stop offset="1" stop-color="#0b1a2e"/></linearGradient><clipPath id="wpc"><rect x="-700" y="-70" width="1400" height="140"/></clipPath></defs>
+<g id="wpg"><rect x="-700" y="-70" width="1400" height="140" fill="url(#wp)"/><g clip-path="url(#wpc)" id="wpmarks"></g>
+<rect x="700" y="-84" width="150" height="168" fill="url(#wp)"/><g id="thread" stroke="#0b1a2e" stroke-width="3"></g>
+<rect x="-820" y="-84" width="120" height="168" fill="url(#wp)"/></g></svg>
+<div style="position:absolute;left:150px;top:130px;display:grid;gap:14px;z-index:2"><div class="eyebrow">Washpipe xidmətləri</div><h2 class="h-l">Kirayə və texniki xidmət</h2></div></div>`,
+sectors:`<div class="cam"><div style="position:absolute;left:150px;top:140px;display:grid;gap:14px"><div class="eyebrow">Xidmət etdiyimiz sahələr</div><h2 class="h-l">Sənayenin hər qolunda</h2></div><div class="grid6">${[['derrick','Neft-qaz'],['bolt','Energetika'],['factory','İstehsalat'],['crane','Tikinti'],['silo','Sement'],['beam','Metal']].map(s=>`<div class="tile">${ico(s[0])}<b>${s[1]}</b></div>`).join('')}</div></div>`,
+process:`<div class="cam"><div style="position:absolute;left:170px;top:170px;display:grid;gap:14px"><div class="eyebrow">Sorğudan çatdırılmaya</div><h2 class="h-l">Necə işləyirik</h2></div>
+<svg viewBox="0 0 1920 1080" style="position:absolute;inset:0;width:100%;height:100%"><path d="M367 580H1553" stroke="#1c3352" stroke-width="4"/><path id="pline" d="M367 580H1553" stroke="#6cb8ff" stroke-width="4" stroke-dasharray="1186" stroke-dashoffset="1186"/><circle id="pdot" cx="367" cy="580" r="12" fill="#fff" style="filter:drop-shadow(0 0 12px #6cb8ff)"/></svg>
+<div class="steps">${[['Sorğu','Texniki tapşırıq, miqdar, çertyoj'],['Qiymətləndirmə','Texniki uyğunluq və variantlar'],['Təklif','Qiymət və müddət təsdiqi'],['Çatdırılma','Sənədlər və təhvil']].map((s,i)=>`<div class="step"><div class="node">0${i+1}</div><b>${s[0]}</b><span>${s[1]}</span></div>`).join('')}</div></div>`,
+outro:`<div class="cam"><div class="hline"></div><div class="logo-slot" data-logo style="top:430px">${wordmark()}</div><div data-c style="position:absolute;left:0;right:0;top:700px;display:grid;justify-items:center;gap:16px"><div style="font:500 40px var(--mono);letter-spacing:.04em">info@caspianindustry.com</div><div class="eyebrow">caspianindustry.com</div></div></div><div data-black style="position:absolute;inset:0;background:#000;opacity:0"></div>`};
+
+stage.innerHTML=sc.map(s=>`<section class="scene" id="s-${s.id}">${scenesHTML[s.id]}</section>`).join('')+'<canvas id="fx" width="1920" height="1080"></canvas><div class="vignette"></div><div class="sweep" id="sweep"></div><div class="subtitle" id="subtitle"></div>';
+const fx=$('#fx').getContext('2d');
+const sceneEl={};sc.forEach(s=>sceneEl[s.id]=$('#s-'+s.id));
+const q=(id,sel)=>sceneEl[id].querySelector(sel), qa=(id,sel)=>[...sceneEl[id].querySelectorAll(sel)];
+
+/* per-scene animation: lt = local time, d = duration */
+const U={
+intro(lt,el){const cam=q('intro','.cam');cam.style.transform=`scale(${lerp(1.08,1,k(lt,0,8,eio))})`;
+  const hl=q('intro','.hline');hl.style.width=k(lt,.3,2.2)*1500+'px';hl.style.opacity=1-k(lt,2.6,3.6);
+  animateLogo('intro',lt,1.5);q('intro','[data-tag]').style.opacity=k(lt,4.2,5.2);},
+baku(lt){q('baku','.cam').style.transform=`translateX(${lerp(40,-40,lt/10)}px) scale(1.04)`;
+  let g='';for(let l=0;l<6;l++){const y=650+l*l*14+l*20,amp=4+l*3,len=170+l*60,ph=lt*(0.8+l*.25)+l;let d=`M0 ${y}`;for(let x=0;x<=1920;x+=40)d+=`L${x} ${(y+Math.sin(x/len+ph)*amp+Math.sin(x/(len*.37)-ph*1.3)*amp*.4).toFixed(1)}`;d+='V1080H0Z';g+=`<path d="${d}" fill="hsl(210,${55-l*4}%,${20-l*2.6}%)" opacity="${.85+l*.03}"/>`;}
+  $('#waves').innerHTML=g;
+  const y=q('baku','[data-y]');y.style.opacity=k(lt,.6,1.8);y.style.transform=`translateY(${lerp(60,0,k(lt,.6,2))}px)`;
+  q('baku','[data-a]').style.opacity=k(lt,.3,1.2);const l=q('baku','[data-l]');l.style.opacity=k(lt,2,3);l.style.transform=`translateY(${lerp(20,0,k(lt,2,3))}px)`;},
+directions(lt){q('directions','.cam').style.transform=`scale(${lerp(1.03,1,k(lt,0,12,eio))})`;
+  const times=[2.4,4.9,6.6,8.4];qa('directions','.card').forEach((c,i)=>{const p=k(lt,times[i]-1.3,times[i],eo);c.style.opacity=clamp(p*1.4);c.style.transform=`translateZ(${lerp(-1400,0,p)}px) rotateY(${lerp(38,0,p)}deg) translateY(${Math.sin(lt*1.1+i)*6}px)`;c.style.borderColor=`rgba(108,184,255,${.35+.5*(1-k(lt,times[i],times[i]+1.2))*(p>=1?1:0)})`;});},
+products(lt){const e=k(lt,0,3,eo);const ring=q('products','.ring');const rot=-lt*13-60*(1-e)*3;
+  ring.style.transform=`translateZ(${lerp(-1800,-300,e)}px) rotateX(${lerp(28,-6,e)}deg) rotateY(${rot}deg)`;
+  qa('products','.pcard').forEach((c,i)=>{const a=((i*60+rot)%360+360)%360,cs=Math.cos(a*Math.PI/180);c.style.transform=`rotateY(${i*60}deg) translateZ(620px)`;c.style.opacity=(.18+.82*clamp(cs))*e;c.style.filter=`brightness(${.55+.6*clamp(cs)})`;c.style.borderColor=`rgba(108,184,255,${.25+.6*clamp(cs*cs*cs)})`;});
+  q('products','.cam').style.transform=`scale(${lerp(1.05,1,k(lt,0,16,eio))})`;},
+inspection(lt){const p=k(lt,1.5,11.5,eio),x=260+p*1400;$('#ringg').setAttribute('transform',`translate(${x} 0)`);$('#ringg').style.opacity=k(lt,1,1.8)*(1-k(lt,11.5,12.4));
+  $('#scanned').setAttribute('width',p*1400);const near=Math.exp(-Math.pow((x-1090)/70,2));$('#defect').style.opacity=.15+.85*Math.max(near,k(lt,6.6,7.4)>0&&x>1090?1:0);
+  let pts='';for(let i=0;i<=310;i++){const X=i*2,n=(rnd(i+Math.floor(lt*12)*311)-.5)*10,e1=95*Math.exp(-Math.pow((X-90)/10,2)),e2=110*Math.exp(-Math.pow((X-520)/12,2)),d=150*near*Math.exp(-Math.pow((X-300)/11,2));pts+=`${X},${(200-e1-e2-d-Math.abs(n)).toFixed(1)} `;}$('#wave').setAttribute('points',pts);
+  qa('inspection','.method').forEach((m,i)=>{const s=k(lt,3+i*1.6,3.8+i*1.6);m.style.opacity=s;m.style.transform=`translateY(${lerp(30,0,s)}px)`;});
+  q('inspection','.cam').style.transform=`translateX(${lerp(30,-30,lt/14)}px)`;},
+rental(lt){const big=q('rental','[data-big]');big.style.transform=`translateX(${lerp(-80,40,lt/12)}px)`;big.style.opacity=k(lt,.2,1.4)*.9;
+  const f=k(lt,2,7.5,eio);q('rental','[data-bar]').style.width=(f*100)+'%';q('rental','[data-month]').style.color=f>.98?'#6cb8ff':'#8ea3ba';
+  const on=k(lt,7.6,8.2);const sw=q('rental','[data-sw]');sw.style.background=`rgba(18,102,170,${on})`;sw.querySelector('i').style.transform=`translateX(${on*46}px)`;sw.querySelector('i').style.background=on>.5?'#fff':'#7f93ab';
+  const eq=q('rental','[data-eq]');const e=k(lt,.6,2.4);eq.style.opacity=e;eq.style.transform=`translateX(${lerp(300,0,e)}px)`;},
+washpipe(lt){const e=k(lt,0,3,eo);$('#wpg').setAttribute('transform',`translate(${lerp(1500,980,e)+lerp(0,-80,lt/12)} ${lerp(720,610,e)}) rotate(-9) scale(${lerp(.8,1.02,k(lt,0,12,eio))})`);
+  let m='';const ph=lt*1.6;for(let j=0;j<10;j++){const a=ph+j*Math.PI/5,c=Math.cos(a);if(c<=0)continue;const y=-70+(1-(Math.sin(a)+1)/2)*140;m+=`<path d="M-700 ${y.toFixed(1)}H700" stroke="rgba(255,255,255,${(c*.22).toFixed(3)})" stroke-width="${(1+c*2).toFixed(1)}"/>`;}
+  for(let j=0;j<6;j++){const xx=-600+j*240;m+=`<rect x="${xx}" y="-70" width="6" height="140" fill="rgba(5,15,29,.35)"/>`;}$('#wpmarks').innerHTML=m;
+  let t='';for(let j=0;j<14;j++){const xx=712+j*10+((lt*20)%10);t+=`<path d="M${xx.toFixed(1)} -84v168"/>`;}$('#thread').innerHTML=t;
+  q('washpipe','[data-ww]').style.opacity=k(lt,.8,2.4);q('washpipe','.cam').style.opacity=1;},
+sectors(lt){qa('sectors','.tile').forEach((t,i)=>{const p=k(lt,1.4+i*.9,2.3+i*.9,eo);t.style.opacity=clamp(p*1.5);t.style.transform=`rotateX(${lerp(-90,0,p)}deg)`;});
+  q('sectors','.cam').style.transform=`scale(${lerp(1.03,1,k(lt,0,12,eio))})`;},
+process(lt){const p=k(lt,1.2,7.4,eio);$('#pline').setAttribute('stroke-dashoffset',1186*(1-p));$('#pdot').setAttribute('cx',367+1186*p);
+  qa('process','.step').forEach((s,i)=>{const at=i/3,v=clamp((p-at+.02)*12);s.style.opacity=.25+.75*v;s.querySelector('.node').style.background=v>.9?'#12538a':'#050f1d';s.querySelector('.node').style.color=v>.9?'#fff':'#6cb8ff';});},
+outro(lt){q('outro','.cam').style.transform=`scale(${lerp(1.06,1,k(lt,0,8,eio))})`;const hl=q('outro','.hline');hl.style.top='430px';hl.style.width=k(lt,.2,1.8)*1500+'px';hl.style.opacity=1-k(lt,2,3);
+  animateLogo('outro',lt,.6);const c=q('outro','[data-c]');c.style.opacity=k(lt,2.6,3.6);c.style.transform=`translateY(${lerp(24,0,k(lt,2.6,3.6))}px)`;q('outro','[data-black]').style.opacity=k(lt,6.6,7.9,x=>x);}
+};
+function animateLogo(id,lt,t0){const slot=q(id,'[data-logo]'),img=slot.querySelector('img');
+  if(img){const p=k(lt,t0,t0+1.6,eio);img.style.clipPath=`inset(0 ${50-50*p}% 0 ${50-50*p}%)`;img.style.opacity=k(lt,t0,t0+.6);img.style.transform=`scale(${lerp(.94,1,p)})`;img.style.filter=`drop-shadow(0 0 ${40*(1-k(lt,t0+1.4,t0+3))}px rgba(108,184,255,.8))`;return}
+  slot.querySelectorAll('.wm1 span').forEach((s,i)=>{const p=k(lt,t0+i*.07,t0+.8+i*.07);s.style.opacity=p;s.style.transform=`translateY(${lerp(50,0,p)}px)`;s.style.filter=`blur(${(1-p)*10}px)`;});
+  const w2=slot.querySelector('.wm2'),p2=k(lt,t0+.9,t0+1.9);w2.style.opacity=p2;w2.style.letterSpacing=lerp(.9,.62,p2)+'em';
+  const sh=slot.querySelector('.sheen');sh.style.backgroundPosition=`${lerp(120,-20,k(lt,t0+1.8,t0+3.2,eio))}% 0`;}
+
+function sparks(t){fx.clearRect(0,0,1920,1080);let lvl=0;sc.forEach(s=>{const w=(s.id==='intro'||s.id==='washpipe'||s.id==='outro')?1:.35;lvl=Math.max(lvl,w*k(t,s.start-.5,s.start+.5,x=>x)*(1-k(t,s.end-.5,s.end+.5,x=>x)));});
+  fx.globalCompositeOperation='lighter';for(let i=0;i<110;i++){const sp=40+rnd(i)*120,x=rnd(i+9)*1920+Math.sin(t*.7+i)*30,y=1120-((t*sp+rnd(i+3)*1400)%1300),r=1+rnd(i+5)*2.4,a=lvl*(.25+rnd(i+7)*.6)*clamp((1120-y)/200)*clamp(y/300);
+  if(a<.01)continue;const g=fx.createRadialGradient(x,y,0,x,y,r*5);const warm=rnd(i+11)>.6;g.addColorStop(0,warm?`rgba(255,200,120,${a})`:`rgba(170,215,255,${a})`);g.addColorStop(1,'rgba(0,0,0,0)');fx.fillStyle=g;fx.beginPath();fx.arc(x,y,r*5,0,7);fx.fill();}
+  fx.globalCompositeOperation='source-over';}
+
+let SUBS=true;
+function draw(t){t=clamp(t,0,DUR);
+  sc.forEach((s,i)=>{const el=sceneEl[s.id];const first=i===0,last=i===sc.length-1;
+    const inn=first?1:k(t,s.start-.5,s.start+.5,eio),out=last?1:1-k(t,s.end-.5,s.end+.5,eio);const v=Math.min(inn,out);
+    if(v<=0.001){el.style.opacity=0;el.style.visibility='hidden';return}
+    el.style.visibility='visible';el.style.opacity=v;const enter=1-inn,exit=1-out;
+    el.style.transform=`scale(${1+enter*.05-exit*.035})`;el.style.filter=(enter+exit)>.01?`blur(${(enter*10+exit*6).toFixed(2)}px)`:'none';
+    U[s.id](t-s.start,el);});
+  const sw=$('#sweep');let sv=0,sx=-600;for(let i=1;i<sc.length;i++){const b=sc[i].start;if(Math.abs(t-b)<.6){const p=(t-b+.6)/1.2;sx=lerp(-600,2000,p);sv=Math.sin(p*Math.PI);}}sw.style.opacity=sv*.9;sw.style.transform=`translateX(${sx}px) skewX(-14deg)`;
+  sparks(t);
+  const cur=sc.find(s=>t>=s.vo[0]&&t<=s.vo[1]);const st=$('#subtitle');
+  if(cur&&SUBS){st.textContent=cur.vo[2];st.style.opacity=Math.min(k(t,cur.vo[0],cur.vo[0]+.25,x=>x),1-k(t,cur.vo[1]-.25,cur.vo[1],x=>x))}else st.style.opacity=0;}
+
+/* ---------- player ---------- */
+const RENDER=/[?&]render\b/.test(location.search);
+let T=RENDER?0:4.4,playing=false,last=0;const audio=new Audio();let hasAudio=false;
+const fmt=x=>`${Math.floor(x/60)}:${(x%60).toFixed(1).padStart(4,'0')}`;
+$('#dur').textContent=`${Math.floor(DUR/60)}:${String(DUR%60).padStart(2,'0')}`;
+const chips=$('#chips');sc.forEach(s=>{const b=document.createElement('button');b.type='button';b.className='chip';b.innerHTML=`<b>${fmt(s.start).replace(/\.\d$/,'')}</b>${s.title}`;b.onclick=()=>seek(s.start+.6);chips.append(b);});
+function ui(){$('#clock').textContent=`${fmt(T)} / ${fmt(DUR).replace(/\.\d$/,'')}`;$('#scrub').value=Math.round(T/DUR*1000);
+  const ci=sc.findIndex(s=>T>=s.start&&T<s.end);[...chips.children].forEach((c,i)=>c.classList.toggle('on',i===ci));
+  const cs=sc[Math.max(0,ci)];$('#vo-label').textContent=`Səhnə: ${cs.title} · səs ${fmt(cs.vo[0])}–${fmt(cs.vo[1])}`;$('#vo-now').textContent=cs.vo[2];}
+function seek(t){T=clamp(t,0,DUR);if(hasAudio){try{audio.currentTime=T}catch(e){}}draw(T);ui();}
+function setPlay(p){playing=p;$('#play').textContent=p?'❚❚ Dayandır':'▶ Oynat';if(hasAudio){if(p){audio.currentTime=T;audio.play().catch(()=>{})}else audio.pause();}if(p){if(T>=DUR)seek(0);last=performance.now();requestAnimationFrame(loop);}}
+function loop(now){if(!playing)return;const dt=(now-last)/1000;last=now;T=hasAudio&&!audio.paused?audio.currentTime:T+dt;
+  if(T>=DUR){if($('#opt-loop').checked){seek(0);}else{T=DUR;draw(T);ui();setPlay(false);return}}draw(T);ui();requestAnimationFrame(loop);}
+$('#play').onclick=()=>setPlay(!playing);
+$('#scrub').oninput=e=>seek(e.target.value/1000*DUR);
+$('#opt-subs').onchange=e=>{SUBS=e.target.checked;draw(T)};
+document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT'&&e.target.type!=='range')return;if(e.code==='Space'){e.preventDefault();setPlay(!playing)}if(e.key==='ArrowRight')seek(T+5);if(e.key==='ArrowLeft')seek(T-5);});
+
+/* assets: original files are placed with object-fit:contain and uniform scale only */
+function setLogo(url){document.querySelectorAll('[data-logo]').forEach(s=>{s.innerHTML='';const im=new Image();im.alt='Caspian Industry loqosu';im.src=url;s.append(im)});draw(T);}
+function setProduct(i,url){const box=document.querySelector(`[data-pimg="${i}"]`);if(!box)return;box.innerHTML='';const im=new Image();im.alt=P[i][0];im.src=url;box.append(im);document.querySelector('[data-pnote]').textContent='Orijinal məhsul fotoları';draw(T);}
+window.setLogo=setLogo;window.setProduct=setProduct;
+$('#up-logo').onchange=e=>{const f=e.target.files[0];if(!f)return;setLogo(URL.createObjectURL(f));$('#st-logo').textContent='Yükləndi: '+f.name;$('#st-logo').className='status ok';};
+$('#up-prod').onchange=e=>{const fs=[...e.target.files].slice(0,6);fs.forEach((f,i)=>setProduct(i,URL.createObjectURL(f)));$('#st-prod').textContent=`Yükləndi: ${fs.length} şəkil`;$('#st-prod').className='status ok';};
+$('#up-vo').onchange=e=>{const f=e.target.files[0];if(!f)return;audio.src=URL.createObjectURL(f);hasAudio=true;$('#st-vo').textContent='Səs: '+f.name;$('#st-vo').className='status ok';};
+
+const vp=$('#vp');function fit(){if(RENDER){stage.style.transform='none';return}stage.style.transform=`scale(${vp.clientWidth/1920})`;}
+new ResizeObserver(fit).observe(vp);fit();
+if(RENDER)document.body.classList.add('render');
+window.seek=t=>{T=t;draw(t)};window.TL=TL;
+seek(T);
+</script>

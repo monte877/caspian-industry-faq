@@ -15,9 +15,13 @@ Yazılmayan şey növbəti sessiyada unudulur.
 
 ## Layihə
 - Şirkət: **Caspian Industry MMC** (Bakı, 2019). Sənaye avadanlıqlarının təchizatı, boru inspeksiyası, icarə, Washpipe xidmətləri.
-- Əlaqə: info@caspianindustry.com • caspianindustry.com
+- Əlaqə: info@caspianindustry.com • caspianindustry.com • WhatsApp +994 51 206 41 45
+- Kataloq və bütün məhsullar: `mehsullar/katalog/KATALOQ.md` (5 bölmə A–E). Məhsul videosundan əvvəl onu oxu.
 - Dil: istifadəçi ilə **Azərbaycan dilində** danış. Sayt mətnləri azərbaycanca.
-- Rənglər: tünd göy `#0b2444`, `#071b35` → `#12538a` qradiyent, vurğu `#1266aa`, fon `#edf3f9`.
+- Sayt rəngləri: `#0b2444`, `#12538a`, `#1266aa`.
+- **Loqo faylları (rəsmi, istifadəçi göndərib):** `design/logo/caspian-loqo-yazili.png`, `caspian-loqo-isare.png` (şəffaf fon, 3× böyüdülmüş),
+  `caspian-icon-512/192.png`; orijinallar `design/logo/orijinal/`. Rənglər: navy `#011c3d`, orta göy `#025da5`, açıq göy `#51a4eb`.
+- **Vizual üslub:** `design/referans/DIZAYN-SISTEMI.md` (şirkətin mövcud təqdimatı) — bütün yeni işlər buna uyğun.
 
 ## Qovluqlar
 | Qovluq | Nə üçün |
@@ -36,7 +40,26 @@ Yazılmayan şey növbəti sessiyada unudulur.
 - **Inkscape** — `inkscape fayl.svg -o fayl.png`
 - **FFmpeg** — səhnə + səs → MP4
 - **Reveal.js** — npm paketi `reveal.js@5.1.0`
+- **earshot** (v0.4.1) — Claude üçün "qulaq": hazır videonun səsini yoxlayır (səs–kadr sinxronu, LUFS, diktor/musiqi balansı),
+  kodla yaradılmış səs effektləri verir (`earshot sfx`, `earshot kit`). Əsas əmr: `earshot critique video/output/caspian-promo.mp4`.
+  Skill: `.claude/skills/earshot`.
 - Sessiya konteyneri müvəqqətidir: alətlər yoxdursa `bash scripts/setup-tools.sh` işlət.
+
+## Skill-lər (`.claude/skills/`, 31 ədəd)
+- **Claude-un hissləri** (ilk istifadədə öz paketlərini quraşdırır, şəbəkə lazımdır):
+  - **Göz:** watch (videoya baxır: kadrlar + mətn), vision-ai-director.
+  - **Qulaq:** earshot (səs), faster-whisper (danışığı mətnə və altyazıya çevirir, `--language az`).
+  - **Ağız:** seslendirme (azərbaycanca diktor səsi: Banu/Babek; yalnız qaralama üçün).
+  - **Əl:** webapp-testing (brauzerdə klik, forma, skrinşot), canvas-design (poster, qrafika).
+  - **Ayaq:** internetdə axtarış (daxili alətlər); watch link-dən video endirir.
+- **Video/dizayn (öz):** video-production-studio, motion-graphics-master, video-editor-export, audio-voice-director,
+  vision-ai-director, interactive-animation-developer, ai-video-tools-orchestrator.
+- **Səs:** earshot.
+- **Dizayn:** ui-ux-pro-max, banner-design, frontend-slides.
+- **Marketinq:** brand-voice, content-engine, marketing-campaign, seo, market-research.
+- **İş üsulu:** writing-plans → executing-plans → verification-before-completion; systematic-debugging, karpathy-guidelines,
+  prototype, research, grill-me (grilling), writing-for-agents.
+- Mənbələr, lisenziyalar və əlavə edilməyənlər: `yaddas/SKILL-KATALOQ.md`.
 
 ## Qaydalar
 - FAQ-da sual dəyişəndə: `data` massivi + JSON-LD bloku + `sw.js` `VERSION` birlikdə yenilənir.
