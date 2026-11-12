@@ -4,6 +4,8 @@
 > Hər tapşırıqdan sonra bu faylı yenilə, commit et və push et.
 
 ## Növbəti addım
+- **İstifadəçi öz məhsullarını göndərəcək** (əsasən məhsul haqqında video təqdimatlar hazırlayır).
+  Hər məhsulu `mehsullar/<ad>/` qovluğuna `info.md` şablonu + orijinal fotolarla yaz; çatışmayan məlumatı soruş.
 - **Korporativ film** (`video/caspian-promo/`): istifadəçidən gözlənilir →
   1) orijinal loqo (`assets/logo.*`), 2) 6 məhsul fotosu, 3) səsləndirmə faylı (`VOICEOVER.md`-yə görə), 4) istəyə görə musiqi.
   Gələn kimi: fayllari yerləşdir → `node scripts/render-promo.js` → yoxla → istifadəçiyə göndər.
@@ -32,6 +34,7 @@
 - Azərbaycan dilində yazır, telefondan istifadə edir. Qısa, sadə izah sevir.
 - Əsas istəyi: Claude tapşırıqları **yadda saxlasın və qaldığı yerdən davam etsin**.
 - Pulsuz alətlərə üstünlük verir (pullu video saytları yox).
+- Əsas işi: **məhsullar haqqında video təqdimatlar** hazırlamaq.
 - Seçimi bəzən Claude-a həvalə edir ("ən idealı hansıdı, onu seç").
 
 ## Qərarlar
