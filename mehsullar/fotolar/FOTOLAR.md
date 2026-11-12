@@ -1,4 +1,4 @@
-# Real şirkət fotoları (istifadəçi göndərib, 2026-11-12) — 59 fayl
+# Real şirkət fotoları (istifadəçi göndərib, 2026-11-12) — 79 fayl
 
 > Fayllar (`*.jpg`) **repoya yüklənmir** — repo publikdir, fotolarda işçilərin üzü/adı və müştəri obyektləri var.
 > İstifadəçi repo-nu private etsə və ya icazə versə, `.gitignore`-dan çıxarılıb commit edilə bilər.
@@ -64,6 +64,26 @@
 | 58 | QC-paslanmaz-dirsekler-yesikde | Yeşikdə paslanmaz dirsəklərin yoxlanması | Fitinq təchizatı |
 | 59 | ag-qablasdirilmis-boru-desteleri | Ağ qablaşdırılmış boru dəstələri meydançada | Təchizat |
 | 60 | boru-destesi-ucdan-pattern | Açılmış dəstənin ucu — yüzlərlə kiçik boru (naxış) | **Qrafik/keçid kadrı** |
+| 61 | izolyator-diskler-tirde | Boz qanadlı izolyator/disk elementləri tirdə | Elektrik/enerji təchizatı |
+| 62 | izolyator-teleskopik-bosaltma | Teleskopik yükləyici ilə boşaltma | Logistika |
+| 63 | izolyator-bosaltma-zavod-fonu | Boşaltma, arxada emal qurğusu | Sahəyə çatdırılma |
+| 64 | borular-tirde-ici | Tirin içində borular, perspektiv | Daşınma |
+| 65 | dirsekler-forklift-tirden | Boru dirsəkləri forkliftlə, müştəri işçiləri qəbul edir | Təhvil anı |
+| 66 | tritorc-hidravlik-acar-qutuda | **TRITORC TBL-14** hidravlik moment açarı, qutuda | Alət təchizatı — məhsul kadrı |
+| 67 | esab-elektrodlar-paletde | **ESAB** qaynaq elektrodları (sarı tublar) | Qaynaq materialları |
+| 68 | chicago-pneumatic-cpm15-kompressorlar | **Chicago Pneumatic CPM 15** — 2 vintli kompressor resiverlə (05.07.2023) | **Kompressor videosu — əsas kadr** |
+| 69 | chicago-pneumatic-cpa20-servis | **CP CPA 20** + quruducu, texniki servis prosesi | Servis xidməti |
+| 70 | kriogen-tank-tirden-bosaltma | Kriogen tank + buxarlandırıcı (qaz sistemi) tirdən | Qaz avadanlığı |
+| 71 | kriogen-tank-tirde-yaxin | Kriogen sistemin yaxın planı | Məhsul kadrı |
+| 72 | kriogen-tanklar-axsam-isiq | İki kriogen sistem, axşam, faralar | **Atmosferik kadr** |
+| 73 | kriogen-tank-anbar-girisi | Sistem müştəri anbarına daxil olur | Təhvil |
+| 74 | boz-boru-destesi-teleskopik | Boz bükülü dəstə teleskopik yükləyicidə | Logistika |
+| 75 | kriogen-tank-yolda-elektrik-xetti | Kriogen sistem yolda, elektrik dirəkləri | Daşınma |
+| 76 | goy-qapaqli-borular-traversla | Göy qapaqlı borular traversla qaldırılır, terminal | **Güclü rəngli kadr** |
+| 77 | goy-qapaqli-borular-tire-traversla | Eyni, tirə yükləmə, Maersk konteynerləri fonda | Beynəlxalq logistika |
+| 78 | goy-qapaqli-borular-tirde-zavod | Göy qapaqlı borular tirdə, zavod fonu | Çatdırılma |
+| 79 | goy-qapaqli-borular-kran-zavod | Kranla qaldırma, zavod qüllələri | Kinematik |
+| 80 | goy-qapaqli-borular-narinci-strop | Narıncı stroplarla dəstə, yaxın | **Rəng kontrastı — məhsul kadrı** |
 
 ## Qeydlər
 - **Loqo variantları:** tortda tünd boz/firuzəyi, formada ağ, kataloqda tünd göy/açıq göy. Hansının rəsmi olduğunu soruş.
@@ -72,3 +92,4 @@
   istifadə etməzdən əvvəl istifadəçidən təsdiq al (yaxın planda adlar bulanıqlaşdırıla bilər).
 - **36 və 37 internetdən götürülüb** (stok/Tenaris) — müəllif hüququ başqasınındır, videoda istifadə edilməməlidir.
 - **QC seriyası (54–58)** keyfiyyət nəzarəti / inspeksiya videosu üçün hazır materialdır.
+- **Konkret məhsul/brend kadrları:** CP CPS 900-175 (06), CP CPM 15 (68), CP CPA 20 (69), TRITORC TBL-14 (66), ESAB (67), kriogen sistemlər (70–75).
