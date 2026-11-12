@@ -5,14 +5,16 @@
 | `preview.html` | İnteraktiv preview **və** render mənbəyi (zaman şkalası `<script id="timeline">`-dadır) |
 | `storyboard.md` | 10 səhnəlik storyboard (avtomatik yaradılır) |
 | `VOICEOVER.md` | Diktor üçün vaxtlı səsyazma ssenarisi |
+| `ELEVENLABS.md` | ElevenLabs üçün hazır mətn (10 sətir), model, lisenziya və tələffüz qeydləri |
 | `voiceover.srt` | Altyazı faylı (YouTube / montaj proqramları üçün) |
-| `ai-prompts.md` | İstəyə görə AI fon görüntüləri üçün promptlar |
+| `ai-prompts.md` | AI fon kadrları üçün promptlar (Higgsfield-ə qoşulma daxil) |
 | `assets/` | **Orijinal** loqo və məhsul fotoları buraya |
 
 ## Assetləri qoşmaq
 - `assets/logo.svg` (və ya `.png`, şəffaf fon) — giriş və finalda.
 - `assets/product-1.png` … `product-6.png` — sıra: kompressor, generator, nasos, borular, klapan, elektrik.
 - `../audio/voiceover.wav` — `VOICEOVER.md`-yə görə yazılmış səs (0:00-dan başlayan tək fayl).
+  Səs sətir-sətir yaradılıbsa (`../audio/vo/01.mp3` … `10.mp3`), `python3 scripts/build-voiceover.py` onu yığır.
 - `../audio/music.mp3` — lisenziyalı fon musiqisi (səs olan yerlərdə avtomatik azalır).
 
 Şəkillər yalnız bərabər miqyasla yerləşdirilir — heç vaxt dartılmır və ya kəsilmir.

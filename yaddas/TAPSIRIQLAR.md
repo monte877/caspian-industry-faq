@@ -4,6 +4,14 @@
 > Hər tapşırıqdan sonra bu faylı yenilə, commit et və push et.
 
 ## Növbəti addım
+- **3 günlük "möhtəşəm video" planı** (istifadəçi 2026-11-12 22:24-də istədi; Higgsfield 72 saatlıq sınaq, ElevenLabs səs):
+  1. **1-ci gün:** istifadəçi Higgsfield sınağını başladıb Claude-a qoşur (`video/caspian-promo/ai-prompts.md`).
+     ElevenLabs-də səs seçib 10 sətri yaradır (`video/caspian-promo/ELEVENLABS.md`). Claude 2, 5, 7-ci səhnələr üçün sınaq kadrları yaradır.
+  2. **2-ci gün:** qalan AI fonları (hər səhnəyə 2 variant), ən yaxşısını seçmək.
+     Səs: `python3 scripts/build-voiceover.py` → `video/audio/voiceover.wav`.
+  3. **3-cü gün:** fonları `preview.html`-a qoşmaq → `node scripts/render-promo.js` → `earshot critique` → yekun MP4.
+     Ödəniş istəmirsə, istifadəçiyə **Higgsfield sınağını ləğv etməyi** xatırlat.
+  - Sınağın başlama vaxtını soruş və ləğv üçün xatırlatma təklif et. Auto-renew: Higgsfield Ultra.
 - **Mövcud təqdimatın dizayn sistemi** → `design/referans/DIZAYN-SISTEMI.md`. Yeni işlər BU üslubda olmalıdır
   (açıq fon, elektrik göy, narıncı vurğu, 3D loqo/ikonlar, mono etiketlər). İstifadəçidən 41 slaydlıq faylın tamamını istə.
 - ✅ Rəsmi loqo alındı → `design/logo/` (şəffaf PNG), korporativ filmə qoşuldu (`video/caspian-promo/assets/logo.png`).
@@ -56,6 +64,13 @@
   göz — watch, qulaq — faster-whisper (+ earshot), ağız — seslendirme (öz skill, edge-tts),
   əl — webapp-testing və canvas-design. Cəmi 31 skill. Paketlər ilk istifadədə quraşdırılır (şəbəkə lazımdır).
 
+- 2026-11-12 — Film üçün səs və AI kadr hazırlığı:
+  - `video/caspian-promo/ELEVENLABS.md`: 10 sətirlik ElevenLabs mətni, model, lisenziya və tələffüz qeydləri.
+  - `scripts/build-voiceover.py`: sətirləri vaxtlara yerləşdirir (sınaq səslərlə yoxlanıldı: 48 kHz mono, 112.5 san).
+  - `ai-prompts.md`: 10 səhnə üçün prompt və Higgsfield qoşulma addımları.
+  - ElevenLabs connector-u istifadəçiyə təklif edildi. Higgsfield və Sora üçün kataloqda connector yoxdur;
+    Higgsfield xüsusi connector kimi qoşulur (`https://mcp.higgsfield.ai/mcp`).
+
 ## İstifadəçi haqqında qeydlər
 - Azərbaycan dilində yazır, telefondan istifadə edir. Qısa, sadə izah sevir.
 - Əsas istəyi: Claude tapşırıqları **yadda saxlasın və qaldığı yerdən davam etsin**.
@@ -65,6 +80,7 @@
 - **"Claude işçi stolu" = bu GitHub repo.** "Bunu da əlavə et" deyəndə alət/skill buraya əlavə olunur
   (`.claude/skills/`, `scripts/setup-tools.sh`, `CLAUDE.md`), istifadəçinin öz kompüterinə yox.
 - Instagram/Reels-də gördüyü alət və skill repolarını göndərir ki, Claude "daha çox özəllik" qazansın.
+- AI video (Higgsfield, Sora) və AI səs (ElevenLabs) ilə "möhtəşəm video" etmək istəyir; pulsuz sınaqları sevir.
 
 ## Qərarlar
 - 2026-11-12 — İstifadəçinin öz təqdimatında 'BP ilə əməkdaşlıq' açıq yazılıb → BP adı videolarda işlədilə bilər (layihə faktı kimi).
@@ -74,3 +90,7 @@
 - Yaddaş = bu fayl + `CLAUDE.md`. Əsas branch-da (`main`) olmalıdır ki, yeni sessiyalar görsün.
 - 2026-11-12 — Xarici skill-lər **seçilərək** əlavə olunur: lisenziya və təhlükəsizlik yoxlanır, hook-lar əlavə edilmir,
   yüzlərlə skill kütləvi gətirilmir (Claude-u yavaşladır). Səbəblər və sonra əlavə ediləcəklər: `yaddas/SKILL-KATALOQ.md`.
+- 2026-11-12 — Pulsuz plan və lisenziya qaydası:
+  - ElevenLabs-in pulsuz planı kommersiya lisenziyası vermir. Şirkət filminin yekun səsi üçün ödənişli plan, edge-tts qaralaması və ya diktor lazımdır.
+  - Higgsfield sınağı 72 saatdan sonra avtomatik ödənişli Ultra planına keçir, ləğv xatırlatması vacibdir.
+  - AI kadrlar yalnız fon üçündür; məhsullar real fotolarla, loqo/yazı montajda üstə qoyulur.
