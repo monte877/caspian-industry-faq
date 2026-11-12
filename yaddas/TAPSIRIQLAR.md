@@ -4,7 +4,7 @@
 > Hər tapşırıqdan sonra bu faylı yenilə, commit et və push et.
 
 ## Növbəti addım
-- **39 real şirkət fotosu alındı** (2 internet şəkli işarələnib) → `mehsullar/fotolar/FOTOLAR.md`. JPG-lər repoda YOXDUR (repo publikdir) —
+- **59 real şirkət fotosu alındı** (2 internet şəkli işarələnib) → `mehsullar/fotolar/FOTOLAR.md`. JPG-lər repoda YOXDUR (repo publikdir) —
   istifadəçidən soruş: repo private edilsin, yoxsa fotolar başqa yerdə saxlanılsın? Sessiya bitsə fotolar itir!
 - **Kataloq alındı və köçürüldü** → `mehsullar/katalog/KATALOQ.md`. İstifadəçidən soruşulacaq:
   1) Hansı məhsul(lar) üçün ilk video? 2) Orijinal loqo faylı (SVG/PNG).

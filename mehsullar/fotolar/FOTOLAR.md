@@ -1,4 +1,4 @@
-# Real şirkət fotoları (istifadəçi göndərib, 2026-11-12) — 39 fayl
+# Real şirkət fotoları (istifadəçi göndərib, 2026-11-12) — 59 fayl
 
 > Fayllar (`*.jpg`) **repoya yüklənmir** — repo publikdir, fotolarda işçilərin üzü/adı və müştəri obyektləri var.
 > İstifadəçi repo-nu private etsə və ya icazə versə, `.gitignore`-dan çıxarılıb commit edilə bilər.
@@ -44,6 +44,26 @@
 | 38 | teleskopik-yukleyici-yashik-anbar | Yeşik anbar girişində | Logistika |
 | 39 | boru-destesi-yasil-qapaq-forklift | Yaşıl qapaqlı boru dəstəsi, troslarla, forklift | **Güclü məhsul kadrı** |
 | 40 | boru-destesi-yasil-qapaq-tir | Eyni dəstə tirdə, uclardan görünüş | Məhsul kadrı (simmetrik) |
+| 41 | yasil-komponent-uzun-val-4-bucaq | Yaşıl komponent, uzun valla, flanşlı gövdə, 4 bucaq (34 ilə eyni ailə; etiket çincə) | Məhsul təqdimatı — adı soruşulacaq |
+| 42 | qablasdirilmis-rulonlar-meydanca | Göy plyonkaya bükülmüş rulonlar paletlərdə, zavod fonu | Metal təchizatı |
+| 43 | rulon-forklift-tirden-bosaldilma | Forkliftlə rulonun tirdən boşaldılması | Logistika |
+| 44 | rulonlar-tirde-berkidilmis | Tirdə qayışla bərkidilmiş rulonlar, perspektiv | Təhlükəsiz daşıma |
+| 45 | boru-destesi-kran-komanda | Boru dəstəsinin kranla qaldırılması, komanda | Əməliyyat |
+| 46 | borular-paletlerde-bosaltma-2024 | Boruların paletlərə boşaldılması (tarix möhürü 14.02.2024) | Logistika |
+| 47 | meydanca-genis-kran-2024 | Geniş meydança, göy bükülü borular, kran | Miqyas |
+| 48 | qirmizi-kran-tir-genis-bucaq | Qırmızı avtokran tirdən boru dəstəsi götürür, mavi səma | **Dinamik geniş kadr** |
+| 49 | boru-destesi-qaldirma-komanda-2 | Dəstə havada, işçilər istiqamətləndirir | Komanda işi |
+| 50 | boru-destesi-havada-tir-uzerinde | Əyilən uzun boru dəstəsi tirin üstündə havada | **Effektli kadr** |
+| 51 | asagidan-kran-mesel-fonu | Aşağıdan bucaq: kran, dəstə, arxada məşəl (flare) | **Kinematik kadr** |
+| 52 | kran-tir-genis-bucaq-2 | Kran + tir, geniş bucaq | Logistika |
+| 53 | kran-ag-qablasdirilmis-borular | Kran ağ bükülü borular üzərində, geniş | **Açılış/keçid kadrı** |
+| 54 | QC-tirlerin-telefonla-qeydi | Tirlərin (tee) yoxlanması, telefonla qeyd | Keyfiyyət nəzarəti |
+| 55 | QC-divar-qalinligi-indikator | İndikatorlu qalınlıq ölçəni ilə boru divarı | **QC yaxın plan** |
+| 56 | QC-kalibr-diametr-olcme | Kalibrlə boru diametrinin ölçülməsi | **QC yaxın plan** |
+| 57 | QC-ultrases-qalinliq-11mm | Ultrasəs qalınlıq ölçəni dirsəkdə: 11.0 mm | **NDT/inspeksiya — ən güclü QC kadrı** |
+| 58 | QC-paslanmaz-dirsekler-yesikde | Yeşikdə paslanmaz dirsəklərin yoxlanması | Fitinq təchizatı |
+| 59 | ag-qablasdirilmis-boru-desteleri | Ağ qablaşdırılmış boru dəstələri meydançada | Təchizat |
+| 60 | boru-destesi-ucdan-pattern | Açılmış dəstənin ucu — yüzlərlə kiçik boru (naxış) | **Qrafik/keçid kadrı** |
 
 ## Qeydlər
 - **Loqo variantları:** tortda tünd boz/firuzəyi, formada ağ, kataloqda tünd göy/açıq göy. Hansının rəsmi olduğunu soruş.
@@ -51,3 +71,4 @@
 - Fotolarda bəzi işçilərin adları (dəbilqə/forma etiketi) və müştəri şirkətlərinin geyim loqoları görünür — ictimai videoda
   istifadə etməzdən əvvəl istifadəçidən təsdiq al (yaxın planda adlar bulanıqlaşdırıla bilər).
 - **36 və 37 internetdən götürülüb** (stok/Tenaris) — müəllif hüququ başqasınındır, videoda istifadə edilməməlidir.
+- **QC seriyası (54–58)** keyfiyyət nəzarəti / inspeksiya videosu üçün hazır materialdır.
