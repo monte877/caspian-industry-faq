@@ -1,4 +1,4 @@
-# Real şirkət fotoları (istifadəçi göndərib, 2026-11-12) — 79 fayl
+# Real şirkət fotoları (istifadəçi göndərib, 2026-11-12) — 98 fayl
 
 > Fayllar (`*.jpg`) **repoya yüklənmir** — repo publikdir, fotolarda işçilərin üzü/adı və müştəri obyektləri var.
 > İstifadəçi repo-nu private etsə və ya icazə versə, `.gitignore`-dan çıxarılıb commit edilə bilər.
@@ -84,6 +84,25 @@
 | 78 | goy-qapaqli-borular-tirde-zavod | Göy qapaqlı borular tirdə, zavod fonu | Çatdırılma |
 | 79 | goy-qapaqli-borular-kran-zavod | Kranla qaldırma, zavod qüllələri | Kinematik |
 | 80 | goy-qapaqli-borular-narinci-strop | Narıncı stroplarla dəstə, yaxın | **Rəng kontrastı — məhsul kadrı** |
+| 81 | boyuk-borular-kran-demiryol-terminal | Böyük borular sarı kranla, fonda dəmiryol vaqonları | Multimodal logistika |
+| 82 | kran-ag-borular-genis-2 | Kran + ağ bükülü borular, geniş bucaq (53-ün variantı) | Keçid kadrı |
+| 83 | yubiley-5-il-tort-kohne-loqo | "5" şamlı tort — **köhnə loqo** (dişli + zavod siluyeti + göy lent "CASPIAN INDUSTRY") | Tarixçə: "köhnə → yeni loqo" keçidi |
+| 84 | QC-dirsek-markalama-ASME-B169 | Dirsək markası oxunur: **Ø273×11, Steel 20, 90° LR, ASME B16.9, ASTM A234 Gr WPB, BW** | **QC — real standart kadrı** |
+| 85 | NKT-borular-tirde-yasil-mufta | Yaşıl muftalı NKT/qazma boruları kasetlərdə, tirdə | Neft-qaz boruları |
+| 86 | NKT-borular-tirde-kasetlerde | Eyni yük, geniş, səliqəli kasetlər | **Güclü məhsul kadrı** |
+| 87 | NKT-borular-tirde-kasetlerde-2 | Eyni, digər bucaq | Məhsul kadrı |
+| 88 | sergi-turkish-petroleum-stend | İki nəfər sərgidə (Turkish Petroleum stendi yanında) | Sərgi iştirakı |
+| 89 | boru-destesi-kran-mesel-komanda | Dəstə kranda, arxada məşəl qülləsi | Kinematik |
+| 90 | boru-destesi-kran-mesel-genis | Eyni, geniş, kran + məşəl | Kinematik |
+| 91 | goy-qapaqli-borular-tir-kabel-baraban | Göy qapaqlı borular tirdə, kabel barabanları fonda (02.07.2024) | Logistika |
+| 92 | boyuk-boru-sari-kran-demiryol | Böyük boru sarı kranda, səma + buludlar | **Kinematik geniş kadr** |
+| 93 | boyuk-borular-kran-tire-yuklenme | Böyük diametrli borular tirə yüklənir | Əməliyyat |
+| 94 | goy-qapaqli-borular-terex-kran | Göy qapaqlı boru yığını, kran, gün işığı | **Güclü rəngli kadr** |
+| 95 | dirsekler-paletde-zavod-2024 | Dirsəklər paletdə, zavod fonu (28.03.2024) | Təhvil |
+| 96 | borular-tirde-marka-etiketli | Etiketli borular tirdə, qəbul yoxlaması | QC / təhvil |
+| 97 | dirsek-180-ASTM-A234-WP9-markalama | **ESS ASTM A234 WP9 Seamless elbow 180 LR 168.27×7.11 mm** | **Məhsul yaxın planı — markalama** |
+| 98 | qara-dirsekler-yesikde | Qara dirsəklər yeşikdə, səliqəli düzülmüş | Məhsul kadrı |
+| 100 | qabirgali-borular-finned-tube | Qabırğalı borular (finned tubes), makro, dərinlik | **Ən estetik məhsul kadrı** (kataloq s.5) |
 
 ## Qeydlər
 - **Loqo variantları:** tortda tünd boz/firuzəyi, formada ağ, kataloqda tünd göy/açıq göy. Hansının rəsmi olduğunu soruş.
@@ -93,3 +112,5 @@
 - **36 və 37 internetdən götürülüb** (stok/Tenaris) — müəllif hüququ başqasınındır, videoda istifadə edilməməlidir.
 - **QC seriyası (54–58)** keyfiyyət nəzarəti / inspeksiya videosu üçün hazır materialdır.
 - **Konkret məhsul/brend kadrları:** CP CPS 900-175 (06), CP CPM 15 (68), CP CPA 20 (69), TRITORC TBL-14 (66), ESAB (67), kriogen sistemlər (70–75).
+- **Loqo tarixi:** köhnə loqo (83, 5 il) → yeni dairəvi loqo (03, 7 il). Videoda 'inkişaf' səhnəsi üçün istifadə oluna bilər.
+- 99 = 24-ün dublikatı, silindi.
