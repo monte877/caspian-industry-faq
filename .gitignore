@@ -1,0 +1,4 @@
+node_modules/
+*.blend1
+video/scenes/*.png
+video/output/*.mp4
