@@ -4,6 +4,12 @@
 > Hər tapşırıqdan sonra bu faylı yenilə, commit et və push et.
 
 ## Növbəti addım
+- **Film v2 (2026-11-12 23:30) — real foto fonları ilə:** `preview.html`-a `setBg(səhnə, url)` əlavə edildi (Ken Burns hərəkəti + göy ton).
+  `render-promo.js` fotoları `mehsullar/fotolar/film-bg-<səhnə>.jpg` və `film-product-N.jpg`-dən götürür (repoya yazılmır, hər sessiyada Drive-dan endir).
+  Seçim (Drive fayl adı → səhnə): WA0047 → directions, products · WA0415 → inspection · WA0404 → rental · WA0588 → washpipe ·
+  WA0553 → sectors · WA0609 → process · WA0630 → product-4 (borular). Yoxlama kadrları: `node scripts/render-promo.js --shot 52,78`.
+  Drive qovluğundakı fotolar əsasən logistika/boru çatdırılmasıdır; komanda, Washpipe aləti, kompressor fotoları orada görünmədi (yalnız 13-ü baxıldı).
+  **Hələ yoxdur:** səs (bu sessiyada paket yükləmək bağlı idi → edge-tts işləmədi), musiqi, EN versiya. İstifadəçi v2-yə baxıb rəy verəcək.
 - **FOTOLAR GOOGLE DRIVE-DADIR (2026-11-12 23:20):** qovluq `Caspian fotolar`, ID `1K4xn1pxikaPxtFEKLAO03C8ajrpUnfB9`, 100+ JPG (WhatsApp adları `IMG-…-WA….jpg`).
   Siyahı: `mcp__Google_Drive__search_files` (`parentId = '<ID>'`); fayl: `mcp__Google_Drive__download_file_content` (şəkli göstərir və diskə yazır).
   İstifadəçidən fotoları bir daha İSTƏMƏ. Repo publik qalır, fotolar repoya yazılmır.

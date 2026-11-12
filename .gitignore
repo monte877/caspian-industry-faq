@@ -8,3 +8,4 @@ design/referans/*.png
 # Skill mühitləri və keşləri (commit edilmir)
 .claude/skills/*/.venv/
 __pycache__/
+video/output/*.jpg
