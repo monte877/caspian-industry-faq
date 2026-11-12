@@ -12,6 +12,8 @@
   3. **3-cü gün:** fonları `preview.html`-a qoşmaq → `node scripts/render-promo.js` → `earshot critique` → yekun MP4.
      Ödəniş istəmirsə, istifadəçiyə **Higgsfield sınağını ləğv etməyi** xatırlat.
   - Sınağın başlama vaxtını soruş və ləğv üçün xatırlatma təklif et. Auto-renew: Higgsfield Ultra.
+  - Kampaniya **Claude Fable 5.2** çıxışı ilə bağlıdır: bələdçilər yeni söhbətdə Fable 5.2 seçməyi deyir
+    (Claude planında olmalıdır). Pulsuz olan Higgsfield sınağıdır, Claude-un özü yox.
 - **Mövcud təqdimatın dizayn sistemi** → `design/referans/DIZAYN-SISTEMI.md`. Yeni işlər BU üslubda olmalıdır
   (açıq fon, elektrik göy, narıncı vurğu, 3D loqo/ikonlar, mono etiketlər). İstifadəçidən 41 slaydlıq faylın tamamını istə.
 - ✅ Rəsmi loqo alındı → `design/logo/` (şəffaf PNG), korporativ filmə qoşuldu (`video/caspian-promo/assets/logo.png`).
