@@ -18,8 +18,9 @@ Yazılmayan şey növbəti sessiyada unudulur.
 - Əlaqə: info@caspianindustry.com • caspianindustry.com • WhatsApp +994 51 206 41 45
 - Kataloq və bütün məhsullar: `mehsullar/katalog/KATALOQ.md` (5 bölmə A–E). Məhsul videosundan əvvəl onu oxu.
 - Dil: istifadəçi ilə **Azərbaycan dilində** danış. Sayt mətnləri azərbaycanca.
-- Loqo rəngləri (kataloqdan, təxmini): tünd göy `#0e2054`, orta göy ~`#2f62b0`, açıq göy `#6996d0`. Sayt: `#0b2444`, `#12538a`, `#1266aa`.
-- Loqo: dairəvi "C" + dişli çarx + dalğa (3D versiyası var). Orijinal fayl hələ yoxdur.
+- Sayt rəngləri: `#0b2444`, `#12538a`, `#1266aa`.
+- **Loqo faylları (rəsmi, istifadəçi göndərib):** `design/logo/caspian-loqo-yazili.png`, `caspian-loqo-isare.png` (şəffaf fon, 3× böyüdülmüş),
+  `caspian-icon-512/192.png`; orijinallar `design/logo/orijinal/`. Rənglər: navy `#011c3d`, orta göy `#025da5`, açıq göy `#51a4eb`.
 - **Vizual üslub:** `design/referans/DIZAYN-SISTEMI.md` (şirkətin mövcud təqdimatı) — bütün yeni işlər buna uyğun.
 
 ## Qovluqlar

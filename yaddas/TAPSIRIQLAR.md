@@ -5,11 +5,12 @@
 
 ## Növbəti addım
 - **Mövcud təqdimatın dizayn sistemi** → `design/referans/DIZAYN-SISTEMI.md`. Yeni işlər BU üslubda olmalıdır
-  (açıq fon, elektrik göy, narıncı vurğu, 3D loqo/ikonlar, mono etiketlər). İstifadəçidən 41 slaydlıq faylın tamamını və 3D loqo PNG-ni istə.
+  (açıq fon, elektrik göy, narıncı vurğu, 3D loqo/ikonlar, mono etiketlər). İstifadəçidən 41 slaydlıq faylın tamamını istə.
+- ✅ Rəsmi loqo alındı → `design/logo/` (şəffaf PNG), korporativ filmə qoşuldu (`video/caspian-promo/assets/logo.png`).
 - **111 real şirkət fotosu alındı** (2 internet şəkli işarələnib) → `mehsullar/fotolar/FOTOLAR.md`. JPG-lər repoda YOXDUR (repo publikdir) —
   istifadəçidən soruş: repo private edilsin, yoxsa fotolar başqa yerdə saxlanılsın? Sessiya bitsə fotolar itir!
 - **Kataloq alındı və köçürüldü** → `mehsullar/katalog/KATALOQ.md`. İstifadəçidən soruşulacaq:
-  1) Hansı məhsul(lar) üçün ilk video? 2) Orijinal loqo faylı (SVG/PNG).
+  1) Hansı məhsul(lar) üçün ilk video? (loqo alındı ✓)
 - İstifadəçi əlavə məhsul göndərsə: `mehsullar/<ad>/info.md` şablonu + orijinal fotolar.
 - **Korporativ film** (`video/caspian-promo/`): istifadəçidən gözlənilir →
   1) orijinal loqo (`assets/logo.*`), 2) 6 məhsul fotosu, 3) səsləndirmə faylı (`VOICEOVER.md`-yə görə), 4) istəyə görə musiqi.
