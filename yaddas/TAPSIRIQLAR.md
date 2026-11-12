@@ -5,8 +5,7 @@
 
 ## Növbəti addım
 - **Kataloq alındı və köçürüldü** → `mehsullar/katalog/KATALOQ.md`. İstifadəçidən soruşulacaq:
-  1) Chicago Pneumatic və ADALIT üzrə diler/distribyutor statusu var? (videoda brend istifadəsi buna bağlıdır)
-  2) Hansı məhsul(lar) üçün ilk video? 3) Orijinal loqo faylı (SVG/PNG) və məhsul fotoları.
+  1) Hansı məhsul(lar) üçün ilk video? 2) Orijinal loqo faylı (SVG/PNG).
 - İstifadəçi əlavə məhsul göndərsə: `mehsullar/<ad>/info.md` şablonu + orijinal fotolar.
 - **Korporativ film** (`video/caspian-promo/`): istifadəçidən gözlənilir →
   1) orijinal loqo (`assets/logo.*`), 2) 6 məhsul fotosu, 3) səsləndirmə faylı (`VOICEOVER.md`-yə görə), 4) istəyə görə musiqi.
@@ -42,4 +41,6 @@
 - Seçimi bəzən Claude-a həvalə edir ("ən idealı hansıdı, onu seç").
 
 ## Qərarlar
+- 2026-11-12 — Brendlər (Chicago Pneumatic, ADALIT və s.) və kataloq şəkilləri videolarda işlədilə bilər — şirkət təchizatçıdır.
+  Yalnız 'rəsmi diler/partnyor' iddiası yazılmır.
 - Yaddaş = bu fayl + `CLAUDE.md`. Əsas branch-da (`main`) olmalıdır ki, yeni sessiyalar görsün.

@@ -216,7 +216,10 @@ Məhsul adları kataloqdakı kimi ingiliscədir; mötərizədə səhifə nömrə
 ## Video üçün qeydlər (Claude)
 - **Ən güclü video mövzuları:** Chicago Pneumatic kompressorları (s.24–25 — ayrıca səhifələr, çox rəqəm), ADALIT Ex işıqlandırma (s.13),
   boru alətləri (kəsmə/faska, mərkəzləmə, ultrasəs qalınlıq ölçən — boru inspeksiyası xidməti ilə bağlıdır), dizel generatorlar 20–1250 kVA.
-- **Üçüncü tərəf brendləri:** kataloq şəkillərində Chicago Pneumatic, ADALIT, Milwaukee, ABAC, Enerpac, Yale, Makita, DeWalt, ESAB, Bosch,
+- **İstifadəçinin qərarı (2026-11-12):** Caspian Industry təchizatçıdır, istənilən brendin malını satır. Brend adları və kataloq
+  şəkilləri (AI ilə yaradılmışlar daxil) videolarda **istifadə oluna bilər**. Yeganə sərhəd: "rəsmi diler / distribyutor / partnyor"
+  kimi status iddiası yazma — "təchiz edirik" de.
+- (Əvvəlki qeyd) **Üçüncü tərəf brendləri:** kataloq şəkillərində Chicago Pneumatic, ADALIT, Milwaukee, ABAC, Enerpac, Yale, Makita, DeWalt, ESAB, Bosch,
   Ridgid, FLIR, Olympus, Hytorc, Boltight, Soyer, Omron, ABB, Siemens, Samsung, Mean Well loqoları görünür. Videoda brend adını/loqosunu
   **yalnız istifadəçi distribyutor/diler statusunu və ya icazəni təsdiqləsə** istifadə et. Chicago Pneumatic və ADALIT-in ayrıca səhifələri var — status soruşulmalıdır.
 - **Şəkillər:** kataloq şəkillərinin bir hissəsi AI ilə yaradılmış görünür (məs. "RIDGIO" yazısı). Videoda real məhsul fotosu kimi təqdim etmə;
