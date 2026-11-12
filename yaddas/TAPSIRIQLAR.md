@@ -4,6 +4,11 @@
 > Hər tapşırıqdan sonra bu faylı yenilə, commit et və push et.
 
 ## Növbəti addım
+- **Higgsfield vəziyyəti (2026-11-12 22:55):** connector qoşulub və alətlər işləyir (`mcp__Higgsfield__*`), AMMA hesab
+  **free plandadır, 0 kredit, limitsiz sınaq aktiv deyil** → hələ heç bir kadr yaradılmayıb. Alət yalnız ödənişli planlar təklif etdi.
+  İstifadəçi sınağı higgsfield.ai/mcp-də eyni hesabla başlatmalıdır. Sessiya əvvəlində `balance` və
+  `models_explore(action:list, type:video, unlim:true)` ilə yoxla; aktivdirsə 2, 5, 7-ci səhnələri `generate_video_batch` ilə yarat
+  (`use_unlim: true`, 16:9). İstifadəçi razılıq vermədən kredit/pul xərcləmə.
 - **Film brifi (istifadəçi 2026-11-12 22:45-də təsdiqlədi) — BUNA GÖRƏ İŞLƏ:**
   - Yalnız **korporativ film** (16:9, ~1:54). Reels yox.
   - Səs: **pulsuz qaralama** (`seslendirme` skill-i, edge-tts: AZ — Babek/Banu; EN — siyahıdan sakit kişi səsi). ElevenLabs hələlik yox.
