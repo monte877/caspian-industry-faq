@@ -47,6 +47,10 @@
 - 2026-11-12 — **earshot v0.4.1** (səs təhlili, MIT) iş sahəsinə əlavə edildi: skill `.claude/skills/earshot`,
   quraşdırma `scripts/setup-tools.sh`-da, `CLAUDE.md` alətlər siyahısında. Modellər ilk istifadədə ~1,1 GB yüklənir.
 
+- 2026-11-12 — Instagram-da göstərilən 5 skill reposu yoxlanıldı (karpathy-skills, superpowers, mattpocock/skills,
+  everything-claude-code, ui-ux-pro-max). 18 faydalı skill `.claude/skills/`-ə əlavə edildi (hamısı MIT, `LICENSE` ilə).
+  Mənbələr, commit-lər və əlavə edilməyənlər: `yaddas/SKILL-KATALOQ.md`.
+
 ## İstifadəçi haqqında qeydlər
 - Azərbaycan dilində yazır, telefondan istifadə edir. Qısa, sadə izah sevir.
 - Əsas istəyi: Claude tapşırıqları **yadda saxlasın və qaldığı yerdən davam etsin**.
@@ -55,6 +59,7 @@
 - Seçimi bəzən Claude-a həvalə edir ("ən idealı hansıdı, onu seç").
 - **"Claude işçi stolu" = bu GitHub repo.** "Bunu da əlavə et" deyəndə alət/skill buraya əlavə olunur
   (`.claude/skills/`, `scripts/setup-tools.sh`, `CLAUDE.md`), istifadəçinin öz kompüterinə yox.
+- Instagram/Reels-də gördüyü alət və skill repolarını göndərir ki, Claude "daha çox özəllik" qazansın.
 
 ## Qərarlar
 - 2026-11-12 — İstifadəçinin öz təqdimatında 'BP ilə əməkdaşlıq' açıq yazılıb → BP adı videolarda işlədilə bilər (layihə faktı kimi).
@@ -62,3 +67,5 @@
 - 2026-11-12 — Brendlər (Chicago Pneumatic, ADALIT və s.) və kataloq şəkilləri videolarda işlədilə bilər — şirkət təchizatçıdır.
   Yalnız 'rəsmi diler/partnyor' iddiası yazılmır.
 - Yaddaş = bu fayl + `CLAUDE.md`. Əsas branch-da (`main`) olmalıdır ki, yeni sessiyalar görsün.
+- 2026-11-12 — Xarici skill-lər **seçilərək** əlavə olunur: lisenziya və təhlükəsizlik yoxlanır, hook-lar əlavə edilmir,
+  yüzlərlə skill kütləvi gətirilmir (Claude-u yavaşladır). Səbəblər və sonra əlavə ediləcəklər: `yaddas/SKILL-KATALOQ.md`.

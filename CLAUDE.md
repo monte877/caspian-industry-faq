@@ -45,6 +45,16 @@ Yazılmayan şey növbəti sessiyada unudulur.
   Skill: `.claude/skills/earshot`.
 - Sessiya konteyneri müvəqqətidir: alətlər yoxdursa `bash scripts/setup-tools.sh` işlət.
 
+## Skill-lər (`.claude/skills/`, 26 ədəd)
+- **Video/dizayn (öz):** video-production-studio, motion-graphics-master, video-editor-export, audio-voice-director,
+  vision-ai-director, interactive-animation-developer, ai-video-tools-orchestrator.
+- **Səs:** earshot.
+- **Dizayn:** ui-ux-pro-max, banner-design, frontend-slides.
+- **Marketinq:** brand-voice, content-engine, marketing-campaign, seo, market-research.
+- **İş üsulu:** writing-plans → executing-plans → verification-before-completion; systematic-debugging, karpathy-guidelines,
+  prototype, research, grill-me (grilling), writing-for-agents.
+- Mənbələr, lisenziyalar və əlavə edilməyənlər: `yaddas/SKILL-KATALOQ.md`.
+
 ## Qaydalar
 - FAQ-da sual dəyişəndə: `data` massivi + JSON-LD bloku + `sw.js` `VERSION` birlikdə yenilənir.
 - Qiymət, mövcudluq, müddət haqqında konkret rəqəm uydurma — "təsdiq tələb edir" yaz.
