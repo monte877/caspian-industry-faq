@@ -15,6 +15,7 @@
 - **Korporativ film** (`video/caspian-promo/`): istifadəçidən gözlənilir →
   1) orijinal loqo (`assets/logo.*`), 2) 6 məhsul fotosu, 3) səsləndirmə faylı (`VOICEOVER.md`-yə görə), 4) istəyə görə musiqi.
   Gələn kimi: fayllari yerləşdir → `node scripts/render-promo.js` → yoxla (səsi `earshot critique` ilə) → istifadəçiyə göndər.
+  Səsləndirmə faylı gəlməsə: `seslendirme` skill-i ilə qaralama səs yarat (Babek və ya Banu), istifadəçiyə göndər, təsdiq al.
 - İstifadəçi rəyinə görə səhnələri düzəlt (zaman şkalası `preview.html`-da, sonra `build-storyboard.py`).
 - Artifact preview: https://claude.ai/artifact/BoALx2DRQVNebXck7viaXa (eyni fayl yolu ilə yenilə).
 
@@ -50,6 +51,10 @@
 - 2026-11-12 — Instagram-da göstərilən 5 skill reposu yoxlanıldı (karpathy-skills, superpowers, mattpocock/skills,
   everything-claude-code, ui-ux-pro-max). 18 faydalı skill `.claude/skills/`-ə əlavə edildi (hamısı MIT, `LICENSE` ilə).
   Mənbələr, commit-lər və əlavə edilməyənlər: `yaddas/SKILL-KATALOQ.md`.
+
+- 2026-11-12 — Claude-a "hisslər" əlavə edildi (istifadəçi: "gözün, qulağın, ağzın, əlin, ayağın olsun"):
+  göz — watch, qulaq — faster-whisper (+ earshot), ağız — seslendirme (öz skill, edge-tts),
+  əl — webapp-testing və canvas-design. Cəmi 31 skill. Paketlər ilk istifadədə quraşdırılır (şəbəkə lazımdır).
 
 ## İstifadəçi haqqında qeydlər
 - Azərbaycan dilində yazır, telefondan istifadə edir. Qısa, sadə izah sevir.

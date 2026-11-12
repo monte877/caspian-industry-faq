@@ -1,6 +1,6 @@
 # Skill kataloqu — haradan gəldi, nə əlavə edildi
 
-Hamısı MIT lisenziyalıdır, hər skill qovluğunda `LICENSE` var. Əlavə edilmə tarixi: 2026-11-12.
+Hamısı açıq lisenziyalıdır (MIT və ya Apache-2.0), hər skill qovluğunda `LICENSE` var. Əlavə edilmə tarixi: 2026-11-12.
 Fayllar aşağıdakı commit-lərdən götürülüb. Yeniləmək üçün eyni addımları yeni commit-lə təkrarla.
 
 | Repo | Commit | Əlavə edilən skill-lər |
@@ -11,6 +11,10 @@ Fayllar aşağıdakı commit-lərdən götürülüb. Yeniləmək üçün eyni ad
 | [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code) | `d2ef268` | frontend-slides, brand-voice, content-engine, marketing-campaign, seo, market-research |
 | [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | `6ae86f6` | ui-ux-pro-max, banner-design |
 | [Leonxlnx/earshot](https://github.com/Leonxlnx/earshot) | `v0.4.1` | earshot |
+| [bradautomates/claude-video](https://github.com/bradautomates/claude-video) | `03ceb42` | watch (göz) |
+| [ThePlasmak/faster-whisper](https://github.com/ThePlasmak/faster-whisper) | `1c8d6a6` | faster-whisper (qulaq) |
+| [anthropics/skills](https://github.com/anthropics/skills) (Apache-2.0) | `2c5958e` | webapp-testing, canvas-design (əl) |
+| öz skill-imiz | — | seslendirme (ağız; [edge-tts](https://github.com/rany2/edge-tts) alətini işlədir) |
 
 ## Niyə hamısı yox
 - **Çox skill Claude-u yavaşladır.** everything-claude-code-da 314 skill və 300-dən çox agent var. Hamısının adı və təsviri hər sessiyada yüklənir və diqqəti dağıdır.
@@ -20,6 +24,10 @@ Fayllar aşağıdakı commit-lərdən götürülüb. Yeniləmək üçün eyni ad
 - **`social-publisher`, `deep-research`** xarici xidmət və ya API açarı tələb edir.
 - **`video-editing`** mövcud `video-editor-export` skill-i ilə üst-üstə düşür.
 - **mattpocock `handoff`** faylı müvəqqəti qovluğa (`/tmp`) yazır və sessiya bitəndə o fayl itir. Bizdə bu işi `yaddas/TAPSIRIQLAR.md` görür.
+- **calesthio/openmontage** AGPL-3.0 lisenziyalıdır. Bu lisenziya kopyalanan fayllara güclü şərtlər qoyur.
+- **claude-video-nun SessionStart hook-u** gətirilmədi, yalnız `watch` skill-i götürüldü.
+- **WhisperX** təxminən 3 GB disk və 8 GB RAM istəyir. `faster-whisper` ondan yüngüldür.
+- **Azərbaycanca hazır TTS skill-i tapılmadı.** Ona görə `seslendirme` skill-ini özümüz yazdıq.
 
 ## Lazım olsa sonra əlavə et
 - everything-claude-code: `remotion-video-creation` (React ilə video), `video-editing`, `motion-patterns`,
@@ -27,6 +35,7 @@ Fayllar aşağıdakı commit-lərdən götürülüb. Yeniləmək üçün eyni ad
 - superpowers: `test-driven-development`, `requesting-code-review`, `subagent-driven-development`, `brainstorming`.
 - mattpocock: `diagnosing-bugs`, `tdd`, `code-review`, `retro`, `to-questionnaire`.
 - ui-ux-pro-max: `slides`, `design-system`, `brand`.
+- anthropics/skills: `frontend-design`, `skill-creator`, `slack-gif-creator`, `theme-factory`.
 
 **Necə əlavə etmək olar:**
 1. `git clone --depth 1 <repo>` ilə reponu endir.

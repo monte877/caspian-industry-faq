@@ -45,7 +45,13 @@ Yazılmayan şey növbəti sessiyada unudulur.
   Skill: `.claude/skills/earshot`.
 - Sessiya konteyneri müvəqqətidir: alətlər yoxdursa `bash scripts/setup-tools.sh` işlət.
 
-## Skill-lər (`.claude/skills/`, 26 ədəd)
+## Skill-lər (`.claude/skills/`, 31 ədəd)
+- **Claude-un hissləri** (ilk istifadədə öz paketlərini quraşdırır, şəbəkə lazımdır):
+  - **Göz:** watch (videoya baxır: kadrlar + mətn), vision-ai-director.
+  - **Qulaq:** earshot (səs), faster-whisper (danışığı mətnə və altyazıya çevirir, `--language az`).
+  - **Ağız:** seslendirme (azərbaycanca diktor səsi: Banu/Babek; yalnız qaralama üçün).
+  - **Əl:** webapp-testing (brauzerdə klik, forma, skrinşot), canvas-design (poster, qrafika).
+  - **Ayaq:** internetdə axtarış (daxili alətlər); watch link-dən video endirir.
 - **Video/dizayn (öz):** video-production-studio, motion-graphics-master, video-editor-export, audio-voice-director,
   vision-ai-director, interactive-animation-developer, ai-video-tools-orchestrator.
 - **Səs:** earshot.

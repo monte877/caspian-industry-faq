@@ -4,3 +4,7 @@ video/scenes/*.png
 video/output/*.mp4
 mehsullar/fotolar/*.jpg
 design/referans/*.png
+
+# Skill mühitləri və keşləri (commit edilmir)
+.claude/skills/*/.venv/
+__pycache__/
