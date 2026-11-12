@@ -1,4 +1,17 @@
-# Caspian Industry — layihə yaddaşı (Claude üçün)
+# Claude üçün əsas qayda — YADDAŞ
+
+**Hər sessiyanın əvvəlində:** aşağıdakı tapşırıq faylını oxu və "Növbəti addım"dan davam et.
+İstifadəçiyə qısaca de: "Qaldığımız yer: ...".
+
+**Hər tapşırıqdan sonra:** `yaddas/TAPSIRIQLAR.md` faylını yenilə (bitən işi "Bitmiş işlər"ə köçür,
+yeni "Növbəti addım" yaz, istifadəçi haqqında yeni öyrəndiyini qeyd et), sonra commit və push et.
+Yazılmayan şey növbəti sessiyada unudulur.
+
+@yaddas/TAPSIRIQLAR.md
+
+---
+
+# Caspian Industry — layihə məlumatı
 
 ## Layihə
 - Şirkət: **Caspian Industry MMC** (Bakı, 2019). Sənaye avadanlıqlarının təchizatı, boru inspeksiyası, icarə, Washpipe xidmətləri.
@@ -29,4 +42,4 @@
 - FAQ-da sual dəyişəndə: `data` massivi + JSON-LD bloku + `sw.js` `VERSION` birlikdə yenilənir.
 - Qiymət, mövcudluq, müddət haqqında konkret rəqəm uydurma — "təsdiq tələb edir" yaz.
 - Böyük render faylları (>50 MB) repoya commit edilmir.
-- İş branch-ı: `claude/github-baglandi-42axnt`.
+- Yaddaş faylları `main`-də olmalıdır: işdən sonra PR aç və istifadəçidən birləşdirməyi istə.
