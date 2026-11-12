@@ -1,4 +1,4 @@
-# Real şirkət fotoları (istifadəçi göndərib, 2026-11-12) — 98 fayl
+# Real şirkət fotoları (istifadəçi göndərib, 2026-11-12) — 111 fayl
 
 > Fayllar (`*.jpg`) **repoya yüklənmir** — repo publikdir, fotolarda işçilərin üzü/adı və müştəri obyektləri var.
 > İstifadəçi repo-nu private etsə və ya icazə versə, `.gitignore`-dan çıxarılıb commit edilə bilər.
@@ -103,6 +103,19 @@
 | 97 | dirsek-180-ASTM-A234-WP9-markalama | **ESS ASTM A234 WP9 Seamless elbow 180 LR 168.27×7.11 mm** | **Məhsul yaxın planı — markalama** |
 | 98 | qara-dirsekler-yesikde | Qara dirsəklər yeşikdə, səliqəli düzülmüş | Məhsul kadrı |
 | 100 | qabirgali-borular-finned-tube | Qabırğalı borular (finned tubes), makro, dərinlik | **Ən estetik məhsul kadrı** (kataloq s.5) |
+| 101 | QC-zavodda-dirseklerin-qebulu | İstehsalçı zavodunda dirsəklərin qəbul yoxlaması (geniş sex) | **QC — zavodda yoxlama** |
+| 102 | socar-sahesi-teleskopik-boru-bosaltma | Teleskopik yükləyici, borular tirdə (barkod etiketli) | Təhvil |
+| 103 | teleskopik-qara-borular-genis-meydanca | Qara borular teleskopikdə, geniş anbar meydançası | Logistika |
+| 104 | paslanmaz-yumru-cubuqlar-anbar | Böyük diametrli paslanmaz/polad yumru çubuqlar (bars), Avropa anbarı | Metal təchizatı (kataloq: bars) |
+| 105 | agdag-sement-zavodu-tir-yuklenme | Sarı tir sement zavodunda (ağ big-baglar, silolar) | **Sement sektoru** |
+| 106 | kompressor-qurgusu-tirde-strop-2024 | Yaşıl boru kəmərli kompressor/soyuducu qurğusu tirdə bərkidilir (26.04.2024) | Ağır avadanlıq təchizatı |
+| 107 | boru-destesi-kran-tirden-2024 | Dəstə kranla tirdən (28.03.2024) | Əməliyyat |
+| 108 | qirmizi-kran-tir-yuklenme-2024 | Qırmızı avtokran + tir (28.03.2024) | Logistika |
+| 109 | terex-kran-boru-destesi-havada | Terex kranı, uzun dəstə havada, qırmızı strop | Kinematik |
+| 110 | terex-kran-strop-baglama | İşçilər tirdə stropu bağlayır | Komanda işi |
+| 111 | boru-destesi-forklift-travers-konteyner | Göy qapaqlı dəstə ağır forkliftin traversində, konteyner terminalı | Logistika |
+| 112 | boru-destesi-travers-demiryol-rulonlar | Dəstə traversdə, fonda dəmiryol + polad rulonlar | Multimodal |
+| 113 | goy-qapaqli-borular-ot-meydanca-2024 | Göy qapaqlı boru yığını (02.07.2024) | Məhsul kadrı |
 
 ## Qeydlər
 - **Loqo variantları:** tortda tünd boz/firuzəyi, formada ağ, kataloqda tünd göy/açıq göy. Hansının rəsmi olduğunu soruş.
@@ -114,3 +127,4 @@
 - **Konkret məhsul/brend kadrları:** CP CPS 900-175 (06), CP CPM 15 (68), CP CPA 20 (69), TRITORC TBL-14 (66), ESAB (67), kriogen sistemlər (70–75).
 - **Loqo tarixi:** köhnə loqo (83, 5 il) → yeni dairəvi loqo (03, 7 il). Videoda 'inkişaf' səhnəsi üçün istifadə oluna bilər.
 - 99 = 24-ün dublikatı, silindi.
+- 6-cı partiyada 7 şəkil əvvəlkilərin təkrarı idi (avtomatik müqayisə ilə tapıldı), əlavə edilmədi.
