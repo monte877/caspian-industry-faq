@@ -4,6 +4,8 @@
 > Hər tapşırıqdan sonra bu faylı yenilə, commit et və push et.
 
 ## Növbəti addım
+- **19 real şirkət fotosu alındı** → `mehsullar/fotolar/FOTOLAR.md`. JPG-lər repoda YOXDUR (repo publikdir) —
+  istifadəçidən soruş: repo private edilsin, yoxsa fotolar başqa yerdə saxlanılsın? Sessiya bitsə fotolar itir!
 - **Kataloq alındı və köçürüldü** → `mehsullar/katalog/KATALOQ.md`. İstifadəçidən soruşulacaq:
   1) Hansı məhsul(lar) üçün ilk video? 2) Orijinal loqo faylı (SVG/PNG).
 - İstifadəçi əlavə məhsul göndərsə: `mehsullar/<ad>/info.md` şablonu + orijinal fotolar.
@@ -32,6 +34,8 @@
   Videoda BP adı istifadə edilmədi (üçüncü tərəf brendi) — istifadəçi təsdiq etməlidir.
 
 - 2026-11-12 — İngiliscə məhsul kataloqu (26 s.) alındı, bütün məhsullar `KATALOQ.md`-yə köçürüldü; loqo və telefon (+994 51 206 41 45) qeyd edildi.
+
+- 2026-11-12 — 19 real foto (komanda, Washpipe, inspeksiya, CP CPS 900-175, logistika, Baku Energy Week 2026, 7 il yubiley).
 
 ## İstifadəçi haqqında qeydlər
 - Azərbaycan dilində yazır, telefondan istifadə edir. Qısa, sadə izah sevir.
