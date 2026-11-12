@@ -4,9 +4,16 @@
 > Hər tapşırıqdan sonra bu faylı yenilə, commit et və push et.
 
 ## Növbəti addım
+- **Film brifi (istifadəçi 2026-11-12 22:45-də təsdiqlədi) — BUNA GÖRƏ İŞLƏ:**
+  - Yalnız **korporativ film** (16:9, ~1:54). Reels yox.
+  - Səs: **pulsuz qaralama** (`seslendirme` skill-i, edge-tts: AZ — Babek/Banu; EN — siyahıdan sakit kişi səsi). ElevenLabs hələlik yox.
+  - Dil: **azərbaycanca + ingiliscə** (iki ayrı MP4). EN mətn: `video/caspian-promo/VOICEOVER-EN.md`; EN altyazı və ekran yazıları da lazımdır.
+  - **AI fonlarla başla** (Higgsfield, `ai-prompts.md`); real məhsul fotoları sonra əlavə olunacaq (istifadəçi yenidən göndərməlidir).
+  - Gözlənti: "nəfəs kəsici, baxanın ağzı açıq qalsın" — kinematik kadrlar, güclü musiqi, dəqiq sinxron.
+  - İlk addım: Higgsfield qoşulubmu yoxla → 2, 5, 7-ci səhnələrin sınaq kadrları → istifadəçiyə göstər.
 - **3 günlük "möhtəşəm video" planı** (istifadəçi 2026-11-12 22:24-də istədi; Higgsfield 72 saatlıq sınaq, ElevenLabs səs):
   1. **1-ci gün:** istifadəçi Higgsfield sınağını başladıb Claude-a qoşur (`video/caspian-promo/ai-prompts.md`).
-     ElevenLabs-də səs seçib 10 sətri yaradır (`video/caspian-promo/ELEVENLABS.md`). Claude 2, 5, 7-ci səhnələr üçün sınaq kadrları yaradır.
+     Claude `seslendirme` ilə AZ və EN qaralama səsi yaradır (ElevenLabs — yalnız istifadəçi sonra istəsə). Claude 2, 5, 7-ci səhnələr üçün sınaq kadrları yaradır.
   2. **2-ci gün:** qalan AI fonları (hər səhnəyə 2 variant), ən yaxşısını seçmək.
      Səs: `python3 scripts/build-voiceover.py` → `video/audio/voiceover.wav`.
   3. **3-cü gün:** fonları `preview.html`-a qoşmaq → `node scripts/render-promo.js` → `earshot critique` → yekun MP4.
