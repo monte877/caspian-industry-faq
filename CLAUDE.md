@@ -15,9 +15,11 @@ Yazılmayan şey növbəti sessiyada unudulur.
 
 ## Layihə
 - Şirkət: **Caspian Industry MMC** (Bakı, 2019). Sənaye avadanlıqlarının təchizatı, boru inspeksiyası, icarə, Washpipe xidmətləri.
-- Əlaqə: info@caspianindustry.com • caspianindustry.com
+- Əlaqə: info@caspianindustry.com • caspianindustry.com • WhatsApp +994 51 206 41 45
+- Kataloq və bütün məhsullar: `mehsullar/katalog/KATALOQ.md` (5 bölmə A–E). Məhsul videosundan əvvəl onu oxu.
 - Dil: istifadəçi ilə **Azərbaycan dilində** danış. Sayt mətnləri azərbaycanca.
-- Rənglər: tünd göy `#0b2444`, `#071b35` → `#12538a` qradiyent, vurğu `#1266aa`, fon `#edf3f9`.
+- Loqo rəngləri (kataloqdan, təxmini): tünd göy `#0e2054`, orta göy ~`#2f62b0`, açıq göy `#6996d0`. Sayt: `#0b2444`, `#12538a`, `#1266aa`.
+- Loqo: dairəvi "C" + dişli çarx + dalğa. Orijinal fayl hələ yoxdur (kataloqdan aşağı keyfiyyətli kəsik var).
 
 ## Qovluqlar
 | Qovluq | Nə üçün |

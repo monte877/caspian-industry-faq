@@ -4,8 +4,10 @@
 > Hər tapşırıqdan sonra bu faylı yenilə, commit et və push et.
 
 ## Növbəti addım
-- **İstifadəçi öz məhsullarını göndərəcək** (əsasən məhsul haqqında video təqdimatlar hazırlayır).
-  Hər məhsulu `mehsullar/<ad>/` qovluğuna `info.md` şablonu + orijinal fotolarla yaz; çatışmayan məlumatı soruş.
+- **Kataloq alındı və köçürüldü** → `mehsullar/katalog/KATALOQ.md`. İstifadəçidən soruşulacaq:
+  1) Chicago Pneumatic və ADALIT üzrə diler/distribyutor statusu var? (videoda brend istifadəsi buna bağlıdır)
+  2) Hansı məhsul(lar) üçün ilk video? 3) Orijinal loqo faylı (SVG/PNG) və məhsul fotoları.
+- İstifadəçi əlavə məhsul göndərsə: `mehsullar/<ad>/info.md` şablonu + orijinal fotolar.
 - **Korporativ film** (`video/caspian-promo/`): istifadəçidən gözlənilir →
   1) orijinal loqo (`assets/logo.*`), 2) 6 məhsul fotosu, 3) səsləndirmə faylı (`VOICEOVER.md`-yə görə), 4) istəyə görə musiqi.
   Gələn kimi: fayllari yerləşdir → `node scripts/render-promo.js` → yoxla → istifadəçiyə göndər.
@@ -29,6 +31,8 @@
 
 - 2026-11-12 — Korporativ film: 10 səhnəli storyboard, interaktiv preview (artifact), render skripti, qaralama MP4.
   Videoda BP adı istifadə edilmədi (üçüncü tərəf brendi) — istifadəçi təsdiq etməlidir.
+
+- 2026-11-12 — İngiliscə məhsul kataloqu (26 s.) alındı, bütün məhsullar `KATALOQ.md`-yə köçürüldü; loqo və telefon (+994 51 206 41 45) qeyd edildi.
 
 ## İstifadəçi haqqında qeydlər
 - Azərbaycan dilində yazır, telefondan istifadə edir. Qısa, sadə izah sevir.
