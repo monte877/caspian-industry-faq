@@ -17,6 +17,7 @@
 - 2026-11-12 — Blender 4.0, Inkscape 1.2, FFmpeg 6.1, Reveal.js 5.1 quraşdırıldı və yoxlandı.
   Yeni sessiyada yoxdursa: `bash scripts/setup-tools.sh`.
 - 2026-11-12 — `CLAUDE.md`, qovluqlar, bu yaddaş sistemi quruldu. PR #1 açıldı.
+- 2026-11-12 — PR #1 istifadəçi tərəfindən `main`-ə birləşdirildi. Yaddaş artıq yeni sessiyalarda yüklənir.
 
 ## İstifadəçi haqqında qeydlər
 - Azərbaycan dilində yazır, telefondan istifadə edir. Qısa, sadə izah sevir.
