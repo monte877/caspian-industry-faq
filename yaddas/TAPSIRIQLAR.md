@@ -4,6 +4,17 @@
 > Hər tapşırıqdan sonra bu faylı yenilə, commit et və push et.
 
 ## Növbəti addım
+- **TREYLER v3 (2026-11-13) — CARİ İŞ BUDUR.** İstifadəçi film v2-ni bəyənmədi ("tünd və boğuq, yavaş, səssiz, təqdimat kimidir") və
+  **real videolardan sürətli treyler** seçdi; musiqini Claude kodla yaratdı. Nəticə: `video/output/caspian-treyler-az.mp4`
+  (66 san, 1080p, 31 MB, −14 LUFS), istifadəçiyə göndərildi, **rəyi gözlənilir**. EN versiya hələ render edilməyib (`--lang en` hazırdır).
+  - Kod: `scripts/trailer/timeline.py` (kadrlar, yazılar AZ/EN, zərbə anları, 120 BPM), `music.py` (musiqi, numpy/scipy),
+    `render.py` (montaj: PIL + ffmpeg; `--shots 3,9,17` yoxlama kadrları verir).
+  - Mənbələr repoda YOXDUR: `video/src/vid/WAxxxx.mp4` (18 video) və `video/src/img/WAxxxx.jpg` (13 foto) — Drive qovluğundan
+    `download_file_content` ilə endir, fayl adındakı `WA` nömrəsi ilə adlandır. 10 MB-dan böyük 3 video (WA0699, 0703, 0704) endirilmir.
+  - Yenidən yığmaq: `python3 scripts/trailer/music.py && python3 scripts/trailer/render.py --lang az`, sonra crf 24 ilə sıx.
+  - Üslub: parlaq rəng, iri ağ yazı + narıncı nöqtə, kino zolaqları, zərbələrdə ağ parıltı, final açıq fonda loqo.
+  - Köhnə `preview.html` filmi (v2) saxlanılır, amma istifadəçi onu bəyənmədi — ona qayıtma.
+  - Yeni connector-lar göründü (ElevenLabs creative, Canva, Adobe). ElevenLabs səsi kredit xərcləyir — yalnız istifadəçi istəsə.
 - **Film v2 (2026-11-12 23:30) — real foto fonları ilə:** `preview.html`-a `setBg(səhnə, url)` əlavə edildi (Ken Burns hərəkəti + göy ton).
   `render-promo.js` fotoları `mehsullar/fotolar/film-bg-<səhnə>.jpg` və `film-product-N.jpg`-dən götürür (repoya yazılmır, hər sessiyada Drive-dan endir).
   Seçim (Drive fayl adı → səhnə): WA0047 → directions, products · WA0415 → inspection · WA0404 → rental · WA0588 → washpipe ·
