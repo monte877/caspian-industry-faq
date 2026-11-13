@@ -4,6 +4,18 @@
 > Hər tapşırıqdan sonra bu faylı yenilə, commit et və push et.
 
 ## Növbəti addım
+- **ƏSAS VİDEO = 5:17-lik təqdimat filmi (2026-11-13 09:00) — CARİ İŞ BUDUR.** İstifadəçi öz hazır videosunu göndərdi
+  (`1000140435.mp4`, 1920×1080, 25 fps, 317 san: dəniz/loqo girişi → Mündəricat → 5 bölmə → "Təşəkkür edirik" maskotu; krem fon,
+  göy bölmə kartları, narıncı nöqtə, mono etiketlər). İstəyi: **onu vizual olaraq daha "super" etmək; səsə toxunma, yalnız görüntü.**
+  - Referanslar (recent.design və TikTok skrinşotları): dərinlikdə axan kartlar + ön planda bulanıqlıq (Deimos "Design Zeitgeist"),
+    asılqanda sürüşən məhsul cərgəsi (wearebrand.io), toxunula bilən 3D düymələr, pazl kimi yığılan şəkil.
+  - İstifadəçi 7 təmiz məhsul şəkli verdi (şəffaf fonlu PNG): mobil/vintli/porşenli kompressor (Chicago Pneumatic), paslanmayan boru,
+    mikroskop, sürgülü klapan, avtomat açar → `video/src/prod/` (repoda yoxdur).
+  - **Sınaq səhnəsi göndərildi:** `video/output/karusel-sinaq.mp4` (11 san, səssiz) — `scripts/trailer/carousel.html` +
+    `render_html.py` (Playwright ilə kadr-kadr). **Rəy gözlənilir.** Bəyənsə: bu üslubda səhnələri 5:17-lik videoya yerləşdir.
+  - **Məhdudiyyət:** videonun mənbə layihəsi məndə yoxdur, yalnız MP4 var → mövcud səhnələrin içini dəyişə bilmirəm, yalnız
+    səhnə əvəz edə/əlavə edə və kəsə bilirəm. İstifadəçidən mənbəni soruşdum (hansı proqram/kim hazırlayıb).
+  - Treyler v3 (aşağıda) haqqında rəy gəlmədi; istifadəçi diqqəti bu videoya keçirdi.
 - **TREYLER v3 (2026-11-13) — CARİ İŞ BUDUR.** İstifadəçi film v2-ni bəyənmədi ("tünd və boğuq, yavaş, səssiz, təqdimat kimidir") və
   **real videolardan sürətli treyler** seçdi; musiqini Claude kodla yaratdı. Nəticə: `video/output/caspian-treyler-az.mp4`
   (66 san, 1080p, 31 MB, −14 LUFS), istifadəçiyə göndərildi, **rəyi gözlənilir**. EN versiya hələ render edilməyib (`--lang en` hazırdır).
