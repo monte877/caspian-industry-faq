@@ -56,7 +56,7 @@ const SCH=`<svg class="a" width="1080" height="1920" viewBox="0 0 1080 1920" sty
 const REQ=`<div class="card req"><b>TEXNİKİ SORĞU</b><div><span>Məhsul</span><i></i></div><div><span>Texniki tələb</span><i></i></div><div><span>Miqdar</span><i></i></div><div><span>Çatdırılma</span><i style="flex:.6"></i></div></div>`;
 
 // ───── 1 · Bir detal
-$('s1').innerHTML=SCH+`<div class="a ctr h" id="a1" style="top:150px;font-size:110px">Bir detal<span style="color:#51a4eb">.</span></div>
+$('s1').innerHTML=SCH+`<div class="a" id="a0" style="left:0;right:0;top:0;height:560px;background:linear-gradient(180deg,#04264f 0,#04264f 62%,rgba(4,38,79,0) 100%)"></div><div class="a ctr h" id="a1" style="top:150px;font-size:110px">Bir detal<span style="color:#51a4eb">.</span></div>
  <div class="a ctr h" id="a2" style="top:280px;font-size:84px;color:#c9d2dc">Böyük məsuliyyət<span style="color:#51a4eb">.</span></div>
  <div class="a" id="a3" style="left:180px;top:1130px">${REQ}</div>`;
 function schem(root,lit,gap,sc,ty,glow){const s=root.querySelector('svg');
@@ -65,7 +65,7 @@ function schem(root,lit,gap,sc,ty,glow){const s=root.querySelector('svg');
   s.style.filter=`drop-shadow(0 0 ${8+26*glow}px rgba(81,164,235,${.55+.45*glow}))`; return s;}
 function s1(lt){const z=io((lt-8)/3.5), s=schem($('s1'),i=>eo((lt-.6-i*.36)/1.3),0,1+1.25*z,140-290*z,0);
   const gp=s.querySelector('.gp'); gp.style.opacity=cl((lt-9.5)/1)*(.55+.45*Math.sin(lt*4));
-  rise($('a1'),lt,4.2,.8); rise($('a2'),lt,6.4,.8); const o=1-cl((lt-12.2)/.8); $('a1').style.opacity*=o; $('a2').style.opacity*=o;
+  $('a0').style.opacity=cl((lt-3.8)/.8)*(1-cl((lt-12.2)/.8)); rise($('a1'),lt,4.2,.8); rise($('a2'),lt,6.4,.8); const o=1-cl((lt-12.2)/.8); $('a1').style.opacity*=o; $('a2').style.opacity*=o;
   const a=back((lt-13)/.9); show($('a3'),cl((lt-13)/.3),`translateY(${(1-a)*500}px)`); s.style.opacity=1-.55*cl((lt-13)/1);}
 
 // ───── 2 · Tanış olun

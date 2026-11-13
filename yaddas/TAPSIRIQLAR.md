@@ -11,7 +11,7 @@
     (paralel, ~20–30 dəq), sonra ffmpeg concat + music2.wav → `video/output/caspian-film-235.mp4`.
   - Səsləndirmə YOXDUR (edge-tts quraşdırılmır, ElevenLabs kredit istəyir) → mətn subtitr kimi gedir; səs faylı gəlsə səhnə vaxtlarına qoyulur.
   - Maskot istifadə edilməyib (brif icazə verir). Komanda fotosu (uşaq görünən) istifadə edilməyib; iş prosesi fotoları var.
-  - Render fonda başladılıb; bitəndə kadrları yoxla, göndər, rəy al.
+  - **Göndərildi 21:40 (40 MB, −15 LUFS) — RƏY GÖZLƏNİLİR.** Yalnız 1-ci səhnəni yenidən render etmək: `--frm 0 --to 600`, sonra concat-da `_f2a.mp4`-ə `inpoint 20`.
 - **DAYAN (2026-11-13 20:15).** İstifadəçi 66 saniyəlik filmi (v1 və v2) bəyənmədi: "bərbad, heç nə eləmə; 5 dəqiqəlik video bundan min dəfə
   yaxşı idi". **Yeni video işinə özbaşına başlama** — istifadəçi nə istədiyini desin. Kodla çəkilmiş yazı/qrafika filmi onun gözləntisini
   ödəmir: o, öz 5:17-lik videosundakı kimi kinematik kadrlar və "üstündə işlənmiş" hərəkət gözləyir. Ən yaxşı əsas onun öz videosudur.
