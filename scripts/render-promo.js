@@ -12,6 +12,7 @@ const ROOT = path.resolve(__dirname, '..');
 const arg = (n, d) => { const i = process.argv.indexOf('--' + n); return i > -1 ? process.argv[i + 1] : d; };
 const SRC = path.join(ROOT, 'video/caspian-promo/preview.html');
 const OUT = path.resolve(ROOT, arg('out', 'video/output/caspian-promo.mp4'));
+const SHOT = arg('shot', null); // --shot 34,52,66 → yalnız PNG kadrlar (yoxlama üçün)
 const find = (dir, base, exts) => exts.map(e => path.join(ROOT, dir, base + '.' + e)).find(f => fs.existsSync(f));
 const mime = f => ({ png: 'image/png', jpg: 'image/jpeg', jpeg: 'image/jpeg', webp: 'image/webp', svg: 'image/svg+xml' })[path.extname(f).slice(1).toLowerCase()];
 const dataUri = f => `data:${mime(f)};base64,${fs.readFileSync(f).toString('base64')}`;
@@ -25,6 +26,7 @@ const dataUri = f => `data:${mime(f)};base64,${fs.readFileSync(f).toString('base
   const fps = tl.fps, from = +arg('from', 0), to = Math.min(+arg('to', tl.duration), tl.duration);
   const frames = Math.round((to - from) * fps);
 
+  fs.mkdirSync(path.dirname(OUT), { recursive: true });
   const browser = await chromium.launch();
   const p = await browser.newPage({ viewport: { width: tl.width, height: tl.height } });
   const errors = []; p.on('pageerror', e => errors.push(e.message));
@@ -34,11 +36,15 @@ const dataUri = f => `data:${mime(f)};base64,${fs.readFileSync(f).toString('base
   const logo = find('video/caspian-promo/assets', 'logo', ['svg', 'png', 'webp']);
   if (logo) { await p.evaluate(u => window.setLogo(u), dataUri(logo)); console.log('Loqo:', path.relative(ROOT, logo)); }
   for (let i = 1; i <= 6; i++) { const f = find('video/caspian-promo/assets', 'product-' + i, ['png', 'jpg', 'jpeg', 'webp']); if (f) { await p.evaluate(([n, u]) => window.setProduct(n, u), [i - 1, dataUri(f)]); console.log('Məhsul', i, path.relative(ROOT, f)); } }
+  // Real fotolar (repoya yazılmır): mehsullar/fotolar/film-bg-<səhnə>.jpg və film-product-N.jpg
+  for (const s of tl.scenes) { const f = find('mehsullar/fotolar', 'film-bg-' + s.id, ['jpg', 'jpeg', 'png', 'webp']); if (f) { await p.evaluate(([id, u]) => window.setBg(id, u), [s.id, dataUri(f)]); console.log('Fon', s.id); } }
+  for (let i = 1; i <= 6; i++) { const f = find('mehsullar/fotolar', 'film-product-' + i, ['jpg', 'jpeg', 'png', 'webp']); if (f) { await p.evaluate(([n, u]) => window.setProduct(n, u), [i - 1, dataUri(f)]); console.log('Məhsul (real)', i); } }
+  await p.evaluate(() => Promise.all([...document.images].map(im => im.decode().catch(() => {}))));
   await p.waitForTimeout(300);
 
+  if (SHOT) { for (const s of SHOT.split(',')) { await p.evaluate(t => window.seek(t), +s); await p.screenshot({ path: path.join(path.dirname(OUT), `kadr-${s}.jpg`), type: 'jpeg', quality: 80 }); } await browser.close(); console.log('Kadrlar hazır'); return; }
   const vo = find('video/audio', 'voiceover', ['wav', 'mp3', 'm4a']);
   const music = find('video/audio', 'music', ['wav', 'mp3', 'm4a']);
-  fs.mkdirSync(path.dirname(OUT), { recursive: true });
   const a = ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'mjpeg', '-i', '-'];
   let filter = null, maps = ['-map', '0:v'];
   if (vo) { a.push('-ss', String(from), '-i', vo); }

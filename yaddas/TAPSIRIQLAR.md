@@ -4,6 +4,45 @@
 > Hər tapşırıqdan sonra bu faylı yenilə, commit et və push et.
 
 ## Növbəti addım
+- **ƏSAS VİDEO = 5:17-lik təqdimat filmi (2026-11-13 09:00) — CARİ İŞ BUDUR.** İstifadəçi öz hazır videosunu göndərdi
+  (`1000140435.mp4`, 1920×1080, 25 fps, 317 san: dəniz/loqo girişi → Mündəricat → 5 bölmə → "Təşəkkür edirik" maskotu; krem fon,
+  göy bölmə kartları, narıncı nöqtə, mono etiketlər). İstəyi: **onu vizual olaraq daha "super" etmək; səsə toxunma, yalnız görüntü.**
+  - Referanslar (recent.design və TikTok skrinşotları): dərinlikdə axan kartlar + ön planda bulanıqlıq (Deimos "Design Zeitgeist"),
+    asılqanda sürüşən məhsul cərgəsi (wearebrand.io), toxunula bilən 3D düymələr, pazl kimi yığılan şəkil.
+  - İstifadəçi 7 təmiz məhsul şəkli verdi (şəffaf fonlu PNG): mobil/vintli/porşenli kompressor (Chicago Pneumatic), paslanmayan boru,
+    mikroskop, sürgülü klapan, avtomat açar → `video/src/prod/` (repoda yoxdur).
+  - **Sınaq səhnəsi göndərildi:** `video/output/karusel-sinaq.mp4` (11 san, səssiz) — `scripts/trailer/carousel.html` +
+    `render_html.py` (Playwright ilə kadr-kadr). **Rəy gözlənilir.** Bəyənsə: bu üslubda səhnələri 5:17-lik videoya yerləşdir.
+  - **Məhdudiyyət:** videonun mənbə layihəsi məndə yoxdur, yalnız MP4 var → mövcud səhnələrin içini dəyişə bilmirəm, yalnız
+    səhnə əvəz edə/əlavə edə və kəsə bilirəm. İstifadəçidən mənbəni soruşdum (hansı proqram/kim hazırlayıb).
+  - Treyler v3 (aşağıda) haqqında rəy gəlmədi; istifadəçi diqqəti bu videoya keçirdi.
+- **TREYLER v3 (2026-11-13) — CARİ İŞ BUDUR.** İstifadəçi film v2-ni bəyənmədi ("tünd və boğuq, yavaş, səssiz, təqdimat kimidir") və
+  **real videolardan sürətli treyler** seçdi; musiqini Claude kodla yaratdı. Nəticə: `video/output/caspian-treyler-az.mp4`
+  (66 san, 1080p, 31 MB, −14 LUFS), istifadəçiyə göndərildi, **rəyi gözlənilir**. EN versiya hələ render edilməyib (`--lang en` hazırdır).
+  - Kod: `scripts/trailer/timeline.py` (kadrlar, yazılar AZ/EN, zərbə anları, 120 BPM), `music.py` (musiqi, numpy/scipy),
+    `render.py` (montaj: PIL + ffmpeg; `--shots 3,9,17` yoxlama kadrları verir).
+  - Mənbələr repoda YOXDUR: `video/src/vid/WAxxxx.mp4` (18 video) və `video/src/img/WAxxxx.jpg` (13 foto) — Drive qovluğundan
+    `download_file_content` ilə endir, fayl adındakı `WA` nömrəsi ilə adlandır. 10 MB-dan böyük 3 video (WA0699, 0703, 0704) endirilmir.
+  - Yenidən yığmaq: `python3 scripts/trailer/music.py && python3 scripts/trailer/render.py --lang az`, sonra crf 24 ilə sıx.
+  - Üslub: parlaq rəng, iri ağ yazı + narıncı nöqtə, kino zolaqları, zərbələrdə ağ parıltı, final açıq fonda loqo.
+  - Köhnə `preview.html` filmi (v2) saxlanılır, amma istifadəçi onu bəyənmədi — ona qayıtma.
+  - Yeni connector-lar göründü (ElevenLabs creative, Canva, Adobe). ElevenLabs səsi kredit xərcləyir — yalnız istifadəçi istəsə.
+- **Film v2 (2026-11-12 23:30) — real foto fonları ilə:** `preview.html`-a `setBg(səhnə, url)` əlavə edildi (Ken Burns hərəkəti + göy ton).
+  `render-promo.js` fotoları `mehsullar/fotolar/film-bg-<səhnə>.jpg` və `film-product-N.jpg`-dən götürür (repoya yazılmır, hər sessiyada Drive-dan endir).
+  Seçim (Drive fayl adı → səhnə): WA0047 → directions, products · WA0415 → inspection · WA0404 → rental · WA0588 → washpipe ·
+  WA0553 → sectors · WA0609 → process · WA0630 → product-4 (borular). Yoxlama kadrları: `node scripts/render-promo.js --shot 52,78`.
+  Drive qovluğundakı fotolar əsasən logistika/boru çatdırılmasıdır; komanda, Washpipe aləti, kompressor fotoları orada görünmədi (yalnız 13-ü baxıldı).
+  **Hələ yoxdur:** səs (bu sessiyada paket yükləmək bağlı idi → edge-tts işləmədi), musiqi, EN versiya. İstifadəçi v2-yə baxıb rəy verəcək.
+- **FOTOLAR GOOGLE DRIVE-DADIR (2026-11-12 23:20):** qovluq `Caspian fotolar`, ID `1K4xn1pxikaPxtFEKLAO03C8ajrpUnfB9`, 100+ JPG (WhatsApp adları `IMG-…-WA….jpg`).
+  Siyahı: `mcp__Google_Drive__search_files` (`parentId = '<ID>'`); fayl: `mcp__Google_Drive__download_file_content` (şəkli göstərir və diskə yazır).
+  İstifadəçidən fotoları bir daha İSTƏMƏ. Repo publik qalır, fotolar repoya yazılmır.
+  **Higgsfield sınağı açılmadı → film Higgsfield-siz qurulur:** real fotolar (kinematik hərəkət) + hərəkətli qrafika + qaralama səs.
+  Növbəti iş: ən yaxşı 15–20 fotonu seç (`mehsullar/fotolar/FOTOLAR.md` təsvirləri ilə tutuşdur) → `preview.html`-a qoş → render → istifadəçiyə göstər.
+- **Higgsfield vəziyyəti (2026-11-12 22:55):** connector qoşulub və alətlər işləyir (`mcp__Higgsfield__*`), AMMA hesab
+  **free plandadır, 0 kredit, limitsiz sınaq aktiv deyil** → hələ heç bir kadr yaradılmayıb. Alət yalnız ödənişli planlar təklif etdi.
+  İstifadəçi sınağı higgsfield.ai/mcp-də eyni hesabla başlatmalıdır. Sessiya əvvəlində `balance` və
+  `models_explore(action:list, type:video, unlim:true)` ilə yoxla; aktivdirsə 2, 5, 7-ci səhnələri `generate_video_batch` ilə yarat
+  (`use_unlim: true`, 16:9). İstifadəçi razılıq vermədən kredit/pul xərcləmə.
 - **Film brifi (istifadəçi 2026-11-12 22:45-də təsdiqlədi) — BUNA GÖRƏ İŞLƏ:**
   - Yalnız **korporativ film** (16:9, ~1:54). Reels yox.
   - Səs: **pulsuz qaralama** (`seslendirme` skill-i, edge-tts: AZ — Babek/Banu; EN — siyahıdan sakit kişi səsi). ElevenLabs hələlik yox.
