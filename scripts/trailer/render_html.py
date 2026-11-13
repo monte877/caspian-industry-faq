@@ -16,13 +16,17 @@ ap.add_argument('html', nargs='?', default='scripts/trailer/carousel.html')
 ap.add_argument('--out', default='video/output/karusel-sinaq.mp4')
 ap.add_argument('--fps', type=int, default=30)
 ap.add_argument('--shots')
+ap.add_argument('--w', type=int, default=1920)
+ap.add_argument('--h', type=int, default=1080)
+ap.add_argument('--frm', type=int, default=0, help='ilk kadr')
+ap.add_argument('--to', type=int, default=0, help='son kadr (daxil deyil); 0 = sona qədər')
 ap.add_argument('--query', default='', help="məs. 'dur=34.3&stops=7'")
 a = ap.parse_args()
 out = ROOT / a.out
 out.parent.mkdir(parents=True, exist_ok=True)
 with sync_playwright() as pw:
     b = pw.chromium.launch()
-    p = b.new_page(viewport={'width': 1920, 'height': 1080})
+    p = b.new_page(viewport={'width': a.w, 'height': a.h})
     p.goto((ROOT / a.html).as_uri() + ('?' + a.query if a.query else ''))
     p.evaluate('Promise.all([...document.images].map(i => i.decode().catch(() => {}))).then(() => document.fonts.ready)')
     dur = p.evaluate('window.DURATION')
@@ -32,11 +36,11 @@ with sync_playwright() as pw:
             p.screenshot(path=str(out.parent / f'{pathlib.Path(a.html).stem}-{s}.jpg'), type='jpeg', quality=85)
         print('kadrlar hazır')
     else:
-        n = int(dur * a.fps)
+        n = a.to or int(round(dur * a.fps))
         enc = subprocess.Popen(['ffmpeg', '-v', 'error', '-y', '-f', 'image2pipe', '-framerate', str(a.fps), '-c:v', 'mjpeg', '-i', '-',
                                 '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20', '-pix_fmt', 'yuv420p', '-movflags', '+faststart',
                                 str(out)], stdin=subprocess.PIPE)
-        for i in range(n):
+        for i in range(a.frm, n):
             p.evaluate('t => window.seek(t)', i / a.fps)
             enc.stdin.write(p.screenshot(type='jpeg', quality=95))
         enc.stdin.close()

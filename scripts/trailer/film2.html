@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="az">
+<meta charset="utf-8">
+<title>Caspian Industry — Bir detaldan böyük nəticəyə</title>
+<!-- 3:55 (235 san), 9:16 (1080×1920). 11 səhnə, hamısı bu faylda; window.seek(t) ilə idarə olunur. Səsləndirmə yoxdur: mətn subtitr kimi gedir.
+     Render (hissə-hissə, paralel):  python3 scripts/trailer/render_html.py scripts/trailer/film2.html --w 1080 --h 1920 --fps 30 --frm 0 --to 3525 --out video/output/_f2a.mp4
+     Musiqi: python3 scripts/trailer/film2_music.py → video/src/music2.wav.  Mənbələr (repoda yoxdur): video/src/{img,ref,prod,logo}/ -->
+<style>
+  *{box-sizing:border-box;margin:0}
+  html,body{width:1080px;height:1920px;overflow:hidden;background:#011c3d;font-family:Inter,'Inter Display',sans-serif;color:#011c3d}
+  .sc{position:absolute;inset:0;overflow:hidden;display:none}
+  .nv{background:radial-gradient(120% 80% at 50% 30%,#07305f 0,#011c3d 60%,#01142c 100%);color:#fff}
+  .lt{background:linear-gradient(180deg,#fff 0,#eef3f9 100%)}
+  .a{position:absolute}
+  .mono{font:600 26px/1 ui-monospace,'DejaVu Sans Mono',monospace;letter-spacing:.2em;color:#025da5}
+  .nv .mono{color:#51a4eb}
+  .h{font:800 84px/1.02 'Inter Display',Inter,sans-serif;letter-spacing:-.035em}
+  .ctr{left:0;right:0;text-align:center}
+  svg .p,svg .g{fill:none;stroke:#51a4eb;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1}
+  svg .f{fill:#042650}
+  .card{background:#fff;border-radius:34px;box-shadow:0 40px 80px -30px rgba(1,28,61,.45),0 6px 16px rgba(1,28,61,.08)}
+  .req{width:720px;padding:44px 48px 40px;color:#011c3d}
+  .req b{display:block;font:600 24px/1 ui-monospace,'DejaVu Sans Mono',monospace;letter-spacing:.2em;color:#025da5;margin-bottom:30px}
+  .req div{display:flex;align-items:center;gap:24px;font:600 30px/1 Inter;padding:20px 0;border-top:2px solid #e3eaf2}
+  .req div span{width:210px;color:#5b6b80}.req div i{flex:1;height:16px;border-radius:8px;background:linear-gradient(90deg,#c9d2dc,#e9eef4)}
+  .tile{position:absolute;border-radius:22px;background-size:cover;background-position:center;box-shadow:0 18px 36px -16px rgba(1,28,61,.5)}
+  .chip{display:inline-block;padding:26px 40px;border-radius:999px;font:700 44px/1 Inter;border:3px solid #c9d2dc;color:#5b6b80;background:#fff}
+  #sub{position:absolute;left:70px;right:70px;bottom:120px;display:flex;justify-content:center;z-index:50}
+  #sub span{background:rgba(1,20,44,.88);color:#fff;font:600 37px/1.28 Inter;padding:18px 30px 20px;border-radius:20px;text-align:center;max-width:940px;box-shadow:0 0 0 2px rgba(81,164,235,.25)}
+  #beam{position:absolute;left:0;right:0;height:6px;background:#bfe0ff;box-shadow:0 0 30px 10px rgba(81,164,235,.9),0 0 90px 30px rgba(2,93,165,.7);z-index:40;display:none}
+  #black{position:absolute;inset:0;background:#000;z-index:60;pointer-events:none}
+</style>
+<div id="st"></div><div id="beam"></div><div id="sub"><span id="subt"></span></div><div id="black"></div>
+<script>
+window.DURATION=235;
+const $=id=>document.getElementById(id), cl=u=>Math.max(0,Math.min(1,u)), eo=u=>1-Math.pow(1-cl(u),3), eo5=u=>1-Math.pow(1-cl(u),5),
+  io=u=>{u=cl(u);return u<.5?4*u*u*u:1-Math.pow(-2*u+2,3)/2;}, back=u=>{u=cl(u);const c=1.4;return 1+(c+1)*Math.pow(u-1,3)+c*Math.pow(u-1,2);},
+  hs=(a,b)=>{const x=Math.sin(a*127.1+b*311.7)*43758.5453;return x-Math.floor(x);}, S='../../video/src/';
+const show=(e,o,tr)=>{e.style.opacity=o;if(tr!==undefined)e.style.transform=tr;};
+const rise=(e,lt,t0,d=.7,dy=50)=>{const a=eo((lt-t0)/d);show(e,a,`translateY(${(1-a)*dy}px)`);};
+// [id, başlanğıc, son, sinif]
+const T=[['s1',0,20,'nv'],['s2',20,42,'lt'],['s3',42,68,'lt'],['s4',68,91,'nv'],['s5',91,108,'lt'],['s6',108,126,'nv'],['s7',126,145,'lt'],
+         ['s8',145,167,'nv'],['s9',167,193,'lt'],['s10',193,214,'lt'],['s11',214,235,'nv']];
+T.forEach(s=>$('st').insertAdjacentHTML('beforeend',`<div class="sc ${s[3]}" id="${s[0]}"></div>`));
+const SCH=`<svg class="a" width="1080" height="1920" viewBox="0 0 1080 1920" style="left:0;top:0;transform-origin:540px 1000px">
+ <rect class="p f" pathLength="1" x="120" y="420" width="200" height="360" rx="24"/><path class="p" pathLength="1" d="M220 420V260H830V300"/>
+ <circle class="p f" pathLength="1" cx="540" cy="260" r="24"/><rect class="p f" pathLength="1" x="760" y="300" width="140" height="560" rx="70"/>
+ <path class="p" pathLength="1" d="M320 640H470"/><circle class="p f" pathLength="1" cx="540" cy="640" r="70"/><path class="p" pathLength="1" d="M490 640l25-40 25 80 25-80 25 40"/>
+ <path class="p" pathLength="1" d="M610 640H760"/><path class="p" pathLength="1" d="M220 780V1000H480"/><path class="p f" pathLength="1" d="M330 975L370 1025V975L330 1025Z"/>
+ <path class="p" pathLength="1" d="M480 972V1028"/><path class="p" pathLength="1" d="M600 972V1028"/><path class="p" pathLength="1" d="M600 1000H830V860"/>
+ <circle class="p f" pathLength="1" cx="715" cy="1000" r="44"/><path class="p" pathLength="1" d="M700 978L740 1000 700 1022Z"/>
+ <path class="p" pathLength="1" d="M220 1000V1300H380"/><rect class="p f" pathLength="1" x="380" y="1200" width="320" height="200" rx="100"/>
+ <path class="p" pathLength="1" d="M700 1300H880V860"/><circle class="p f" pathLength="1" cx="300" cy="1300" r="24"/>
+ <path class="g" pathLength="1" d="M480 1000H600" style="stroke:#fff;stroke-width:9"/>
+ <rect class="gp" x="470" y="955" width="140" height="90" rx="18" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="10 10"/></svg>`;
+const REQ=`<div class="card req"><b>TEXNİKİ SORĞU</b><div><span>Məhsul</span><i></i></div><div><span>Texniki tələb</span><i></i></div><div><span>Miqdar</span><i></i></div><div><span>Çatdırılma</span><i style="flex:.6"></i></div></div>`;
+
+// ───── 1 · Bir detal
+$('s1').innerHTML=SCH+`<div class="a ctr h" id="a1" style="top:150px;font-size:110px">Bir detal<span style="color:#51a4eb">.</span></div>
+ <div class="a ctr h" id="a2" style="top:280px;font-size:84px;color:#c9d2dc">Böyük məsuliyyət<span style="color:#51a4eb">.</span></div>
+ <div class="a" id="a3" style="left:180px;top:1130px">${REQ}</div>`;
+function schem(root,lit,gap,sc,ty,glow){const s=root.querySelector('svg');
+  s.querySelectorAll('.p').forEach((e,i)=>{e.style.strokeDashoffset=1-lit(i);e.style.stroke=glow>0?`rgb(${81+174*glow},${164+91*glow},${235+20*glow})`:'#51a4eb';});
+  s.querySelector('.g').style.strokeDashoffset=1-gap; s.style.transform=`translateY(${ty}px) scale(${sc})`;
+  s.style.filter=`drop-shadow(0 0 ${8+26*glow}px rgba(81,164,235,${.55+.45*glow}))`; return s;}
+function s1(lt){const z=io((lt-8)/3.5), s=schem($('s1'),i=>eo((lt-.6-i*.36)/1.3),0,1+1.25*z,140-290*z,0);
+  const gp=s.querySelector('.gp'); gp.style.opacity=cl((lt-9.5)/1)*(.55+.45*Math.sin(lt*4));
+  rise($('a1'),lt,4.2,.8); rise($('a2'),lt,6.4,.8); const o=1-cl((lt-12.2)/.8); $('a1').style.opacity*=o; $('a2').style.opacity*=o;
+  const a=back((lt-13)/.9); show($('a3'),cl((lt-13)/.3),`translateY(${(1-a)*500}px)`); s.style.opacity=1-.55*cl((lt-13)/1);}
+
+// ───── 2 · Tanış olun
+const M2=['img/WA0609','ref/r3a','img/WA0588','ref/r6a','ref/r2a','img/WA0503','ref/r1a','img/WA0553','ref/r4a','img/WA0047','ref/r5a','img/WA0630','img/WA0415','ref/r3b','ref/r6b','ref/r2b'];
+{let h=`<div class="a ctr mono" style="top:110px">TANIŞ OLUN</div><div id="b0" class="a" style="left:0;top:0;width:1080px;height:1920px">`,k=0;
+ for(let r=0;r<5;r++)for(let c=0;c<4;c++){ if((r==1||r==2)&&(c==1||c==2))continue;
+   h+=`<div class="tile" data-k="${k}" style="left:${39+c*254}px;top:${230+r*254}px;width:240px;height:240px;background-image:url(${S}${M2[k]}.jpg)"></div>`;k++;}
+ h+=`</div><div class="a" id="b1" style="left:293px;top:484px;width:494px;height:494px;text-align:center">
+   <img id="b2" src="../../design/logo/caspian-loqo-isare.png" style="width:230px;height:auto;margin-top:16px" alt="">
+   <div id="b3" style="font:900 118px/1 'Inter Display';letter-spacing:-.05em;color:#025da5;margin-top:14px"></div>
+   <div id="b4" style="font:700 38px/1.1 Inter;margin-top:8px"></div></div>`;
+ $('s2').innerHTML=h;}
+const T2=[...document.querySelectorAll('#s2 .tile')];
+function s2(lt){T2.forEach(e=>{const k=+e.dataset.k, d=.4+hs(k,1)*3.6, u=eo5((lt-d)/1.5), q=1-u;
+    show(e,cl((lt-d)/.3),`translate(${((hs(k,2)-.5)*1500*q).toFixed(1)}px,${((hs(k,3)-.5)*1900*q+Math.sin(lt*.7+k)*5*u).toFixed(1)}px) scale(${(1+2.2*q).toFixed(3)}) rotate(${((hs(k,4)-.5)*30*q).toFixed(2)}deg)`);});
+  const a=back((lt-6.6)/.9); show($('b2'),cl((lt-6.6)/.25),`scale(${.5+.5*a})`);
+  const st=lt<15.5?['2019','Bakı',9.6]:['40+','peşəkar əməkdaş',15.5]; $('b3').textContent=st[0]; $('b4').textContent=st[1];
+  const f=eo((lt-st[2])/.6)*(lt<15.5?1-cl((lt-15)/.45):1); show($('b3'),f,`translateY(${(1-eo((lt-st[2])/.6))*30}px)`); $('b4').style.opacity=f;}
+
+// ───── 3 · Ehtiyacdan seçimə
+const C3=[['Metal və sənaye məhsulları',['boru','flans','klapan','qabirgali'],['Paslanmayan boru','Flanş','Sürgülü klapan','Qabırğalı boru']],
+ ['Elektrik və elektronika',['kabel','plc','avtomat','cevirici'],['Güc kabeli','PLC kontroller','Avtomat açar','Tezlik çeviricisi']],
+ ['Sənaye alətləri və xüsusi avadanlıqlar',['fener','lazer','stangen','silindr'],['Sənaye fənəri','Lazer məsafəölçən','Ştangenpərgar','Hidravlik silindr']],
+ ['Laboratoriya avadanlıqları',['mikroskop','terezi','sentrifuqa','skaf'],['Mikroskop','Analitik tərəzi','Sentrifuqa','Çəkiş şkafı']],
+ ['Mexaniki və enerji avadanlıqları',['mobil','vintli','generator','nasos'],['Mobil kompressor','Vintli kompressor','Dizel generator','Mərkəzdənqaçma nasos']]];
+$('s3').innerHTML=`<div class="a ctr mono" style="top:110px">TƏCHİZAT</div><div class="a ctr h" id="c0" style="top:170px">Ehtiyacdan seçimə</div>
+ <div class="a ctr h" id="c5" style="top:170px;color:#025da5">Doğru seçim.<br>Dəqiq təchizat.</div>
+ <div class="a" id="c1" style="left:180px;top:420px">${REQ}</div>
+ <div class="a" id="c2" style="left:0;top:400px;width:1080px;height:1000px;perspective:1700px">${C3.map((c,i)=>`<div class="card a c3" style="left:230px;top:20px;width:620px;height:900px;padding:40px 40px 0">
+   <div class="mono" style="font-size:24px">0${i+1} / 05</div><div style="font:800 48px/1.08 'Inter Display';letter-spacing:-.025em;margin:18px 0 22px;height:106px">${c[0]}</div>
+   <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">${c[1].map((p,j)=>`<div style="background:#eef3f9;border-radius:22px;height:300px;text-align:center;padding-top:18px">
+     <img src="${S}prod/${p}.png" style="height:200px;max-width:230px;object-fit:contain" alt=""><div style="font:600 22px/1.15 Inter;color:#3b4b60;margin-top:12px;padding:0 8px">${c[2][j]}</div></div>`).join('')}</div></div>`).join('')}</div>
+ <div class="a" id="c4" style="left:190px;top:1010px;width:700px;height:470px">
+   <div class="a" style="left:0;top:0;width:300px;height:80px;background:#025da5;border-radius:26px 26px 0 0"></div>
+   <div class="a" style="left:0;top:56px;width:700px;height:414px;background:linear-gradient(180deg,#0a6fc0,#025da5);border-radius:0 30px 30px 30px;box-shadow:0 40px 70px -30px rgba(1,28,61,.6)"></div>
+   <div class="a mono" style="left:44px;top:120px;color:#fff">SİFARİŞ</div><img class="a" src="../../design/logo/caspian-loqo-isare.png" style="right:40px;bottom:36px;width:110px;filter:brightness(0) invert(1);opacity:.9" alt=""></div>`;
+const K3=[...document.querySelectorAll('.c3')];
+function s3(lt){ const fold=io((lt-21.8)/1.6);
+  const a0=back((lt-.4)/.8), o1=1-cl((lt-2.6)/.6); show($('c1'),cl((lt-.4)/.3)*o1,`translateY(${(1-a0)*200}px) scale(${1-.25*cl((lt-2.6)/.6)})`);
+  let act=0; for(let i=1;i<5;i++) act+=io((lt-(3.4+i*3.65)+.5)/1); // 0..4
+  K3.forEach((e,i)=>{const inn=eo((lt-2.6-i*.12)/.9), d=(i-act)*(1-fold), ad=Math.abs(d);
+    show(e,cl((lt-2.6-i*.12)/.3)*(1-.9*cl((lt-23.6)/.5)),`translateX(${(d*250).toFixed(1)}px) translateY(${((1-inn)*-260+fold*(430+i*6)).toFixed(1)}px) translateZ(${(-ad*330).toFixed(1)}px) rotateY(${(-d*30).toFixed(2)}deg) scale(${(1-.45*fold).toFixed(3)})`);
+    e.style.zIndex=100-Math.round(ad*10)-(fold>0?i:0); e.style.filter=`brightness(${(1-.12*Math.min(ad,2)).toFixed(3)})`;});
+  show($('c0'),eo((lt-.3)/.6)*(1-cl((lt-22)/.5)),''); rise($('c5'),lt,22.6,.7);
+  const f=back((lt-21.4)/.9); show($('c4'),cl((lt-21.4)/.3),`translateY(${(1-f)*600}px)`); $('c4').style.zIndex=200; }
+
+// ───── 4 · Görünməyəni yoxlamaq
+const W4=['Korroziya','Çat','Divar qalınlığı'];
+$('s4').innerHTML=`<div class="a ctr mono" style="top:110px">BORULARIN İNSPEKSİYASI</div><div class="a ctr h" id="d0" style="top:170px">Görünməyəni<br>yoxlamaq</div>
+ <div class="a" id="d1" style="left:60px;top:470px;width:960px;height:420px;border-radius:36px;background:linear-gradient(180deg,#0a3a70,#052a55);box-shadow:inset 0 0 0 2px rgba(81,164,235,.25);overflow:hidden">
+   <img src="${S}prod/boru.png" style="position:absolute;left:40px;top:50%;width:880px;transform:translateY(-50%)" alt="">
+   <div id="d2" class="a" style="top:0;bottom:0;width:10px;background:#dff0ff;box-shadow:0 0 40px 16px rgba(81,164,235,.9)"></div>
+   <div id="d3" class="a" style="top:0;bottom:0;width:260px;background:linear-gradient(90deg,rgba(81,164,235,0),rgba(81,164,235,.28))"></div></div>
+ <div class="a" style="left:110px;top:960px;width:860px">${W4.map((w,i)=>`<div class="d4" style="display:flex;align-items:center;gap:34px;padding:26px 0;border-top:2px solid rgba(201,210,220,.22)">
+   <div class="rg" style="width:64px;height:64px;border-radius:50%;border:4px solid #51a4eb;display:flex;align-items:center;justify-content:center;font:800 30px/1 Inter;color:#011c3d"></div>
+   <div style="font:800 66px/1 'Inter Display';letter-spacing:-.03em">${w}</div></div>`).join('')}</div>
+ <div class="a ctr h" id="d5" style="top:1400px;font-size:62px;color:#c9d2dc">Dəqiqlik məsuliyyətdən<br>başlayır<span style="color:#51a4eb">.</span></div>`;
+const R4=[...document.querySelectorAll('.d4')];
+function s4(lt){rise($('d0'),lt,.4); show($('d1'),eo((lt-.8)/.8),`scale(${.94+.06*eo((lt-.8)/.8)})`);
+  const ph=(lt-1.6)/4.4, u=ph<0?0:(Math.floor(ph)%2?1-(ph%1):ph%1), x=io(u)*950, dir=Math.floor(Math.max(0,ph))%2;
+  $('d2').style.left=x+'px'; $('d2').style.opacity=cl((lt-1.6)/.4); $('d3').style.left=(dir?x:x-260)+'px'; $('d3').style.transform=dir?'scaleX(-1)':''; $('d3').style.opacity=cl((lt-1.6)/.4);
+  R4.forEach((e,i)=>{const t0=3.6+i*4.6, on=lt>=t0, done=lt>=t0+4.6||(i==2&&lt>=17.4), a=eo((lt-t0)/.6); show(e,.28+.72*a,`translateX(${(1-a)*40}px)`);
+    const r=e.querySelector('.rg'); r.style.background=done?'#51a4eb':'transparent'; r.textContent=done?'✓':''; r.style.boxShadow=on&&!done?`0 0 ${14+10*Math.sin(lt*6)}px rgba(81,164,235,.9)`:'none';});
+  rise($('d5'),lt,17.6,.8);}
+
+// ───── 5 · Lazım olan avadanlıq
+const W5=['Ehtiyac','Seçim','İcarə'];
+$('s5').innerHTML=`<div id="e9" class="a" style="inset:0"><div class="a ctr mono" style="top:110px">AVADANLIQ İCARƏSİ</div><div class="a ctr h" id="e0" style="top:170px">Lazım olan<br>avadanlıq</div>
+ <div class="a" id="e1" style="left:90px;top:440px;width:900px;height:700px;border-radius:50px;background:radial-gradient(80% 70% at 50% 40%,#fff,#e3ebf5)"></div>
+ <img class="a" id="e2" src="${S}prod/mobil.png" style="left:150px;top:480px;width:780px;height:600px;object-fit:contain;filter:drop-shadow(0 50px 40px rgba(1,28,61,.3))" alt="">
+ <div class="a ctr" style="top:1250px;display:flex;justify-content:center;align-items:center;gap:18px">${W5.map((w,i)=>`<div class="chip e5">${w}</div>${i<2?'<div class="e6" style="font:800 40px/1 Inter;color:#c9d2dc">→</div>':''}`).join('')}</div></div>
+ <div class="a" id="e7" style="left:340px;top:700px;width:400px;height:400px;border-radius:50%;background:linear-gradient(145deg,#fff,#dfe8f2);box-shadow:30px 30px 70px rgba(1,28,61,.2),-24px -24px 60px #fff"></div>
+ <div class="a" id="e8" style="left:440px;top:800px;width:200px;height:200px;border-radius:50%;background:#025da5"></div>`;
+const K5=[...document.querySelectorAll('.e5')], A5=[...document.querySelectorAll('.e6')];
+function s5(lt){const pr=cl((lt-.9)/.25)*(1-cl((lt-1.25)/.3)), open=eo((lt-1.5)/.9);
+  show($('e7'),1-cl((lt-1.7)/.5),`scale(${1-.05*pr})`); $('e7').style.boxShadow=`${30-22*pr}px ${30-22*pr}px ${70-40*pr}px rgba(1,28,61,.2),-24px -24px 60px #fff`;
+  show($('e8'),1-cl((lt-2.1)/.5),`scale(${1-.08*pr+open*9})`); $('e8').style.boxShadow=`0 0 ${40+30*Math.sin(lt*5)}px ${12+60*pr}px rgba(81,164,235,${.5+.4*pr})`;
+  $('e9').style.opacity=cl((lt-2)/.6); const a=eo((lt-2.2)/1); $('e2').style.transform=`translateY(${(1-a)*80+Math.sin(lt*1.2)*8}px) scale(${.9+.1*a})`;
+  K5.forEach((e,i)=>{const on=cl((lt-(5+i*3))/.5); e.style.background=`rgba(2,93,165,${on})`; e.style.color=on>.5?'#fff':'#5b6b80'; e.style.borderColor=on>.5?'#025da5':'#c9d2dc'; e.style.transform=`scale(${1+.08*on*(1-cl((lt-(5.5+i*3))/.5))})`;});
+  A5.forEach((e,i)=>e.style.color=lt>6.5+i*3?'#025da5':'#c9d2dc');}
+
+// ───── 6 · Prosesin davamı
+const W6=['Qiymətləndirmə','Alıcıların cəlbi','Hərrac','Logistika'];
+$('s6').innerHTML=`<div class="a ctr mono" style="top:110px">İŞLƏNMİŞ KATALİZATORLAR</div><div class="a ctr h" id="f0" style="top:170px">Prosesin davamı</div>
+ <div class="a ctr" id="f1" style="top:290px;font:500 38px/1.2 Inter;color:#c9d2dc">Emal və hərrac proseslərinin təşkili</div>
+ <div class="a" style="left:176px;top:560px;width:8px;height:810px;background:rgba(201,210,220,.18);border-radius:4px"><div id="f2" style="width:8px;border-radius:4px;background:#51a4eb;box-shadow:0 0 24px 6px rgba(81,164,235,.8)"></div></div>
+ ${W6.map((w,i)=>`<div class="a f3" style="left:120px;top:${500+i*270}px;display:flex;align-items:center;gap:44px"><div class="nd" style="width:120px;height:120px;border-radius:50%;border:5px solid #51a4eb;background:#042650;display:flex;align-items:center;justify-content:center;font:800 44px/1 'Inter Display'">0${i+1}</div>
+   <div style="font:800 74px/1 'Inter Display';letter-spacing:-.03em">${w}</div></div>`).join('')}
+ <div class="a" id="f9" style="inset:0;perspective:2600px;z-index:5"><div id="f8" class="a lt" style="inset:0;transform-origin:0 50%"><div class="a" id="f7" style="inset:0;background:linear-gradient(90deg,rgba(1,28,61,.35),rgba(1,28,61,0) 60%)"></div></div></div>`;
+const N6=[...document.querySelectorAll('.f3')];
+function s6(lt){const fl=io(lt/1.5); $('f8').style.transform=`rotateY(${-104*fl}deg)`; $('f7').style.opacity=fl; $('f9').style.display=fl>=1?'none':'block';
+  rise($('f0'),lt,1); rise($('f1'),lt,1.5); $('f2').style.height=(810*cl((lt-3.2)/9))+'px';
+  N6.forEach((e,i)=>{const t0=3+i*3, a=eo((lt-t0)/.7); show(e,.25+.75*a,`translateX(${(1-a)*50}px)`); const n=e.querySelector('.nd'); n.style.background=lt>=t0?'#025da5':'#042650'; n.style.boxShadow=lt>=t0?`0 0 ${30*(1-cl((lt-t0-.2)/1.2))+10}px rgba(81,164,235,.8)`:'none';});}
+
+// ───── 7 · Sözdən layihəyə
+const SP=['SOCAR Downstream','Paslanmaz polad lövhələr','Boru təchizatı','SalemTube','BP Washpipe','BP OCTG'];
+const P7=[['SOCAR DOWNSTREAM','Kəsici ucluqların təchizatı','3 illik müqavilə','r1a'],['TƏCHİZAT TƏCRÜBƏSİ','Paslanmaz polad lövhələrin təchizatı','','r2a']];
+$('s7').innerHTML=`<div class="a ctr mono" style="top:110px">REAL LAYİHƏLƏR</div><div class="a ctr h" id="g0" style="top:170px">Sözdən layihəyə</div>
+ <div class="a" id="g1" style="left:0;top:470px;width:1080px;height:900px;perspective:1800px"><div id="g2" class="a" style="left:0;top:0;transform-style:preserve-3d">
+  ${SP.map((s,i)=>`<div class="a" style="left:${i*236}px;top:0;width:200px;height:780px;border-radius:14px;background:linear-gradient(90deg,${i%2?'#0a6fc0,#025da5':'#0b3466,#011c3d'});box-shadow:0 30px 50px -20px rgba(1,28,61,.6)">
+   <div style="position:absolute;left:0;right:0;top:40px;height:6px;background:#c9d2dc;opacity:.7"></div><div style="position:absolute;left:0;right:0;bottom:40px;height:6px;background:#c9d2dc;opacity:.7"></div>
+   <div style="position:absolute;left:100px;top:390px;transform:translate(-50%,-50%) rotate(-90deg);white-space:nowrap;font:800 46px/1 'Inter Display';color:#fff;letter-spacing:-.01em">${s}</div></div>`).join('')}</div>
+  <div class="a" style="left:-200px;top:780px;width:1500px;height:18px;background:linear-gradient(180deg,#c9d2dc,#9fb0c2)"></div></div>
+ <div class="a" id="g3" style="left:90px;top:420px;width:900px;height:1060px;perspective:2400px">
+  <div class="card a" id="g4" style="inset:0;overflow:hidden">${P7.map(p=>`<div class="a g6" style="inset:0"><div style="height:600px;background:url(${S}ref/${p[3]}.jpg) center/cover"></div>
+    <div style="padding:44px 50px"><div class="mono" style="font-size:25px">${p[0]}</div><div style="font:800 64px/1.05 'Inter Display';letter-spacing:-.03em;margin-top:20px">${p[1]}</div>
+    ${p[2]?`<div style="display:inline-block;margin-top:30px;background:#025da5;color:#fff;font:700 38px/1 Inter;padding:20px 32px;border-radius:999px">${p[2]}</div>`:''}</div></div>`).join('')}</div>
+  <div class="a" id="g5" style="inset:0;border-radius:34px;background:linear-gradient(135deg,#0b3466,#011c3d);transform-origin:0 50%;box-shadow:0 40px 80px -30px rgba(1,28,61,.6)">
+    <div class="a mono" style="left:60px;top:70px;color:#51a4eb">LAYİHƏ QOVLUĞU</div><div class="a h" style="left:60px;top:130px;color:#fff">SOCAR<br>Downstream</div></div></div>`;
+const G6=[...document.querySelectorAll('.g6')];
+function s7(lt){rise($('g0'),lt,.3); const pan=io(lt/3.6), op=io((lt-3.6)/1);
+  $('g2').style.transform=`translateX(${(260-580*pan)}px) rotateY(${-18+18*pan}deg)`; $('g1').style.opacity=cl(lt/.5)*(1-.8*op); $('g1').style.filter=`blur(${6*op}px)`;
+  const a=back((lt-3.8)/.9); show($('g3'),cl((lt-3.8)/.3),`scale(${.3+.7*a}) translateY(${(1-a)*200}px)`);
+  const cv=io((lt-5)/1.4); $('g5').style.transform=`rotateY(${-118*cv}deg)`; $('g5').style.opacity=1-cl((lt-6.1)/.4);
+  const sw=cl((lt-11.6)/.7); G6[0].style.opacity=1-sw; G6[1].style.opacity=sw; G6[1].style.transform=`translateX(${(1-eo((lt-11.6)/.7))*60}px)`;
+  $('g4').style.transform=`scale(${1+.015*cl((lt-6)/13)})`;}
+
+// ───── 8 · Miqyas
+const P8=['ref/r3a','img/WA0503','ref/r6a','img/WA0630','ref/r3b','img/WA0588','ref/r6b','img/WA0415','ref/r4b'];
+const TRK=`<svg width="170" height="110" viewBox="0 0 170 110" fill="none" stroke="#51a4eb" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"><rect x="4" y="14" width="104" height="60" rx="6"/><path d="M108 34h30l24 22v18h-54z"/><circle cx="34" cy="86" r="12" fill="#011c3d"/><circle cx="70" cy="86" r="12" fill="#011c3d"/><circle cx="136" cy="86" r="12" fill="#011c3d"/></svg>`;
+$('s8').innerHTML=`<div id="h0" class="a" style="inset:0">${[0,1,2,3].map(r=>`<div class="a h1" style="left:0;top:${150+r*400}px;white-space:nowrap">${[...P8,...P8].map((p,i)=>`<div style="display:inline-block;width:500px;height:370px;margin-right:24px;border-radius:26px;background:url(${S}${P8[(i+r*2)%9]}.jpg) center/cover"></div>`).join('')}</div>`).join('')}
+  <div class="a" style="inset:0;background:radial-gradient(70% 45% at 50% 46%,rgba(1,28,61,.96) 30%,rgba(1,28,61,.72) 100%)"></div>
+  <div class="a ctr mono" style="top:560px">TƏCHİZAT HƏCMİ</div><div class="a ctr" id="h2" style="top:620px;font:900 300px/1 'Inter Display';letter-spacing:-.06em;color:#fff"></div>
+  <div class="a ctr" id="h3" style="top:910px;font:900 120px/1 'Inter Display';letter-spacing:-.04em;color:#51a4eb">ton</div>
+  <div class="a ctr" id="h4" style="top:1070px;font:600 44px/1.2 Inter;color:#c9d2dc">Boru və boru birləşdiricilərinin<br>təchizatı</div></div>
+ <div id="h5" class="a nv" style="inset:0"><div class="a" id="h6" style="left:60px;top:150px;width:960px;height:520px;border-radius:36px;background:url(${S}ref/r4a.jpg) center/cover;box-shadow:inset 0 0 0 2px rgba(81,164,235,.3)"></div>
+  <div class="a ctr" style="top:740px;display:flex;justify-content:center;gap:16px">${[0,1,2,3,4].map(()=>`<div class="h7">${TRK}</div>`).join('')}</div>
+  <div class="a ctr" id="h8" style="top:900px;font:900 230px/1 'Inter Display';letter-spacing:-.05em;color:#fff">5 TIR</div>
+  <div class="a ctr" id="h9" style="top:1160px;font:700 52px/1.15 Inter;color:#51a4eb">SalemTube qabırğalı boruları</div>
+  <div class="a ctr" id="h10" style="top:1260px;font:600 42px/1.25 Inter;color:#c9d2dc">Heydər Əliyev adına<br>Neft Emalı Zavodu</div></div>`;
+const R8=[...document.querySelectorAll('.h1')], K8=[...document.querySelectorAll('.h7')];
+function s8(lt){R8.forEach((e,i)=>e.style.transform=`translateX(${(i%2?-1:1)*(lt*46)-(i%2?0:1400)}px)`);
+  $('h2').textContent=Math.round(1000*eo5((lt-.8)/2))+'+'; rise($('h2'),lt,.6,.8,80); rise($('h3'),lt,1.6); rise($('h4'),lt,2.4);
+  const b=cl((lt-10.6)/.8); $('h5').style.opacity=b; $('h5').style.display=b>0?'block':'none'; const l=lt-11;
+  show($('h6'),eo(l/.8),`scale(${.95+.05*eo(l/.8)+.02*cl(l/11)})`); K8.forEach((e,i)=>{const a=eo5((l-1.2-i*.55)/.6); show(e,cl((l-1.2-i*.55)/.15),`translateX(${(1-a)*-300}px)`);});
+  rise($('h8'),l,4.2,.7,60); rise($('h9'),l,5.2); rise($('h10'),l,6);}
+
+// ───── 9 · Uzunmüddətli məsuliyyət
+const P9=[['BP Washpipe','2024–2029 • 5 il','İcarə • İnspeksiya • Təmizləmə • Texniki xidmət','r5a',[2024,2025,2026,2027,2028,2029],'70% 35%'],
+          ['BP OCTG','2026–2031 • 5 il','Boruların inspeksiyası və texniki qiymətləndirilməsi','r6a',[2026,2027,2028,2029,2030,2031],'50% 50%']];
+$('s9').innerHTML=`<div class="a ctr mono" style="top:110px">UZUNMÜDDƏTLİ ƏMƏKDAŞLIQ</div><div class="a ctr h" id="i0" style="top:170px;font-size:76px">Uzunmüddətli məsuliyyət</div>
+ ${P9.map((p,i)=>`<div class="card a i1" style="left:60px;top:${330+i*640}px;width:960px;height:600px;overflow:hidden">
+  <div class="a" style="left:0;top:0;width:330px;bottom:0;background:url(${S}ref/${p[3]}.jpg) ${p[5]}/cover"></div>
+  <div class="a" style="left:374px;top:46px;right:40px"><div style="font:900 74px/1 'Inter Display';letter-spacing:-.035em">${p[0]}</div>
+   <div style="font:800 44px/1 Inter;color:#025da5;margin-top:20px">${p[1]}</div><div style="font:600 30px/1.3 Inter;color:#3b4b60;margin-top:22px;height:120px">${p[2]}</div>
+   <div style="position:relative;height:10px;border-radius:5px;background:#dfe7f0;margin-top:26px"><div class="i2" style="position:absolute;top:-7px;width:24px;height:24px;border-radius:50%;background:#025da5;box-shadow:0 0 18px 4px rgba(81,164,235,.9)"></div></div>
+   <div style="display:flex;justify-content:space-between;font:600 21px/1 ui-monospace,'DejaVu Sans Mono',monospace;color:#5b6b80;margin-top:18px">${p[4].map(y=>`<span>${y}</span>`).join('')}</div>
+   ${i?`<div style="display:flex;align-items:center;gap:14px;margin-top:34px;font:700 24px/1 Inter;color:#011c3d"><span>Təchizat bazası</span><div style="flex:1;position:relative;height:4px;background:#c9d2dc"><div id="i3" style="position:absolute;top:-8px;width:20px;height:20px;border-radius:50%;background:#51a4eb"></div></div><span>Dəniz əməliyyatları</span></div>`:''}</div></div>`).join('')}`;
+const C9=[...document.querySelectorAll('.i1')], D9=[...document.querySelectorAll('.i2')];
+function s9(lt){rise($('i0'),lt,.3); C9.forEach((e,i)=>{const t0=1+i*11.5, a=back((lt-t0)/.9); show(e,cl((lt-t0)/.3),`translateY(${(1-a)*160}px) rotateX(${(1-cl(a))*14}deg)`);
+    const u=((lt-t0-1)/5)%1; D9[i].style.left=`calc(${(Math.max(0,u)*100).toFixed(2)}% - 12px)`; D9[i].style.opacity=lt>t0+1?Math.sin(Math.max(0,u)*Math.PI)**.4:0;});
+  if($('i3')){const u=(1-Math.cos((lt-13)*1.6))/2; $('i3').style.left=`calc(${(u*100).toFixed(2)}% - 10px)`;}}
+
+// ───── 10 · Bunu insanlar edir
+const P10=['img/WA0046','ref/r5a','img/WA0404','img/WA0595','img/WA0458','img/WA0609'], L10=['bp','downstream','bakusteel','norm','lafarge','bakubus'];
+$('s10').innerHTML=`<div class="a ctr mono" style="top:110px">KOMANDA</div><div class="a ctr h" id="j0" style="top:170px">Bunu insanlar edir</div>
+ ${P10.map((p,i)=>`<div class="tile j1" style="left:${50+(i%2)*500}px;top:${310+Math.floor(i/2)*320}px;width:480px;height:300px;background-image:url(${S}${p}.jpg)"></div>`).join('')}
+ <div class="a ctr" style="top:1290px;display:flex;justify-content:center;gap:14px">${['Neft-qaz','Metallurgiya','Sement','Nəqliyyat'].map(s=>`<div class="chip j2" style="font-size:30px;padding:18px 26px;border-color:#025da5;color:#025da5">${s}</div>`).join('')}</div>
+ <div class="a ctr" style="top:1410px;display:flex;justify-content:center;gap:14px">${L10.map(l=>`<div class="j3" style="width:156px;height:104px;border-radius:18px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 26px -14px rgba(1,28,61,.4)"><img src="${S}logo/${l}.png" style="max-width:80%;max-height:74%" alt=""></div>`).join('')}</div>
+ <div class="card a" id="j4" style="left:60px;top:330px;width:960px;height:560px"></div><div class="card a" id="j5" style="left:60px;top:930px;width:960px;height:560px"></div>`;
+const J1=[...document.querySelectorAll('.j1')], J2=[...document.querySelectorAll('.j2')], J3=[...document.querySelectorAll('.j3')];
+function s10(lt){rise($('j0'),lt,.3); const p=io((lt-.3)/1.4); show($('j4'),1-cl((lt-1.2)/.6),`translateX(${-1100*p}px) rotate(${-8*p}deg)`); show($('j5'),1-cl((lt-1.2)/.6),`translateX(${1100*p}px) rotate(${8*p}deg)`);
+  J1.forEach((e,i)=>{const a=eo5((lt-.8-i*.22)/1); show(e,cl((lt-.8-i*.22)/.3),`scale(${1.25-.25*a}) translateY(${(1-a)*60}px)`); e.style.backgroundSize=`${118-6*cl(lt/21)}%`;});
+  J2.forEach((e,i)=>rise(e,lt,7+i*.5,.5,30)); J3.forEach((e,i)=>rise(e,lt,11+i*.25,.5,30));}
+
+// ───── 11 · Bağlantı tamamlanır
+$('s11').innerHTML=SCH+`<div class="a ctr h" id="k0" style="top:170px;font-size:92px">Bağlantı<br>tamamlanır<span style="color:#51a4eb">.</span></div>
+ <div class="a" id="k1" style="inset:0;background:rgba(1,28,61,.9)"><div class="a" style="left:390px;top:330px;width:300px;height:300px;border-radius:50%;background:#fff;box-shadow:0 0 90px 20px rgba(81,164,235,.45)">
+   <img src="../../design/logo/caspian-loqo-isare.png" style="position:absolute;left:36px;top:38px;width:228px" alt=""></div>
+  <div class="a ctr" style="top:700px;font:900 82px/1 'Inter Display';letter-spacing:.02em;color:#fff">CASPIAN INDUSTRY</div>
+  <div class="a ctr" style="top:830px;font:600 46px/1.35 Inter;color:#51a4eb">Hər detalda məsuliyyət.<br>Hər layihədə etibar.</div>
+  <div class="a" style="left:390px;top:1010px;width:300px;height:3px;background:#c9d2dc;opacity:.6"></div>
+  <div class="a ctr" style="top:1080px;font:700 50px/1.75 Inter;color:#fff">info@caspianindustry.com<br>+994 51 206 41 45<br>caspianindustry.com</div></div>`;
+function s11(lt){const gap=io((lt-1.6)/2.2), z=1-io((lt-4.2)/3.4), glow=cl((lt-3.6)/1)*(.55+.45*cl((lt-5)/4));
+  const s=schem($('s11'),()=>1,gap,1+1.25*z,140-290*z,glow); s.querySelector('.gp').style.opacity=(1-gap)*.8; s.querySelector('.g').style.stroke='#fff';
+  rise($('k0'),lt,5,.9); const f=cl((lt-12.3)/1.4); $('k0').style.opacity*=1-cl((lt-11.6)/.7); show($('k1'),f); $('k1').style.display=f>0?'block':'none';}
+
+// ───── Subtitrlər (səsləndirmə mətni)
+const VO=[
+ 'Böyük bir layihənin taleyi bəzən kiçik bir detaldan asılı olur. Bir boru. Bir birləşdirici. Vaxtında verilən bir qərar. Sənayedə hər detalın arxasında insan əməyi, vaxt və məsuliyyət dayanır. Bəs bütün bu məsuliyyəti kimlə bölüşmək olar?',
+ 'Caspian Industry. 15 avqust 2019-cu ildə Bakıda əsası qoyulan şirkətimiz neft-qaz və qeyri-neft sektorlarını məhsul və texniki xidmətlərlə təmin edir. Qırxdan çox peşəkar əməkdaşın birgə işi bir məqsədə yönəlir: layihənizin ehtiyacını düzgün anlamaq və uyğun həlli hazırlamaq.',
+ 'Hər sifariş əvvəlcə diqqətlə dinlənilən bir ehtiyacdır. Sonra texniki tələb, düzgün məhsul seçimi və təchizat prosesi gəlir. Metal və sənaye məhsulları, elektrik və elektronika, sənaye alətləri, laboratoriya, mexaniki və enerji avadanlıqları. Fərqli məhsul qruplarını eyni məsuliyyətlə bir araya gətiririk. Çünki sifariş siyahısındakı hər sətrin layihənin içində öz işi var.',
+ 'Hər şey ilk baxışda görünmür. Borunun səthindəki iz, divar qalınlığındakı dəyişiklik və ya gizli çat texniki qiymətləndirmə tələb edir. Boruların inspeksiyası və texniki yoxlanması zamanı bu detallara diqqət yetiririk. Məqsədimiz onların vəziyyətini qiymətləndirmək və istismara yararlılığı barədə əsaslandırılmış qərara dəstək verməkdir. Çünki düzgün qərar dəqiq məlumatdan başlayır.',
+ 'Layihələrin ehtiyacı dəyişir. Bəzən əsas məsələ avadanlığı almaq deyil, ondan lazım olan mərhələdə istifadə etməkdir. Sənaye avadanlıqlarının icarəsi istiqamətimiz bu ehtiyaca xidmət edir. Texniki tələbi nəzərə alaraq, işin miqyasına və planına uyğun avadanlıq həllərini bir araya gətiririk.',
+ 'Sənayedə məsuliyyət materialın istifadə müddəti ilə bitmir. İşlənmiş katalizatorların emalı və hərrac proseslərinin təşkili də fəaliyyətimizin bir hissəsidir. Qiymətləndirmədən potensial alıcıların cəlbinə, kommersiya təkliflərindən logistikanın əlaqələndirilməsinə qədər prosesin mərhələlərini bir-birinə bağlayırıq. Hər mərhələ aydın yanaşma və diqqətli təşkilatçılıq tələb edir.',
+ 'Görülən iş yanaşmamızı daha aydın göstərir. SOCAR Downstream üçün kəsici ucluqların təchizatı üzrə üçillik müqavilə. Paslanmaz polad lövhələrin təchizatı təcrübəsi. Müxtəlif texniki tələbləri olan bu layihələrin hər biri diqqətli seçim, əlaqələndirmə və ardıcıl iş tələb edir. Etibar da məhz belə qurulur: bir sifarişdən növbəti əməkdaşlığa.',
+ 'Min tondan artıq boru və boru birləşdiricilərinin təchizatı. Heydər Əliyev adına Neft Emalı Zavoduna beş TIR həcmində SalemTube qabırğalı borularının çatdırılması. Bu rəqəmlərin arxasında yalnız yükün həcmi dayanmır. Məhsulun seçilməsi, sənədləşmə, koordinasiya və çatdırılma dayanır. Böyük miqyas hər mərhələdə eyni diqqəti tələb edir.',
+ 'Uzunmüddətli əməkdaşlıq hər gün yenilənən məsuliyyətdir. BP ilə Washpipe istiqamətində 2024–2029-cu illəri əhatə edən beşillik müqavilə: icarə, inspeksiya, təmizləmə və texniki xidmət. OCTG istiqamətində isə 2026–2031-ci illər üzrə beşillik inspeksiya müqaviləsi. İki ayrı layihə. Eyni prinsip: hər mərhələyə diqqətlə yanaşmaq.',
+ 'Neft-qazdan metallurgiyaya, sementdən nəqliyyata qədər fərqli sahələrin fərqli ehtiyacları var. Bu ehtiyacları birləşdirən isə etibarlı əməkdaşlıq istəyidir. Hər məhsulun, hər yoxlamanın, hər çatdırılmanın arxasında insanlar dayanır. Sual verən, yoxlayan, əlaqələndirən və işi izləyən insanlar. Caspian Industry-nin gücü həmin komandanın birgə əməyindədir.',
+ 'Başlanğıcda bir detal var idi. İndi onun arxasında bir komanda, bir proses və illərlə formalaşan təcrübə görünür. Növbəti layihəniz də bir ehtiyacla başlayacaq. Gəlin, həmin ehtiyac üçün uyğun həlli birlikdə müəyyən edək.'];
+const SUB=[]; VO.forEach((v,i)=>{const a=T[i][1]+.9, b=i==10?226.6:T[i][2]-.5, parts=[];
+  v.split(/(?<=[.?!])\s+/).forEach(s=>{ if(s.length<=76){parts.push(s);return;} let cur='';
+    s.split(/(?<=[,:])\s+/).forEach(c=>{ if((cur+' '+c).trim().length<=76) cur=(cur+' '+c).trim(); else { if(cur)parts.push(cur); cur=c;
+        while(cur.length>76){const k=cur.lastIndexOf(' ',76); parts.push(cur.slice(0,k)); cur=cur.slice(k+1);} } }); if(cur)parts.push(cur); });
+  const m=[]; parts.forEach(p=>{ if(m.length&&(m[m.length-1]+' '+p).length<=62) m[m.length-1]+=' '+p; else m.push(p); });
+  const tot=m.reduce((x,p)=>x+p.length+8,0); let t=a; m.forEach(p=>{const d=(b-a)*(p.length+8)/tot; SUB.push([t,t+d-.12,p]); t+=d;}); });
+window.SUBS=SUB;
+
+const FN={s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11}, PRE=.45, WIPE=.9;
+window.seek=function(t){ t=Math.max(0,Math.min(234.999,t)); let beam=-1;
+  T.forEach(([id,a,b],i)=>{const e=$(id), end=i<10?T[i+1][1]+WIPE:999, on=t>=a-PRE&&t<end; e.style.display=on?'block':'none'; if(!on)return; e.style.zIndex=i+1;
+    if(id==='s6'){e.style.clipPath='none'; e.style.opacity=cl((t-(a-PRE))/PRE);} else if(i>0){const p=cl((t-(a-PRE))/WIPE); e.style.clipPath=p<1?`inset(0 0 ${(100*(1-io(p))).toFixed(3)}% 0)`:'none'; if(p>0&&p<1)beam=io(p)*1920;}
+    FN[id](t-a);});
+  $('beam').style.display=beam>=0?'block':'none'; $('beam').style.top=(beam-3)+'px';
+  const s=SUB.find(x=>t>=x[0]&&t<x[1]); $('sub').style.display=s?'flex':'none'; if(s){$('subt').textContent=s[2]; $('sub').style.opacity=Math.min(cl((t-s[0])/.15),cl((s[1]-t)/.15));}
+  $('black').style.opacity=cl(1-t/.6);
+};
+window.seek(0);
+</script>
+</html>

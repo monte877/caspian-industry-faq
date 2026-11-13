@@ -4,6 +4,14 @@
 > Hər tapşırıqdan sonra bu faylı yenilə, commit et və push et.
 
 ## Növbəti addım
+- **YENİ BRİF: "Bir detaldan böyük nəticəyə" — 3:55, 9:16 (2026-11-13 20:41) — CARİ İŞ.** İstifadəçi 11 səhnəli hazır ssenari göndərdi
+  (zaman kodları, ekran yazıları, səsləndirmə mətni; rənglər: ağ, tünd göy, mavi, gümüşü — narıncı YOX).
+  - Kod: `scripts/trailer/film2.html` (1080×1920, 235 san, `window.seek`), musiqi `scripts/trailer/film2_music.py` → `video/src/music2.wav`.
+  - Render: `render_html.py film2.html --w 1080 --h 1920 --fps 30 --frm 0 --to 3525 --out video/output/_f2a.mp4` və `--frm 3525 … _f2b.mp4`
+    (paralel, ~20–30 dəq), sonra ffmpeg concat + music2.wav → `video/output/caspian-film-235.mp4`.
+  - Səsləndirmə YOXDUR (edge-tts quraşdırılmır, ElevenLabs kredit istəyir) → mətn subtitr kimi gedir; səs faylı gəlsə səhnə vaxtlarına qoyulur.
+  - Maskot istifadə edilməyib (brif icazə verir). Komanda fotosu (uşaq görünən) istifadə edilməyib; iş prosesi fotoları var.
+  - Render fonda başladılıb; bitəndə kadrları yoxla, göndər, rəy al.
 - **DAYAN (2026-11-13 20:15).** İstifadəçi 66 saniyəlik filmi (v1 və v2) bəyənmədi: "bərbad, heç nə eləmə; 5 dəqiqəlik video bundan min dəfə
   yaxşı idi". **Yeni video işinə özbaşına başlama** — istifadəçi nə istədiyini desin. Kodla çəkilmiş yazı/qrafika filmi onun gözləntisini
   ödəmir: o, öz 5:17-lik videosundakı kimi kinematik kadrlar və "üstündə işlənmiş" hərəkət gözləyir. Ən yaxşı əsas onun öz videosudur.
