@@ -1,77 +1,92 @@
 <!doctype html>
 <html lang="az">
 <meta charset="utf-8">
-<title>Məhsul karuseli</title>
-<!-- Sınaq səhnəsi: məhsul kartları dərinlikdə axır, öndəki kart seçilir. window.seek(t) ilə kadr-kadr render olunur.
-     Şəkillər: ../../video/src/prod/*.png (repoya yazılmır). Render: python3 scripts/trailer/render_html.py -->
+<title>Təchizat portfeli karuseli</title>
+<!-- 5:17-lik təqdimat videosunun "2.2 Təchizat portfeli" hissəsini əvəz edən səhnə (34.3 san).
+     Məhsul kartları dərinlikdə axır; beş kateqoriya orijinal videodakı vaxtlarda dəyişir (səs toxunulmur).
+     window.seek(t) ilə kadr-kadr render olunur: python3 scripts/trailer/render_html.py --fps 25
+     Şəkillər: ../../video/src/prod/*.png (repoya yazılmır). -->
 <style>
   *{box-sizing:border-box;margin:0}
   html,body{width:1920px;height:1080px;overflow:hidden;background:#f3f1ec;font-family:Inter,'Inter Display',sans-serif;color:#0b1b3a}
   #grid{position:absolute;inset:0;background-image:linear-gradient(#e7e4dc 1px,transparent 1px),linear-gradient(90deg,#e7e4dc 1px,transparent 1px);background-size:64px 64px;opacity:.7}
-  #glow{position:absolute;left:-200px;top:300px;width:900px;height:800px;background:radial-gradient(closest-side,rgba(18,83,138,.20),transparent);filter:blur(30px)}
   .pill{position:absolute;left:120px;top:92px;z-index:3000;font:600 22px/1 ui-monospace,'DejaVu Sans Mono',monospace;letter-spacing:.2em;color:#fff;background:#12327d;padding:13px 22px;border-radius:12px}
-  h1{position:absolute;left:120px;top:160px;z-index:3000;font:800 96px/1.02 'Inter Display',Inter,sans-serif;letter-spacing:-.035em}
+  h1{position:absolute;left:120px;top:160px;z-index:3000;font:800 92px/1.03 'Inter Display',Inter,sans-serif;letter-spacing:-.035em;white-space:nowrap}
   h1 i{font-style:normal;color:#ff6a3d}
-  #field{position:absolute;left:124px;top:404px;z-index:3000;width:620px;border-bottom:2px solid #c9c5ba;padding:0 0 14px;font:500 30px/1.2 Inter,sans-serif;color:#0b1b3a;white-space:nowrap}
+  #field{position:absolute;left:124px;top:396px;z-index:3000;width:620px;border-bottom:2px solid #c9c5ba;padding:0 0 14px;font:600 34px/1.2 Inter,sans-serif;white-space:nowrap}
   #field small{display:block;font:600 17px/1 ui-monospace,'DejaVu Sans Mono',monospace;letter-spacing:.18em;color:#ff6a3d;margin-bottom:12px}
-  #count{position:absolute;right:120px;top:100px;font:600 22px/1 ui-monospace,'DejaVu Sans Mono',monospace;letter-spacing:.18em;color:#8a8679}
+  #steps{position:absolute;right:120px;top:104px;z-index:3000;display:flex;gap:10px}
+  #steps b{display:block;width:54px;height:6px;border-radius:3px;background:#d6d2c7;overflow:hidden}
+  #steps b u{display:block;height:100%;background:#12327d;width:0}
   #rail{position:absolute;inset:0}
   .card{position:absolute;left:0;top:0;width:360px;height:470px;border-radius:22px;overflow:hidden;will-change:transform,filter;
         box-shadow:0 30px 60px -20px rgba(11,27,58,.45),0 8px 18px rgba(11,27,58,.18)}
   .card .ph{position:absolute;inset:0 0 96px 0;display:flex;align-items:center;justify-content:center}
-  .card img{max-width:92%;max-height:92%;object-fit:contain;filter:drop-shadow(0 18px 22px rgba(0,0,0,.45))}
-  .card .lb{position:absolute;left:0;right:0;bottom:0;height:96px;padding:18px 22px;background:rgba(255,255,255,.94)}
-  .card .lb b{display:block;font:700 25px/1.1 Inter,sans-serif;color:#0b1b3a}
+  .card img{max-width:90%;max-height:88%;object-fit:contain;filter:drop-shadow(0 18px 22px rgba(0,0,0,.5))}
+  .card .lb{position:absolute;left:0;right:0;bottom:0;height:96px;padding:18px 22px;background:rgba(255,255,255,.95)}
+  .card .lb b{display:block;font:700 24px/1.1 Inter,sans-serif;color:#0b1b3a;white-space:nowrap}
   .card .lb span{display:block;font:600 13px/1 ui-monospace,'DejaVu Sans Mono',monospace;letter-spacing:.2em;color:#12538a;margin-bottom:9px}
-  .card .no{position:absolute;left:18px;top:16px;font:600 15px/1 ui-monospace,'DejaVu Sans Mono',monospace;letter-spacing:.12em;color:rgba(255,255,255,.75)}
-  .card.light .no{color:rgba(11,27,58,.55)}
-  #brand{position:absolute;left:120px;bottom:70px;font:700 20px/1 Inter,sans-serif;letter-spacing:.14em;color:#0b1b3a}
+  .card .no{position:absolute;left:18px;top:16px;font:600 15px/1 ui-monospace,'DejaVu Sans Mono',monospace;letter-spacing:.12em;color:rgba(255,255,255,.7)}
+  #brand{position:absolute;left:120px;bottom:70px;font:700 20px/1 Inter,sans-serif;letter-spacing:.14em}
   #brand i{font-style:normal;color:#ff6a3d}
 </style>
-<div id="grid"></div><div id="glow"></div>
-<div class="pill">2.2 · TƏCHİZAT PORTFELİ</div>
-<h1>Tələbinizə uyğun<br>avadanlıq<i>.</i></h1>
+<div id="grid"></div>
+<div class="pill" id="pill"></div>
+<h1 id="h1"></h1>
 <div id="field"><small id="cat"></small><span id="name"></span></div>
-<div id="count"></div>
+<div id="steps"></div>
 <div id="rail"></div>
 <div id="brand">CASPIAN INDUSTRY<i>.</i></div>
 <script>
-const P=[
- ['mobil','MEXANİKİ AVADANLIQ','Mobil kompressor','linear-gradient(160deg,#2a0d10,#7d1418)'],
- ['boru','METAL MƏHSULLARI','Paslanmayan boru','linear-gradient(160deg,#dfe6f3,#aebbd4)','light'],
- ['klapan','ARMATUR','Sürgülü klapan','linear-gradient(160deg,#141a26,#3b4a66)'],
- ['mikroskop','LABORATORİYA','Mikroskop','linear-gradient(160deg,#0b2444,#1266aa)'],
- ['vintli','MEXANİKİ AVADANLIQ','Vintli kompressor','linear-gradient(160deg,#16090a,#5a1014)'],
- ['avtomat','ELEKTRİK','Avtomat açar','linear-gradient(160deg,#ffd9c9,#ff8f66)','light'],
- ['porsenli','MEXANİKİ AVADANLIQ','Porşenli kompressor','linear-gradient(160deg,#081a3c,#1f4fb0)'],
+// [başlıq, qısa etiket, fon, başlama vaxtı (san), məhsullar [fayl, ad]]
+const CATS=[
+ ['Metal və sənaye<br>məhsulları','METAL','linear-gradient(160deg,#131a27,#42526e)',1.9,
+  [['boru','Paslanmayan boru'],['flans','Flanş'],['dirsek','Dirsək 90°'],['ucluk','Üçlük'],['klapan','Sürgülü klapan'],['bolt','Bolt və qayka'],['lovhe','Paslanmayan lövhə'],['qabirgali','Qabırğalı boru']]],
+ ['Elektrik və<br>elektronika','ELEKTRİK','linear-gradient(160deg,#07183a,#1c4aa8)',8.4,
+  [['kabel','Güc kabeli'],['led','LED projektor'],['plc','PLC kontroller'],['avtomat','Avtomat açar'],['klemma','Klemma bloku'],['sensor','İnduktiv sensor'],['kontaktor','Kontaktor'],['cevirici','Tezlik çeviricisi']]],
+ ['Sənaye alətləri və<br>xüsusi avadanlıqlar','ALƏTLƏR','linear-gradient(160deg,#1c1410,#6b3a1c)',15.1,
+  [['qutu','Birləşdirici qutu'],['fener','Sənaye fənəri'],['lazer','Lazer məsafəölçən'],['stangen','Ştangenpərgar'],['spindel','CNC şpindel'],['freza','Freza tutucusu'],['silindr','Hidravlik silindr'],['elnasos','Hidravlik əl nasosu']]],
+ ['Laboratoriya<br>avadanlıqları','LABORATORİYA','linear-gradient(160deg,#0b2444,#1266aa)',21.7,
+  [['mikroskop','Mikroskop'],['terezi','Analitik tərəzi'],['sentrifuqa','Sentrifuqa'],['qarisdirici','Maqnit qarışdırıcı'],['skaf','Çəkiş şkafı']]],
+ ['Mexaniki və enerji<br>avadanlıqları','MEXANİKİ','linear-gradient(160deg,#1d0a0c,#7d1418)',28.3,
+  [['mobil','Mobil kompressor'],['vintli','Vintli kompressor'],['qrs','Vintli kompressor QRS'],['goy','Sənaye kompressoru'],['porsenli','Porşenli kompressor'],['generator','Dizel generator'],['nasos','Mərkəzdənqaçma nasos']]],
 ];
-const N=P.length, COPIES=4, rail=document.getElementById('rail'), cards=[];
-for(let k=0;k<N*COPIES;k++){const p=P[k%N],el=document.createElement('div');el.className='card'+(p[4]?' light':'');el.style.background=p[3];
-  el.innerHTML=`<div class="no">№ ${String(k%N+1).padStart(2,'0')}</div><div class="ph"><img src="../../video/src/prod/${p[0]}.png" alt=""></div><div class="lb"><span>${p[1]}</span><b>${p[2]}</b></div>`;
-  rail.appendChild(el);cards.push(el);}
+const TOTAL=34.3; window.DURATION=TOTAL;
+const P=[]; CATS.forEach((c,ci)=>c[4].forEach(p=>P.push({f:p[0],n:p[1],c:ci})));
+const N=P.length, rail=document.getElementById('rail'), cards=[], LEAD=8;
+for(let k=-LEAD;k<N+LEAD;k++){const p=P[((k%N)+N)%N],c=CATS[p.c],el=document.createElement('div');el.className='card';el.style.background=c[2];
+  el.innerHTML=`<div class="no">№ ${String(((k%N)+N)%N+1).padStart(2,'0')}</div><div class="ph"><img src="../../video/src/prod/${p.f}.png" alt=""></div><div class="lb"><span>${c[1]}</span><b>${p.n}</b></div>`;
+  rail.appendChild(el);cards.push([k,el]);}
+const steps=document.getElementById('steps'); CATS.forEach(()=>{steps.insertAdjacentHTML('beforeend','<b><u></u></b>')});
 const eo=u=>1-Math.pow(1-u,4), eio=u=>u<.5?8*u*u*u*u:1-Math.pow(-2*u+2,4)/2, cl=u=>Math.max(0,Math.min(1,u));
-// scroll(t): sürətli giriş, sonra hər məhsulda dayanma
-const START=-9, IN=1.8, HOLD=1.15, STEP=.6, STOPS=6;
-function scroll(t){ if(t<IN) return START*(1-eo(t/IN)); let x=t-IN, i=Math.floor(x/(HOLD+STEP)), r=x-i*(HOLD+STEP);
-  if(i>=STOPS-1) return STOPS-1; return i+(r>HOLD?eio((r-HOLD)/STEP):0); }
-window.DURATION=IN+(STOPS-1)*(HOLD+STEP)+HOLD+.4;
+const T0=CATS[0][3], START=-9, STEP=.42;
+function catAt(t){let k=0;for(let i=0;i<CATS.length;i++)if(t>=CATS[i][3])k=i;return k;}
+function scroll(t){ if(t<T0) return START*(1-eo(t/T0));
+  const k=catAt(t), c=CATS[k], t1=k+1<CATS.length?CATS[k+1][3]:TOTAL, n=c[4].length, d=(t1-c[3])/n;
+  let base=0; for(let i=0;i<k;i++) base+=CATS[i][4].length;
+  const i=Math.min(n-1,Math.floor((t-c[3])/d)), r=t-c[3]-i*d, idx=base+i;
+  if(idx===0) return .04*cl(r/d);
+  return r<STEP? idx-1+.04+(1-.04)*eio(r/STEP) : idx+.04*(r-STEP)/(d-STEP); }
 const CX=960, CY=690;
-window.seek=function(t){ const sc=scroll(t), base=N; // base: fokus ikinci dövrədən başlayır
-  const vel=Math.abs(scroll(t+.02)-scroll(t-.02))/.04;
-  cards.forEach((el,k)=>{ const s=k-base-sc; let x,y,scale,blur=0,op=1;
+window.seek=function(t){ const sc=scroll(t), vel=Math.abs(scroll(t+.02)-scroll(t-.02))/.04;
+  cards.forEach(([k,el])=>{ const s=k-sc; let x,y,scale,blur=0,op=1;
+    if(s>9.5||s<-2.2){el.style.visibility='hidden';return;}
     if(s>=0){ scale=1/(1+.34*s); x=CX+300*Math.pow(s,.86); y=CY-104*Math.pow(s,.9); op=cl(1.25-s/7.5); blur=Math.max(0,(s-4))*.9; }
     else{ const a=-s; scale=1+1.15*a; x=CX-620*Math.pow(a,1.25); y=CY+330*Math.pow(a,1.2); blur=26*Math.pow(a,1.4); op=cl(1.5-a/1.5); }
-    const f=Math.max(0,1-Math.abs(s)/.5), lift=f*(1-cl(vel/2.5));           // fokusdakı kart qalxır
-    scale*=1+.10*lift; y-=34*lift; blur+=Math.min(10,vel*1.6)*(s>0?.35:0);
+    const f=Math.max(0,1-Math.abs(s)/.5), lift=f*(1-cl((vel-.1)/2.5));
+    scale*=1+.10*lift; y-=34*lift; blur+=Math.min(8,vel*1.2)*(s>0?.35:0);
     el.style.transform=`translate(${x-180}px,${y-235}px) scale(${scale.toFixed(4)}) rotate(${(-2.2+s*.35).toFixed(2)}deg)`;
     el.style.filter=blur>.3?`blur(${blur.toFixed(1)}px)`:'none'; el.style.opacity=op.toFixed(3); el.style.zIndex=String(1000-Math.round(s*10));
-    el.style.visibility=op<=0||s<-2.2||s>9?'hidden':'visible'; });
-  const fi=Math.round(sc), p=P[((fi%N)+N)%N], settle=t<IN?cl((t-IN+.35)/.35):1-cl(Math.abs(sc-fi)*2.2);
-  const nm=document.getElementById('name'), full=p[2]; nm.textContent=full.slice(0,Math.round(full.length*cl(settle*1.3)));
-  const cat=document.getElementById('cat'); cat.textContent=p[1]; cat.style.opacity=settle; nm.parentElement.style.opacity=t<.6?cl(t/.6):1;
-  document.getElementById('count').textContent=`${String(((fi%N)+N)%N+1).padStart(2,'0')} / ${String(N).padStart(2,'0')}`;
-  const intro=eo(cl(t/.9)); document.querySelector('h1').style.transform=`translateY(${(1-intro)*40}px)`; document.querySelector('h1').style.opacity=intro;
-  document.querySelector('.pill').style.opacity=intro;
+    el.style.visibility=op<=0?'hidden':'visible'; });
+  const k=t<T0?0:catAt(t), c=CATS[k], lt=t<T0?t:t-c[3], a=eo(cl(lt/(t<T0?.9:.45)));
+  const h1=document.getElementById('h1'); if(h1.dataset.k!==String(k)){h1.innerHTML=c[0]+'<i>.</i>';h1.dataset.k=String(k);}
+  h1.style.opacity=a; h1.style.transform=`translateY(${(1-a)*36}px)`;
+  const pill=document.getElementById('pill'); pill.textContent=`2.2 · TƏCHİZAT PORTFELİ · 0${k+1} / 05`; pill.style.opacity=t<.6?cl(t/.6):1;
+  const fi=Math.max(0,Math.round(sc-.02)), p=P[Math.min(N-1,fi)], settle=t<T0?cl((t-T0+.3)/.3):1-cl((Math.abs(sc-fi)-.06)*2.4);
+  document.getElementById('name').textContent=p.n.slice(0,Math.round(p.n.length*cl(settle*1.4)));
+  document.getElementById('cat').textContent=`№ ${String(fi+1).padStart(2,'0')} / ${N}`;
+  document.getElementById('field').style.opacity=t<.6?cl(t/.6):1;
+  [...steps.children].forEach((b,i)=>{const t1=i+1<CATS.length?CATS[i+1][3]:TOTAL; b.firstChild.style.width=(100*cl((t-CATS[i][3])/(t1-CATS[i][3])))+'%';});
 };
 window.seek(0);
 </script>

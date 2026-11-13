@@ -16,13 +16,14 @@ ap.add_argument('html', nargs='?', default='scripts/trailer/carousel.html')
 ap.add_argument('--out', default='video/output/karusel-sinaq.mp4')
 ap.add_argument('--fps', type=int, default=30)
 ap.add_argument('--shots')
+ap.add_argument('--query', default='', help="məs. 'dur=34.3&stops=7'")
 a = ap.parse_args()
 out = ROOT / a.out
 out.parent.mkdir(parents=True, exist_ok=True)
 with sync_playwright() as pw:
     b = pw.chromium.launch()
     p = b.new_page(viewport={'width': 1920, 'height': 1080})
-    p.goto((ROOT / a.html).as_uri())
+    p.goto((ROOT / a.html).as_uri() + ('?' + a.query if a.query else ''))
     p.evaluate('Promise.all([...document.images].map(i => i.decode().catch(() => {}))).then(() => document.fonts.ready)')
     dur = p.evaluate('window.DURATION')
     if a.shots:

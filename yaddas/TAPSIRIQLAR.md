@@ -4,6 +4,17 @@
 > Hər tapşırıqdan sonra bu faylı yenilə, commit et və push et.
 
 ## Növbəti addım
+- **5:17-lik video, v2 göndərildi (2026-11-13 12:45) — RƏY GÖZLƏNİLİR.** `video/output/caspian-teqdimat-v2.mp4`:
+  orijinalın 105.6–139.9 san hissəsi ("2.2 Təchizat portfeli", 5 kateqoriya) yeni karusellə əvəz edildi; qalan hər şey və **səs
+  olduğu kimidir** (səs axını bayt-bayt eynidir). İstifadəçi karusel sınağına "oradan davam elə" dedi → üslub təsdiqlənib.
+  - Karusel: `scripts/trailer/carousel.html` (36 məhsul, 5 kateqoriya, kateqoriya vaxtları orijinaldakı ilə eyni: 1.9/8.4/15.1/21.7/28.3 san),
+    render: `python3 scripts/trailer/render_html.py --fps 25 --out video/output/karusel-34.mp4`, sonra ffmpeg `overlay` ilə
+    orijinalın üstünə (0.4 san keçidlə). Orijinal: `/mnt/user-data/uploads/1000140435.mp4` (sessiya bitəndə itir — istifadəçidən yenidən istə).
+  - Məhsul şəkilləri (36 PNG, şəffaf/tünd fon) `video/src/prod/`-da, repoda yoxdur. Fayl adı → məhsul adı `carousel.html`-dəki `CATS`-dadır.
+  - **12:40-da gələn yeni material (hələ istifadə edilməyib):** maskot videosu (4K, 8.9 san, əl yelləyir və "əla" göstərir, küncdə "Ai" nişanı),
+    2 komanda fotosu (ofis və sahə; üzlər və bir uşaq görünür — istifadədən əvvəl soruş), loqo işarəsi, nasosun yığılmış və açılmış şəkli,
+    şaquli kataloq səhifələri (Mündəricat, Şirkət haqqında, Referans layihələr 1–6, Müştərilər, Əlaqə).
+  - Növbəti təkliflər: Referans layihələr və Müştərilər hissələrini eyni üslubda yenilə; nasosun "açılma" animasiyası; Mündəricat təkrarlarını qısalt.
 - **ƏSAS VİDEO = 5:17-lik təqdimat filmi (2026-11-13 09:00) — CARİ İŞ BUDUR.** İstifadəçi öz hazır videosunu göndərdi
   (`1000140435.mp4`, 1920×1080, 25 fps, 317 san: dəniz/loqo girişi → Mündəricat → 5 bölmə → "Təşəkkür edirik" maskotu; krem fon,
   göy bölmə kartları, narıncı nöqtə, mono etiketlər). İstəyi: **onu vizual olaraq daha "super" etmək; səsə toxunma, yalnız görüntü.**
