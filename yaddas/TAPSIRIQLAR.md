@@ -4,6 +4,9 @@
 > Hər tapşırıqdan sonra bu faylı yenilə, commit et və push et.
 
 ## Növbəti addım
+- **DAYAN (2026-11-13 20:15).** İstifadəçi 66 saniyəlik filmi (v1 və v2) bəyənmədi: "bərbad, heç nə eləmə; 5 dəqiqəlik video bundan min dəfə
+  yaxşı idi". **Yeni video işinə özbaşına başlama** — istifadəçi nə istədiyini desin. Kodla çəkilmiş yazı/qrafika filmi onun gözləntisini
+  ödəmir: o, öz 5:17-lik videosundakı kimi kinematik kadrlar və "üstündə işlənmiş" hərəkət gözləyir. Ən yaxşı əsas onun öz videosudur.
 - **Film v2 + səsli rəy (2026-11-13 18:10).** `video/output/caspian-film-v2.mp4` (66 san) render olunub, hələ GÖNDƏRİLMƏYİB — yoxla və göndər.
   İstifadəçinin səsli rəyi (film "qəşəngdir, amma çox sadə, kiçik şirkət kimi görünür"):
   - Giriş və əsas istiqamətlər: **Təchizat, Texniki xidmət, İcarə** (ən çox vurğu İcarədə). Logistika və Katalizatorlar kiçik, diqqət çəkməyən.
