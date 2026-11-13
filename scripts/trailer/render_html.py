@@ -29,7 +29,7 @@ with sync_playwright() as pw:
     if a.shots:
         for s in a.shots.split(','):
             p.evaluate('t => window.seek(t)', float(s))
-            p.screenshot(path=str(out.parent / f'karusel-{s}.jpg'), type='jpeg', quality=85)
+            p.screenshot(path=str(out.parent / f'{pathlib.Path(a.html).stem}-{s}.jpg'), type='jpeg', quality=85)
         print('kadrlar hazır')
     else:
         n = int(dur * a.fps)

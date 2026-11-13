@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="az">
+<meta charset="utf-8">
+<title>Referans layihələr</title>
+<!-- 5:17-lik videonun "3.1 Referans layihələr" hissəsini əvəz edən səhnə: hər layihənin fotosu pazl kimi yığılır.
+     Render: python3 scripts/trailer/render_html.py scripts/trailer/references.html --fps 25 --out video/output/ref.mp4
+     Fotolar: ../../video/src/ref/rNa.jpg (əsas), rNb.jpg, rNc.jpg (repoda yoxdur; kataloq səhifələrindən kəsilib). -->
+<style>
+  *{box-sizing:border-box;margin:0}
+  html,body{width:1920px;height:1080px;overflow:hidden;background:#f3f1ec;font-family:Inter,'Inter Display',sans-serif;color:#0b1b3a}
+  #grid{position:absolute;inset:0;background-image:linear-gradient(#e7e4dc 1px,transparent 1px),linear-gradient(90deg,#e7e4dc 1px,transparent 1px);background-size:64px 64px;opacity:.7}
+  .pill{position:absolute;left:120px;top:92px;font:600 22px/1 ui-monospace,'DejaVu Sans Mono',monospace;letter-spacing:.2em;color:#fff;background:#12327d;padding:13px 22px;border-radius:12px}
+  #steps{position:absolute;right:120px;top:104px;display:flex;gap:10px}
+  #steps b{display:block;width:54px;height:6px;border-radius:3px;background:#d6d2c7;overflow:hidden}
+  #steps b u{display:block;height:100%;background:#12327d;width:0}
+  #ghost{position:absolute;left:84px;bottom:-70px;font:900 560px/1 'Inter Display',Inter,sans-serif;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:3px rgba(18,50,125,.13)}
+  #txt{position:absolute;left:120px;top:178px;width:700px}
+  #eb{font:600 20px/1 ui-monospace,'DejaVu Sans Mono',monospace;letter-spacing:.2em;color:#ff6a3d;margin-bottom:22px}
+  h1{font:800 70px/1.04 'Inter Display',Inter,sans-serif;letter-spacing:-.035em}
+  h1 i{font-style:normal;color:#ff6a3d}
+  .row{margin-top:26px;border-top:2px solid #d6d2c7;padding-top:16px}
+  .row small{display:block;font:600 15px/1 ui-monospace,'DejaVu Sans Mono',monospace;letter-spacing:.2em;color:#8a8679;margin-bottom:9px}
+  .row span{font:600 29px/1.2 Inter,sans-serif}
+  #pz{position:absolute;left:900px;top:200px;width:900px;height:600px}
+  .t{position:absolute;background-size:900px 600px;will-change:transform}
+  .mini{position:absolute;width:330px;height:220px;border:8px solid #fff;border-radius:18px;background-size:cover;background-position:center;box-shadow:0 26px 50px -18px rgba(11,27,58,.55)}
+  #brand{position:absolute;right:120px;bottom:70px;font:700 20px/1 Inter,sans-serif;letter-spacing:.14em}
+  #brand i{font-style:normal;color:#ff6a3d}
+</style>
+<div id="grid"></div>
+<div id="ghost"></div>
+<div class="pill" id="pill"></div>
+<div id="steps"></div>
+<div id="txt"><div id="eb"></div><h1 id="h1"></h1><div id="rows"></div></div>
+<div id="pz"></div>
+<div id="minis"></div>
+<div id="brand">CASPIAN INDUSTRY<i>.</i></div>
+<script>
+// [üst etiket, başlıq, [[etiket, dəyər]...], əlavə foto sayı]
+const R=[
+ ['SOCAR DOWNSTREAM','Kəsici ucluqların təchizatı',[['MÜQAVİLƏ №','HS-410'],['TƏLƏBAT MÜDDƏTİ','3 il']],1],
+ ['TƏCHİZAT','Paslanmayan polad lövhələrin təchizatı',[['MÜQAVİLƏ №','HS-280, HS-285, HS-429'],['İSTEHSALÇILAR','Outokumpu · Aperam · Acerinox · Thyssenkrupp']],1],
+ ['TƏCHİZAT','1000 tondan çox boru və birləşdirici element',[['MÜQAVİLƏ №','AZK-5-23-TM, HS-165, HS-185, HS-380'],['İSTEHSALÇILAR','Baotou (Çin) · TMK (Rusiya)']],1],
+ ['TƏCHİZAT','Qabırğalı boruların təchizatı',[['MÜQAVİLƏ №','HS-254'],['İSTEHSALÇI','SalemTube'],['ÇATDIRILMA','5 TIR həcmində, HAOR-a']],1],
+ ['BP','Washpipe borularının kirayəsi və texniki xidməti',[['MÜQAVİLƏ MÜDDƏTİ','2024–2029 · 5 il'],['TƏRƏFDAŞ İSTEHSALÇI','Tenaris']],2],
+ ['BP','OCTG borularının inspeksiya xidmətləri',[['MÜQAVİLƏ MÜDDƏTİ','2026–2031 · 5 il'],['ƏRAZİ','BP Supply Base']],1],
+];
+const SEG=7.6, N=R.length; window.DURATION=N*SEG+.4;
+const C=6, RW=4, TW=150, TH=150, pz=document.getElementById('pz'), minis=document.getElementById('minis');
+const h=(a,b,c)=>{const x=Math.sin(a*127.1+b*311.7+c*74.7)*43758.5453;return x-Math.floor(x);};
+const tiles=[], mn=[];
+R.forEach((r,k)=>{ const g=[];
+  for(let y=0;y<RW;y++)for(let x=0;x<C;x++){const e=document.createElement('div');e.className='t';
+    e.style.cssText=`left:${x*TW}px;top:${y*TH}px;width:${TW}px;height:${TH}px;background-image:url(../../video/src/ref/r${k+1}a.jpg);background-position:${-x*TW}px ${-y*TH}px`;
+    pz.appendChild(e);g.push([e,x,y]);}
+  tiles.push(g); const m=[];
+  for(let j=0;j<r[3];j++){const e=document.createElement('div');e.className='mini';e.style.backgroundImage=`url(../../video/src/ref/r${k+1}${'bc'[j]}.jpg)`;minis.appendChild(e);m.push(e);}
+  mn.push(m); });
+const steps=document.getElementById('steps'); R.forEach(()=>steps.insertAdjacentHTML('beforeend','<b><u></u></b>'));
+const eo=u=>1-Math.pow(1-u,3), ei=u=>u*u*u, cl=u=>Math.max(0,Math.min(1,u)), back=u=>{const c=1.4;return 1+(c+1)*Math.pow(u-1,3)+c*Math.pow(u-1,2);};
+let cur=-1;
+window.seek=function(t){ const k=Math.min(N-1,Math.floor(t/SEG)), lt=t-k*SEG, r=R[k];
+  if(k!==cur){cur=k; document.getElementById('eb').textContent=r[0];
+    document.getElementById('h1').innerHTML=r[1]+'<i>.</i>';
+    document.getElementById('rows').innerHTML=r[2].map(x=>`<div class="row"><small>${x[0]}</small><span>${x[1]}</span></div>`).join('');
+    document.getElementById('ghost').textContent='0'+(k+1);
+    document.getElementById('pill').textContent=`3.1 · REFERANS LAYİHƏLƏR · 0${k+1} / 0${N}`;}
+  const out=cl((lt-(SEG-.75))/.6);
+  // mətn
+  const a=eo(cl((lt-.15)/.6))*(1-out), tx=document.getElementById('txt'); tx.style.opacity=a; tx.style.transform=`translateY(${(1-eo(cl((lt-.15)/.6)))*40-out*20}px)`;
+  [...document.querySelectorAll('.row')].forEach((e,i)=>{const b=eo(cl((lt-.7-i*.18)/.5));e.style.opacity=b;e.style.transform=`translateX(${(1-b)*-40}px)`;});
+  const g=document.getElementById('ghost'); g.style.opacity=eo(cl(lt/.8))*(1-out); g.style.transform=`translateX(${(1-eo(cl(lt/1.2)))*-80+lt*4}px)`;
+  // pazl
+  const lock=eo(cl((lt-1.75)/.45)), zoom=1+.035*cl((lt-2)/(SEG-2));
+  pz.style.transform=`scale(${zoom.toFixed(4)}) rotate(${(-1.2*(1-lock)).toFixed(2)}deg)`;
+  pz.style.filter=`drop-shadow(0 ${30*lock}px ${50*lock}px rgba(11,27,58,${.35*lock}))`;
+  tiles.forEach((gr,i)=>gr.forEach(([e,x,y])=>{ if(i!==k){e.style.visibility='hidden';return;} e.style.visibility='visible';
+    const d=.12+x*.07+y*.05+h(x,y,i)*.2, u=cl((lt-d)/.8), p=back(u), q=1-p;
+    const ox=(h(x,y,i+9)-.3)*1100, oy=(h(y,x,i+3)-.5)*900, rot=(h(x+5,y,i)-.5)*140;
+    const od=(C-1-x)*.05+y*.03, o=ei(cl((lt-(SEG-.75)-od)/.5));
+    const gap=(1-lock)*.07, rad=(1-lock)*16;
+    e.style.transform=`translate(${(ox*q-o*260).toFixed(1)}px,${(oy*q+o*o*140).toFixed(1)}px) rotate(${(rot*q-o*14).toFixed(2)}deg) scale(${((.5+.5*cl(p))*(1-gap)).toFixed(4)})`;
+    e.style.opacity=(cl(u*2.5)*(1-o)).toFixed(3); e.style.borderRadius=rad+'px'; }));
+  // kiçik fotolar
+  mn.forEach((m,i)=>m.forEach((e,j)=>{ if(i!==k){e.style.visibility='hidden';return;} e.style.visibility='visible';
+    const u=cl((lt-2.3-j*.35)/.55), p=back(u);
+    e.style.left=(830+j*300)+'px'; e.style.top=(700-j*30)+'px';
+    e.style.transform=`translateY(${(1-p)*90-out*40}px) rotate(${(j? 3.5:-4)+ (1-p)*10}deg) scale(${(.7+.3*cl(p)).toFixed(3)})`; e.style.opacity=(cl(u*3)*(1-out)).toFixed(3); }));
+  [...steps.children].forEach((b,i)=>b.firstChild.style.width=(100*cl((t-i*SEG)/SEG))+'%');
+};
+window.seek(0);
+</script>
+</html>

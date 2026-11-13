@@ -4,6 +4,18 @@
 > Hər tapşırıqdan sonra bu faylı yenilə, commit et və push et.
 
 ## Növbəti addım
+- **5:17-lik video → v3 (4:20) göndərildi (2026-11-13 13:30) — RƏY GÖZLƏNİLİR.** `video/output/caspian-teqdimat-v3.mp4`.
+  İstifadəçi dörd təklifin hamısını təsdiqlədi və dedi: **"səsə görə dizayn etmə, möhtəşəm dizaynlar et, internetdəki ən yaxşı dizaynları referans götür."**
+  - Yığma: `python3 scripts/trailer/assemble.py <orijinal.mp4>` (parçalar və kəsim nöqtələri `SEGS`-dədir, keçidlər 0.4 san).
+  - Yeni səhnələr (hamısı `render_html.py --fps 25` ilə): `carousel.html` (Təchizat, 34.3 san) · `references.html` (6 layihə, foto pazl kimi
+    yığılır, 46 san; orijinalda 75 san idi) · `customers.html` (29 loqo üç axan lentdə, 14 san).
+  - Kəsildi: təkrarlanan Mündəricat (orijinalda 89–95, 178–184, 264–270, 284–290 san). 44–75 san-dəki ilk Mündəricat turu saxlanıldı.
+  - Mənbələr repoda yoxdur: `video/src/ref/` (kataloq səhifələrindən kəsilmiş fotolar), `video/src/logo/` (orijinal videonun 275 və 282-ci
+    saniyə kadrlarından kəsilmiş loqolar), `video/src/prod/`.
+  - **Səs:** orijinalda diktor səsi var kimi görünür (spektroqrama görə, əmin deyiləm). Kəsilən yerlərdə səs də kəsilib; Referans bölməsi
+    29 san qısaldığı üçün orada səs yarıda kəsilir. İstifadəçi səsi sonra həll edəcək / ayrıca səs faylı istənildi.
+  - Qalan təkliflər: nasosun açılma animasiyası, maskot videosu (4K) ilə final, komanda fotoları (təsdiq gözlənilir), 2 təhrif olunmuş loqo
+    (Neftqazkimya tresti, baec alt yazısı — orijinal videoda da belədir).
 - **5:17-lik video, v2 göndərildi (2026-11-13 12:45) — RƏY GÖZLƏNİLİR.** `video/output/caspian-teqdimat-v2.mp4`:
   orijinalın 105.6–139.9 san hissəsi ("2.2 Təchizat portfeli", 5 kateqoriya) yeni karusellə əvəz edildi; qalan hər şey və **səs
   olduğu kimidir** (səs axını bayt-bayt eynidir). İstifadəçi karusel sınağına "oradan davam elə" dedi → üslub təsdiqlənib.

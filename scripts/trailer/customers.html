@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="az">
+<meta charset="utf-8">
+<title>Müştərilərimiz</title>
+<!-- 5:17-lik videonun "04 Müştərilərimiz" hissəsini əvəz edən səhnə: loqolar üç axan lentdə.
+     Render: python3 scripts/trailer/render_html.py scripts/trailer/customers.html --fps 25 --out video/output/cust.mp4
+     Loqolar: ../../video/src/logo/*.png (repoda yoxdur; orijinal videonun kadrlarından kəsilib). -->
+<style>
+  *{box-sizing:border-box;margin:0}
+  html,body{width:1920px;height:1080px;overflow:hidden;background:#f3f1ec;font-family:Inter,'Inter Display',sans-serif;color:#0b1b3a}
+  #grid{position:absolute;inset:0;background-image:linear-gradient(#e7e4dc 1px,transparent 1px),linear-gradient(90deg,#e7e4dc 1px,transparent 1px);background-size:64px 64px;opacity:.7}
+  #rows{position:absolute;left:-200px;top:372px;width:2320px;transform:rotate(-3.5deg);transform-origin:50% 50%}
+  .r{position:relative;height:186px;margin-bottom:30px;white-space:nowrap}
+  .r>div{position:absolute;left:0;top:0;display:flex;gap:28px;will-change:transform}
+  .tile{flex:none;width:292px;height:186px;border-radius:24px;background:#fff;display:flex;align-items:center;justify-content:center;
+        box-shadow:0 22px 44px -22px rgba(11,27,58,.4),0 4px 10px rgba(11,27,58,.08)}
+  .tile img{max-width:84%;max-height:78%}
+  .tile.tx{background:#12327d;color:#fff;font:700 25px/1.2 Inter,sans-serif;text-align:center;padding:0 22px;white-space:normal}
+  #fade{position:absolute;inset:0;background:linear-gradient(90deg,#f3f1ec 0,rgba(243,241,236,0) 9%,rgba(243,241,236,0) 91%,#f3f1ec 100%),linear-gradient(180deg,#f3f1ec 0,#f3f1ec 27%,rgba(243,241,236,0) 40%)}
+  .pill{position:absolute;left:120px;top:92px;font:600 22px/1 ui-monospace,'DejaVu Sans Mono',monospace;letter-spacing:.2em;color:#fff;background:#12327d;padding:13px 22px;border-radius:12px}
+  h1{position:absolute;left:120px;top:160px;font:800 92px/1.03 'Inter Display',Inter,sans-serif;letter-spacing:-.035em;white-space:nowrap}
+  h1 i{font-style:normal;color:#ff6a3d}
+  #stat{position:absolute;right:120px;top:84px;text-align:right}
+  #stat b{display:block;font:900 150px/1 'Inter Display',Inter,sans-serif;letter-spacing:-.05em;color:#12327d}
+  #stat span{font:600 20px/1 ui-monospace,'DejaVu Sans Mono',monospace;letter-spacing:.2em;color:#ff6a3d}
+  #sec{position:absolute;left:124px;top:286px;font:600 19px/1 ui-monospace,'DejaVu Sans Mono',monospace;letter-spacing:.14em;color:#8a8679;white-space:nowrap}
+</style>
+<div id="grid"></div>
+<div id="rows"></div>
+<div id="fade"></div>
+<div class="pill">04 · MÜŞTƏRİLƏRİMİZ</div>
+<h1 id="h1">Bizə etibar edənlər<i>.</i></h1>
+<div id="sec">NEFT-QAZ · NEFT-KİMYA · METALLURGİYA · SEMENT · NƏQLİYYAT VƏ LOGİSTİKA</div>
+<div id="stat"><b id="num">0</b><span>MÜŞTƏRİ · 4 SEKTOR</span></div>
+<script>
+const ROWS=[
+ ['bp','downstream','karbamid','azneft','azerikimya','azeriqaz','polymer','methanol'],
+ ['neftqaz','petroleum','aqs','uboc','suraxani','baec','#SOCAR Haor','#SOCAR Sosial İnkişaf İdarəsi'],
+ ['stp','bakusteel','azeraluminium','metanet','arkoz','norm','lafarge','fortis','bakubus','azercosmos','marriott','port','aqrar'],
+];
+window.DURATION=14; const STEP=320, rows=document.getElementById('rows'), tr=[];
+ROWS.forEach((r,i)=>{const o=document.createElement('div');o.className='r';const d=document.createElement('div');
+  const reps=Math.ceil(2600/(r.length*STEP))+1; let s='';
+  for(let k=0;k<reps;k++) r.forEach(n=>{s+=n[0]==='#'?`<div class="tile tx">${n.slice(1)}</div>`:`<div class="tile"><img src="../../video/src/logo/${n}.png" alt=""></div>`;});
+  d.innerHTML=s;o.appendChild(d);rows.appendChild(o);tr.push([d,r.length*STEP]);});
+const eo=u=>1-Math.pow(1-u,4), cl=u=>Math.max(0,Math.min(1,u));
+window.seek=function(t){
+  tr.forEach(([d,w],i)=>{ const dir=i%2?1:-1, sp=[150,120,170][i], inn=eo(cl((t-.2-i*.25)/1.3));
+    let x=(t*sp+(1-inn)*900)%w; x=dir<0?-x:x-w; d.style.transform=`translateX(${x.toFixed(1)}px)`; d.parentElement.style.opacity=cl((t-.1-i*.25)/.5); });
+  const a=eo(cl(t/.8)); const h1=document.getElementById('h1'); h1.style.opacity=a; h1.style.transform=`translateY(${(1-a)*36}px)`;
+  document.querySelector('.pill').style.opacity=cl(t/.5); document.getElementById('sec').style.opacity=cl((t-.6)/.6);
+  document.getElementById('num').textContent=Math.round(29*eo(cl((t-.5)/1.8))); document.getElementById('stat').style.opacity=cl((t-.3)/.5);
+};
+window.seek(0);
+</script>
+</html>
