@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="az"><meta charset="utf-8"><title>Mündəricat — kitab rəfi</title>
+<!-- 5:17-lik videonun Mündəricat turunu (orijinalda 44.6–75.6 san) əvəz edir: bölmələr kitab kimi rəfdən çıxır.
+     Render: python3 scripts/trailer/render_html.py scripts/trailer/books.html --fps 25 --out video/output/books.mp4 -->
+<style>
+ *{box-sizing:border-box;margin:0}html,body{width:1920px;height:1080px;overflow:hidden;background:linear-gradient(180deg,#fbfcff,#e9eefb);font-family:Inter,'Inter Display',sans-serif;color:#0b1b3a}
+ .mono{font:600 20px/1 ui-monospace,'DejaVu Sans Mono',monospace;letter-spacing:.2em}
+ #pill{position:absolute;left:120px;top:80px;color:#2a56e8}#pill i{color:#ff6a3d;font-style:normal}
+ h1{position:absolute;left:116px;top:112px;font:800 96px/1 'Inter Display';letter-spacing:-.035em}h1 i{color:#ff6a3d;font-style:normal}
+ #sh{position:absolute;left:0;right:0;top:300px;height:600px;display:flex;justify-content:center;align-items:flex-end;gap:6px;perspective:2200px}
+ .b{position:relative;flex:none;border-radius:8px 8px 3px 3px;overflow:hidden;box-shadow:inset -8px 0 14px rgba(0,0,0,.18),inset 6px 0 10px rgba(255,255,255,.14),0 24px 30px -18px rgba(11,27,58,.55)}
+ .b .sp{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-90deg);white-space:nowrap;font:700 22px/1 Inter}
+ .b.m .sp{font:800 30px/1 'Inter Display';letter-spacing:-.01em}
+ .b .bd{position:absolute;left:0;right:0;height:5px;background:rgba(255,255,255,.45)}
+ .cv{position:absolute;left:0;top:0;width:422px;height:100%;color:#fff}
+ .cv .ph{height:270px;background-size:cover;background-position:center}
+ .cv b{display:block;font:900 120px/1 'Inter Display';letter-spacing:-.05em;margin:22px 0 0 30px}
+ .cv u{display:block;width:60px;height:5px;background:#ff6a3d;margin:8px 0 14px 32px}
+ .cv strong{display:block;font:800 40px/1.05 'Inter Display';letter-spacing:-.02em;margin-left:30px}
+ .cv span{display:block;font:500 20px/1.3 Inter;opacity:.8;margin:12px 30px 0}
+ #fl{position:absolute;left:60px;right:60px;top:900px;height:16px;border-radius:4px;background:linear-gradient(180deg,#cfd8ee,#aebbdc);box-shadow:0 30px 40px -10px rgba(11,27,58,.25)}
+ #cap{position:absolute;left:0;right:0;top:960px;text-align:center;font:700 34px/1 Inter}#cap small{font:600 20px/1 ui-monospace,'DejaVu Sans Mono',monospace;color:#2a56e8;letter-spacing:.2em;margin-right:18px}
+</style>
+<div id="pill" class="mono"><i>●</i> TƏQDİMATIN XƏRİTƏSİ</div><h1>Mündəricat<i>.</i></h1><div id="sh"></div><div id="fl"></div><div id="cap"></div>
+<script>
+const S='../../video/src/', B=[
+ ['01','Şirkət haqqında','Kim olduğumuz və bugünkü fəaliyyətimiz','img/WA0588',['2019 · Bakı','40+ əməkdaş']],
+ ['02','Fəaliyyət sahələri','Təchizat · İnspeksiya · İcarə · Katalizatorlar','ref/r6a',['Təchizat','İnspeksiya','İcarə','Katalizatorlar']],
+ ['03','Referans layihələr','Başlıca layihələr · BP ilə əməkdaşlıq','ref/r5a',['SOCAR Downstream','Paslanmayan lövhə','1000+ ton boru','SalemTube','BP Washpipe','BP OCTG']],
+ ['04','Müştərilərimiz','Neft-qaz · Sənaye · Sement · Dövlət','ref/r3a',['Neft-qaz','Metallurgiya','Sement','Nəqliyyat']],
+ ['05','Əlaqə','Əlaqə məlumatları · Yekun','img/WA0553',['Sayt','E-poçt','WhatsApp']]];
+const TH=[['#8fb0ff','#0b1b3a'],['#d9d4c7','#0b1b3a'],['#0b1b3a','#fff'],['#ff6a3d','#0b1b3a'],['#c7d3f5','#0b1b3a'],['#12327d','#fff']];
+const hs=(a,b)=>{const x=Math.sin(a*127.1+b*311.7)*43758.5453;return x-Math.floor(x);}, cl=u=>Math.max(0,Math.min(1,u)), io=u=>{u=cl(u);return u<.5?4*u*u*u:1-Math.pow(-2*u+2,3)/2;}, eo=u=>1-Math.pow(1-cl(u),4);
+const sh=document.getElementById('sh'), E=[]; let k=0;
+B.forEach((b,i)=>{ const e=document.createElement('div'); e.className='b m'; e.style.cssText=`width:92px;height:570px;background:linear-gradient(160deg,#3b6bff,#1f3fb8)`;
+  e.innerHTML=`<div class="bd" style="top:34px"></div><div class="bd" style="bottom:34px"></div><div class="sp" style="color:#fff">${b[0]} &nbsp; ${b[1]}</div><div class="cv" style="background:linear-gradient(160deg,#3b6bff,#1f3fb8)"><div class="ph" style="background-image:url(${S}${b[3]}.jpg)"></div><b>${b[0]}</b><u></u><strong>${b[1]}</strong><span>${b[2]}</span></div>`;
+  sh.appendChild(e); E.push([e,i,k++]);
+  b[4].forEach((t,j)=>{const c=TH[(i*2+j)%6], d=document.createElement('div'); d.className='b'; d.style.cssText=`width:46px;height:${430+Math.round(hs(i,j)*110)}px;background:${c[0]}`;
+    d.innerHTML=`<div class="bd" style="top:22px;opacity:.6"></div><div class="sp" style="color:${c[1]}">${t}</div>`; sh.appendChild(d); E.push([d,-1,k++]);}); });
+window.DURATION=18; const T0=1.9, STEP=3.15;
+window.seek=function(t){ let cur=-1;
+  E.forEach(([e,i,n])=>{ const d=eo((t-.15-n*.045)/.8); let ty=(1-d)*-760, w=null;
+    if(i>=0){ const a=io((t-(T0+i*STEP))/.7)*(1-io((t-(T0+(i+1)*STEP-.25))/.6)*(i<4?1:0)); if(a>.5)cur=i; w=92+330*a; ty-=34*a;
+      e.style.width=w+'px'; e.querySelector('.sp').style.opacity=1-cl(a*3); e.querySelector('.cv').style.opacity=cl(a*2.2-.5); e.style.boxShadow=`inset -8px 0 14px rgba(0,0,0,${.18*(1-a)}),0 ${24+30*a}px ${30+40*a}px -18px rgba(11,27,58,.55)`; }
+    e.style.transform=`translateY(${ty.toFixed(1)}px) rotate(${((1-d)*(hs(n,7)-.5)*24).toFixed(2)}deg)`; e.style.opacity=cl((t-.15-n*.045)/.2); });
+  const c=document.getElementById('cap'); c.innerHTML=cur>=0?`<small>${B[cur][0]} / 05</small>${B[cur][1]}`:''; 
+  const a=eo(t/.7); document.querySelector('h1').style.opacity=a; document.querySelector('h1').style.transform=`translateY(${(1-a)*30}px)`; document.getElementById('pill').style.opacity=cl(t/.5); document.getElementById('fl').style.opacity=cl(t/.5); };
+window.seek(0);
+</script></html>

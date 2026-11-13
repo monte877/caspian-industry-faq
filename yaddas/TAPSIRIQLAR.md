@@ -4,6 +4,15 @@
 > Hər tapşırıqdan sonra bu faylı yenilə, commit et və push et.
 
 ## Növbəti addım
+- **5:17-lik video → v4 (4:15) göndərildi (2026-11-13 22:20) — RƏY GÖZLƏNİLİR.** `video/output/caspian-teqdimat-v4.mp4` (52 MB).
+  İstifadəçi recent.design skrinşotları (kitab rəfi, əyri 3D qalereya, üzən kartlar + axtarış zolağı, pazl, node-ağac, səhifə qatlanması,
+  "Scout" kartı) və Soft Bridge reklam videosunu (tünd göy fon, yazılan mətn, qurulan UI pəncərələri) göndərdi: "bu dizaynları videoya əlavə et".
+  - Yeni səhnələr (`scripts/trailer/`, `render_html.py --fps 25`): `books.html` (Mündəricat kitab rəfi, 18 san; orijinalda 44.6–75.6) ·
+    `gallery.html` (Dörd əsas istiqamət, silindr içində dönən kartlar, 14 san; orijinalda 100.0–105.6) · `cloud.html` (müştəri loqoları
+    dərinlikdə üzür + sektorları yazan axtarış zolağı, 14 san; `cust.mp4`-ün yerinə). Karusel və pazl qalır.
+  - Yığma: `python3 scripts/trailer/assemble.py /mnt/user-data/uploads/1000140435.mp4` (SEGS yenilənib, çıxış v4).
+  - Səs orijinaldandır, kəsilən/uzanan yerlərdə uyğun gəlmir (qalereya 14 san, orijinal 5.6 san → səs təkrarlanır).
+  - Hələ istifadə edilməyən referanslar: node-ağac ("Yeddi ölkədən" üçün uyğundur), səhifə qatlanması, Scout kartı, Soft Bridge üslublu yazılan mətn.
 - **YENİ BRİF: "Bir detaldan böyük nəticəyə" — 3:55, 9:16 (2026-11-13 20:41) — CARİ İŞ.** İstifadəçi 11 səhnəli hazır ssenari göndərdi
   (zaman kodları, ekran yazıları, səsləndirmə mətni; rənglər: ağ, tünd göy, mavi, gümüşü — narıncı YOX).
   - Kod: `scripts/trailer/film2.html` (1080×1920, 235 san, `window.seek`), musiqi `scripts/trailer/film2_music.py` → `video/src/music2.wav`.

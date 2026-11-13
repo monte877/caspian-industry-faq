@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="az"><meta charset="utf-8"><title>Müştərilərimiz — üzən loqolar</title>
+<!-- 5:17-lik videonun "04 Müştərilərimiz" hissəsini əvəz edir: loqolar dərinlikdə üzür, ortada axtarış zolağı sektorları yazır.
+     Render: python3 scripts/trailer/render_html.py scripts/trailer/cloud.html --fps 25 --out video/output/cloud.mp4 -->
+<style>
+ *{box-sizing:border-box;margin:0}html,body{width:1920px;height:1080px;overflow:hidden;background:linear-gradient(180deg,#07123a 0,#1a3fc0 48%,#7f9dff 82%,#ffb59b 118%);font-family:Inter,'Inter Display',sans-serif;color:#fff}
+ .mono{font:600 20px/1 ui-monospace,'DejaVu Sans Mono',monospace;letter-spacing:.2em}
+ #st{position:absolute;inset:0;perspective:1100px}#cl{position:absolute;left:50%;top:44%;transform-style:preserve-3d}
+ .t{position:absolute;left:-110px;top:-72px;width:220px;height:144px;border-radius:22px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 24px 44px -18px rgba(3,8,30,.7)}
+ .t img{max-width:82%;max-height:74%}
+ #bar{position:absolute;left:50%;top:44%;width:820px;height:118px;margin:-59px 0 0 -410px;border-radius:59px;background:rgba(10,24,84,.72);box-shadow:0 0 0 2px rgba(255,255,255,.16),0 30px 60px -20px rgba(3,8,30,.8);display:flex;align-items:center;padding:0 46px;gap:26px;font:600 50px/1 Inter}
+ #bar svg{flex:none}#cur{width:4px;height:54px;background:#ff6a3d;margin-left:-14px}
+ #pill{position:absolute;left:120px;top:76px;background:#2a56e8;padding:13px 20px;border-radius:12px}
+ h1{position:absolute;z-index:5;text-shadow:0 6px 30px rgba(7,18,58,.6);left:0;right:0;top:850px;text-align:center;font:800 96px/1 'Inter Display';letter-spacing:-.035em}h1 i{color:#ff6a3d;font-style:normal}
+ #sub{position:absolute;z-index:5;left:0;right:0;top:968px;text-align:center;opacity:.85}
+</style>
+<div id="st"><div id="cl"></div></div>
+<div id="bar"><svg width="54" height="54" viewBox="0 0 54 54" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"><circle cx="23" cy="23" r="15"/><path d="M35 35l13 13"/></svg><span id="q"></span><div id="cur"></div></div>
+<div id="pill" class="mono">04 · MÜŞTƏRİLƏRİMİZ</div><h1>Bizə etibar edənlər<i>.</i></h1><div id="sub" class="mono">SEÇİLMİŞ MÜŞTƏRİLƏRİMİZ</div>
+<script>
+const L=['bp','downstream','karbamid','azneft','azerikimya','azeriqaz','polymer','methanol','neftqaz','petroleum','aqs','uboc','suraxani','baec','stp','bakusteel','azeraluminium','metanet','arkoz','norm','lafarge','fortis','bakubus','azercosmos','marriott','port','aqrar'];
+const Q=['Neft-qaz','Neft-kimya','Metallurgiya','Sement','Nəqliyyat və logistika'];
+const hs=(a,b)=>{const x=Math.sin(a*127.1+b*311.7)*43758.5453;return x-Math.floor(x);}, cl=u=>Math.max(0,Math.min(1,u)), eo=u=>1-Math.pow(1-cl(u),4);
+const cloud=document.getElementById('cl'), E=[];
+L.forEach((n,i)=>{const e=document.createElement('div'); e.className='t'; e.innerHTML=`<img src="../../video/src/logo/${n}.png" alt="">`; cloud.appendChild(e);
+  const col=i%9, row=Math.floor(i/9); let x=(col-4)*215+(hs(i,1)-.5)*90, y=[-310,-40,190][row]+(hs(i,2)-.5)*150, z=-700+hs(i,3)*900;
+  if(Math.abs(y)<150&&Math.abs(x)<520) y+=y<0?-170:190; E.push([e,x,y,z,i]);});
+window.DURATION=14;
+window.seek=function(t){ cloud.style.transform=`rotateY(${(Math.sin(t*.42)*13).toFixed(3)}deg) rotateX(${(Math.cos(t*.3)*4).toFixed(3)}deg) translateZ(${(-200+200*eo(t/2.5)).toFixed(1)}px)`;
+  E.forEach(([e,x,y,z,i])=>{const d=eo((t-.2-hs(i,5)*1.4)/1.6), zz=z-(1-d)*2600, by=Math.sin(t*.9+i)*16, bx=Math.cos(t*.6+i*2)*12;
+    e.style.transform=`translate3d(${(x+bx).toFixed(1)}px,${(y+by).toFixed(1)}px,${zz.toFixed(1)}px) rotate(${((hs(i,6)-.5)*10).toFixed(2)}deg)`;
+    e.style.opacity=cl((t-.2-hs(i,5)*1.4)/.4); e.style.filter=`blur(${(Math.max(0,(-z-250)/130)+Math.max(0,(z-80)/60)).toFixed(2)}px)`;});
+  const P=2.5, k=Math.min(Q.length-1,Math.floor(Math.max(0,t-1)/P)), lt=Math.max(0,t-1)-k*P, w=Q[k];
+  const n=k===Q.length-1?Math.round(w.length*cl(lt/.9)):Math.round(w.length*cl(lt/.9)*(1-cl((lt-(P-.45))/.35)));
+  document.getElementById('q').textContent=t<1?'':w.slice(0,n); document.getElementById('cur').style.opacity=Math.floor(t*2.5)%2?0.15:1;
+  const a=eo((t-.3)/.8), b=document.getElementById('bar'); b.style.opacity=cl((t-.3)/.3); b.style.transform=`scale(${.8+.2*a})`;
+  const h=eo((t-.9)/.8); document.querySelector('h1').style.opacity=h; document.querySelector('h1').style.transform=`translateY(${(1-h)*40}px)`; document.getElementById('sub').style.opacity=.85*cl((t-1.4)/.6); document.getElementById('pill').style.opacity=cl(t/.5); };
+window.seek(0);
+</script></html>

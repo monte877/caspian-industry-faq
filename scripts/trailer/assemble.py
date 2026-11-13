@@ -14,19 +14,22 @@ O = ROOT / 'video' / 'output'
 X = 0.4  # keçid (san)
 # (video mənbəyi | None = orijinal, orijinalda başlanğıc, uzunluq)
 SEGS = [
-    (None, 0.0, 89.0),            # giriş, Mündəricat turu, Şirkət haqqında
-    (None, 95.4, 10.2),           # 02 Fəaliyyət sahələri + Dörd əsas istiqamət   (Mündəricat 89–95 kəsildi)
+    (None, 0.0, 44.6),            # giriş, Şirkət haqqında girişi, Yeddi ölkədən
+    ('books.mp4', 44.6, 18.0),    # Mündəricat — kitab rəfi (orijinalda 44.6–75.6)
+    (None, 75.6, 13.4),           # 01 Şirkət haqqında
+    (None, 95.4, 4.6),            # 02 Fəaliyyət sahələri başlığı                (Mündəricat 89–95 kəsildi)
+    ('gallery.mp4', 100.0, 14.0), # Dörd əsas istiqamət — əyri qalereya (orijinalda 100.0–105.6)
     ('karusel-34.mp4', 105.6, 34.3),   # Təchizat portfeli — karusel
     (None, 140.4, 38.2),          # Yeddi ölkədən, inspeksiya, icarə, katalizatorlar
     (None, 184.3, 4.0),           # 03 Referans layihələr başlığı               (Mündəricat 178–184 kəsildi)
     ('ref.mp4', 188.3, 46.0),     # Referans layihələr — pazl
-    ('cust.mp4', 270.5, 14.0),    # Müştərilər — axan lent                       (Mündəricat 264–270 kəsildi)
+    ('cloud.mp4', 270.5, 14.0),   # Müştərilər — üzən loqolar                    (Mündəricat 264–270 kəsildi)
     (None, 290.0, 27.6),          # Əlaqə, Təşəkkür edirik                       (Mündəricat 284–290 kəsildi)
 ]
 
 ap = argparse.ArgumentParser()
 ap.add_argument('orig')
-ap.add_argument('--out', default=str(O / 'caspian-teqdimat-v3.mp4'))
+ap.add_argument('--out', default=str(O / 'caspian-teqdimat-v4.mp4'))
 a = ap.parse_args()
 
 # 1) Hər parça ayrıca fayla (yaddaşı doldurmamaq üçün), 2) sonra keçidlərlə birləşdirilir.
