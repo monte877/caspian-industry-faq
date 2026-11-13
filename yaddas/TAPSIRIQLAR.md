@@ -4,6 +4,15 @@
 > Hər tapşırıqdan sonra bu faylı yenilə, commit et və push et.
 
 ## Növbəti addım
+- **Film v2 + səsli rəy (2026-11-13 18:10).** `video/output/caspian-film-v2.mp4` (66 san) render olunub, hələ GÖNDƏRİLMƏYİB — yoxla və göndər.
+  İstifadəçinin səsli rəyi (film "qəşəngdir, amma çox sadə, kiçik şirkət kimi görünür"):
+  - Giriş və əsas istiqamətlər: **Təchizat, Texniki xidmət, İcarə** (ən çox vurğu İcarədə). Logistika və Katalizatorlar kiçik, diqqət çəkməyən.
+  - "29 müştəri" yazma — bunlar **seçilmiş** müştərilərdir (v2-də "Seçilmiş müştərilərimiz."). Şirkətin miqyasını kiçiltmə.
+  - 1 dəqiqə azdır; daha geniş film istəyir (5:17-lik video, kataloq, fotolar, caspianindustry.com-dakı məlumatla).
+  - **Qeyri-adi hərəkətlər** istəyir: asılqan kimi sağa-sola dönən cərgə, amma sənaye üslubunda; yuxarıdan enib fırlanan obyekt;
+    kitab rəfləri kimi açılıb-bağlanan panellər. Referanslar qısa: hər iş bir sətirdə, hamısı bir səhifədə.
+  - Təklif etdim (cavab gözlənilir): əvvəl "kran relsində dönən məhsul cərgəsi" 10–15 saniyəlik sınaq, bəyənsə 2–3 dəqiqəlik film.
+  - v2-də edilənlər: `film.html`-də giriş sözləri, 3 əsas istiqamət + "Logistika · Katalizatorlar" kadrı, düz rəngli fonların arxasında fotolar.
 - **SIFIRDAN FİLM (Claude-un öz zövqü) göndərildi (2026-11-13 14:30) — RƏY GÖZLƏNİLİR.** `video/output/caspian-film.mp4`
   (66 san, 1080p, 11 MB, −14 LUFS). İstifadəçi dedi: "özün sıfırdan hazırlasaydın necə hazırlayardın, öz zövqünlə hazırla".
   - Bir fayl: `scripts/trailer/film.html` (9 səhnə, `window.seek(t)`), musiqi `music.py`-dən (`video/src/music.wav`, 120 BPM, zərbələr 8/16/24/40/56 san).

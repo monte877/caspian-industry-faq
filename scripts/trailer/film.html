@@ -76,11 +76,11 @@
   .tile img{max-width:84%;max-height:78%}
   .tile.tx{background:#12327d;color:#fff;font:700 25px/1.2 Inter;text-align:center;padding:0 22px}
   #cf{position:absolute;inset:0;background:linear-gradient(180deg,#f3f1ec 0,#f3f1ec 30%,rgba(243,241,236,0) 44%)}
-  #cn{position:absolute;left:100px;top:40px;font:900 330px/1 'Inter Display';letter-spacing:-.06em;color:#12327d}
-  #ch{position:absolute;left:560px;top:120px;font:900 96px/1 'Inter Display';letter-spacing:-.04em}
-  #ck{position:absolute;left:566px;top:330px;color:#8a8679}
+  #cn{display:none;position:absolute;left:100px;top:40px;font:900 330px/1 'Inter Display';letter-spacing:-.06em;color:#12327d}
+  #ch{position:absolute;left:120px;top:80px;font:900 128px/0.98 'Inter Display';letter-spacing:-.04em}
+  #ck{position:absolute;left:126px;top:350px;color:#8a8679}
   /* 7 ölkələr */
-  #s7{background:#0b1b3a;color:#fff}
+  #s7{background:linear-gradient(rgba(11,27,58,.9),rgba(11,27,58,.9)),url(../../video/src/ref/r2a.jpg) center/cover;color:#fff}
   #gh{position:absolute;left:120px;top:150px;font:900 170px/0.95 'Inter Display';letter-spacing:-.05em}
   #gk{position:absolute;left:126px;top:96px;color:#ff6a3d}
   #gc{position:absolute;left:120px;right:120px;top:650px;display:flex;gap:22px}
@@ -116,7 +116,7 @@
 <div class="sc" id="s2">
   <div class="grid" id="g2"></div>
   <img id="lg" src="../../design/logo/caspian-loqo-yazili.png" alt="">
-  <div id="tag" class="mono">TƏCHİZAT · İNSPEKSİYA · İCARƏ · KATALİZATORLAR</div>
+  <div id="tag" class="mono">TƏCHİZAT · TEXNİKİ XİDMƏT · İCARƏ</div>
   <div id="stbg"></div>
   <div id="stn"></div><div id="stl"></div><div id="stk" class="mono"></div>
 </div>
@@ -143,7 +143,7 @@
   <div class="grid"></div>
   <div id="rows"></div><div id="cf"></div>
   <div id="cn">0</div>
-  <div id="ch">müştəri bizə<br>etibar edir<i>.</i></div>
+  <div id="ch">Seçilmiş<br>müştərilərimiz<i>.</i></div>
   <div id="ck" class="mono">NEFT-QAZ · NEFT-KİMYA · METALLURGİYA · SEMENT · LOGİSTİKA</div>
 </div>
 
@@ -179,18 +179,18 @@ const HITS=[[8,.9],[16,.7],[18,.3],[20,.3],[22,.3],[24,.8],[32,.5],[40,.9],[48,.
 function slam(e,lt,d=.4){const a=eo5(lt/d);e.style.opacity=cl(lt/.06);e.style.transform=`translateY(${(1-a)*70}px) scale(${1+.12*(1-a)})`;e.style.transformOrigin='0 60%';}
 
 // 1 — giriş
-const W1=[['Boru','TƏCHİZAT'],['Avadanlıq','İCARƏ'],['Xidmət','İNSPEKSİYA']];
+const W1=[['Təchizat','BORU · AVADANLIQ · MATERİAL',300],['Texniki xidmət','İNSPEKSİYA · SERVİS',225],['İcarə','WASHPIPE · AVADANLIQ',300]];
 function s1(t){ $('ln').style.width=(1920*eo5(t/1.9))+'px'; $('ln').style.opacity=t<2?1:.0;
   $('tc').textContent='00:0'+Math.floor(t)+' / 01:06';
   [...document.querySelectorAll('#s1 .c')].forEach((e,i)=>e.style.opacity=cl((t-.3-i*.2)/.5));
   const k=Math.floor((t-2)/2); if(t<2){$('w').style.opacity=0;$('wsub').style.opacity=0;$('wn').style.opacity=0;return;}
-  const lt=t-2-k*2, w=W1[k]; $('w').innerHTML=w[0]+'<i>.</i>'; $('wsub').textContent=w[1]; $('wn').textContent='0'+(k+1);
+  const lt=t-2-k*2, w=W1[k]; $('w').innerHTML=w[0]+'<i>.</i>'; $('w').style.fontSize=w[2]+'px'; $('wsub').textContent=w[1]; $('wn').textContent='0'+(k+1);
   slam($('w'),lt); const out=ei((lt-1.8)/.2); $('w').style.opacity=cl(lt/.06)*(1-out);
   $('wsub').style.opacity=cl((lt-.25)/.3)*(1-out); $('wn').style.opacity=cl((lt-.1)/.3)*(1-out); $('wn').style.transform=`translateX(${(1-eo(lt/.6))*60}px)`; }
 
 // 2 — şirkət + rəqəmlər
-const ST=[[2019,'','Bakıda təsis edilib','TƏSİS','#f3f1ec','#12327d','#0b1b3a'],[40,'+','əməkdaş','KOMANDA','#12327d','#fff','#fff'],
-          [1000,'+','ton boru və birləşdirici element','TƏCHİZAT','#ff6a3d','#0b1b3a','#0b1b3a']];
+const ST=[[2019,'','Bakıda təsis edilib','TƏSİS','#f3f1ec','#12327d','#0b1b3a'],[40,'+','əməkdaş','KOMANDA','linear-gradient(rgba(18,50,125,.88),rgba(18,50,125,.88)),url(../../video/src/img/WA0588.jpg) center/cover','#fff','#fff'],
+          [1000,'+','ton boru və birləşdirici element','TƏCHİZAT','linear-gradient(rgba(255,106,61,.9),rgba(255,106,61,.9)),url(../../video/src/img/WA0503.jpg) center/cover','#0b1b3a','#0b1b3a']];
 function s2(t){ const k=Math.floor((t-2)/2);
   if(t<2){ $('stbg').style.opacity=0; ['stn','stl','stk'].forEach(i=>$(i).style.opacity=0); $('g2').style.opacity=.7;
     const a=back(t/.7), o=ei((t-1.75)/.25); $('lg').style.opacity=cl(t/.12)*(1-o); $('lg').style.transform=`scale(${.82+.18*a+.03*t/2})`;
@@ -206,13 +206,13 @@ function s2(t){ const k=Math.floor((t-2)/2);
 
 // 3 — dörd istiqamət
 const D=[['Təchizat','Boru, armatur, elektrik, alət, laboratoriya, enerji','img/WA0609.jpg','60% 55%'],
-         ['İnspeksiya','OCTG borularının inspeksiya xidmətləri','ref/r6a.jpg','50% 50%'],
-         ['İcarə','Washpipe borularının kirayəsi və texniki xidməti','ref/r5a.jpg','70% 40%'],
-         ['Katalizatorlar','Yeni fəaliyyət istiqaməti',null]];
+         ['Texniki xidmət','OCTG borularının inspeksiyası və texniki xidmət','ref/r6a.jpg','50% 50%',215],
+         ['İcarə','Washpipe borularının və avadanlığın icarəsi','ref/r5a.jpg','70% 40%',300],
+         ['Logistika · Katalizatorlar','Çatdırılma və yeni istiqamət','img/WA0553.jpg','40% 50%',118]];
 D.forEach((d,i)=>{ $('s3').insertAdjacentHTML('beforeend',`<div class="d" style="${d[2]?'':'background:#ff6a3d;color:#0b1b3a'}">
   ${d[2]?`<div class="ph" style="background-image:url(../../video/src/${d[2]});background-position:${d[3]}"></div><div class="sh"></div>`:''}
-  <div class="n mono">0${i+1} / 04 · FƏALİYYƏT İSTİQAMƏTİ</div><div class="bar">${D.map((_,j)=>`<b class="${j<=i?'on':''}" style="${!d[2]&&j<=i?'background:#0b1b3a':''}"></b>`).join('')}</div>
-  <div class="t">${d[0]}<i style="${d[2]?'':'color:#fff'}">.</i></div><div class="p">${d[1]}</div></div>`); });
+  <div class="n mono">${i<3?`0${i+1} / 03 · ƏSAS İSTİQAMƏT`:'HƏMÇİNİN'}</div><div class="bar">${D.map((_,j)=>`<b class="${j<=i?'on':''}" style="${!d[2]&&j<=i?'background:#0b1b3a':''}"></b>`).join('')}</div>
+  <div class="t" style="font-size:${d[4]||250}px">${d[0]}<i style="${d[2]?'':'color:#fff'}">.</i></div><div class="p">${d[1]}</div></div>`); });
 const DE=[...document.querySelectorAll('.d')];
 function s3(t){ const k=Math.min(3,Math.floor(t/2)), lt=t-k*2;
   DE.forEach((e,i)=>{ if(i>k||i<k-1){e.style.display='none';return;} e.style.display='block'; e.style.zIndex=i;
@@ -278,7 +278,7 @@ function s7(t){ slam($('gh'),t,.45); $('gk').style.opacity=cl((t-.2)/.3);
   CE.forEach((e,i)=>{const l=t-.5-i*.5, a=eo5(l/.3); e.style.opacity=cl(l/.06); e.style.transform=`translateY(${(1-a)*60}px)`;}); }
 
 // 8 — vəd
-function s8(t){ slam($('v1'),t,.45); slam($('v2'),t-2,.45); $('s8').style.background=t<2?'#12327d':'#0b1b3a'; }
+function s8(t){ slam($('v1'),t,.45); slam($('v2'),t-2,.45); $('s8').style.background=`linear-gradient(rgba(${t<2?'18,50,125':'11,27,58'},.88),rgba(${t<2?'18,50,125':'11,27,58'},.88)),url(../../video/src/ref/r3a.jpg) center/cover`; }
 
 // 9 — final
 function s9(t){ const a=back(t/.8); $('fg').style.opacity=cl(t/.1); $('fg').style.transform=`scale(${(.8+.2*a+.02*cl(t/9)).toFixed(4)})`;
