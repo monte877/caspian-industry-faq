@@ -4,6 +4,17 @@
 > Hər tapşırıqdan sonra bu faylı yenilə, commit et və push et.
 
 ## Növbəti addım
+- **SIFIRDAN FİLM (Claude-un öz zövqü) göndərildi (2026-11-13 14:30) — RƏY GÖZLƏNİLİR.** `video/output/caspian-film.mp4`
+  (66 san, 1080p, 11 MB, −14 LUFS). İstifadəçi dedi: "özün sıfırdan hazırlasaydın necə hazırlayardın, öz zövqünlə hazırla".
+  - Bir fayl: `scripts/trailer/film.html` (9 səhnə, `window.seek(t)`), musiqi `music.py`-dən (`video/src/music.wav`, 120 BPM, zərbələr 8/16/24/40/56 san).
+  - Yığma: `python3 scripts/trailer/render_html.py scripts/trailer/film.html --fps 25 --out video/output/_film-sessiz.mp4` (~7 dəq),
+    sonra `ffmpeg -i _film-sessiz.mp4 -i video/src/music.wav -c:v libx264 -crf 21 -c:a aac -shortest caspian-film.mp4`.
+  - Quruluş: 0–8 tünd giriş (Boru. Avadanlıq. Xidmət.) · 8–16 loqo + 2019 / 40+ / 1000+ ton · 16–24 dörd istiqamət (foto + iri başlıq;
+    Katalizatorlar fotosuz, narıncı fon) · 24–28 axan məhsul cərgələri · 28–31 altı sürətli məhsul kadrı · 32–40 referans layihələr (pazl + 6 sətir)
+    · 40–48 29 müştəri loqosu · 48–52 7 ölkə · 52–56 "Sənayeniz üçün etibarlı tərəfdaş." · 56–66 loqo + əlaqə.
+  - Üslub: iri Inter Display tipoqrafiyası, 4 düz rəng (krem, navy, göy `#12327d`, narıncı `#ff6a3d`), mono etiketlər, zərbələrdə ağ parıltı.
+  - Yoxlanmayıb / istifadəçi təsdiq etməlidir: musiqini Claude eşitmir (yalnız ölçü); "40+ əməkdaş", "29 müştəri", müqavilə illəri təqdimatdan götürülüb;
+    Katalizatorlar üçün foto yoxdur; diktor səsi və EN versiya yoxdur.
 - **5:17-lik video → v3 (4:20) göndərildi (2026-11-13 13:30) — RƏY GÖZLƏNİLİR.** `video/output/caspian-teqdimat-v3.mp4`.
   İstifadəçi dörd təklifin hamısını təsdiqlədi və dedi: **"səsə görə dizayn etmə, möhtəşəm dizaynlar et, internetdəki ən yaxşı dizaynları referans götür."**
   - Yığma: `python3 scripts/trailer/assemble.py <orijinal.mp4>` (parçalar və kəsim nöqtələri `SEGS`-dədir, keçidlər 0.4 san).
